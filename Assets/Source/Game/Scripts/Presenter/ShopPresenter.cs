@@ -31,7 +31,9 @@ public class ShopPresenter : ScreenPresenter
         _shop = shop;
 
         foreach (var box in _boxes)
-            _shop.Clean(box);
+            box.Init();
+
+        CleanAll();
     }
 
     public void ShowNext()
@@ -41,9 +43,7 @@ public class ShopPresenter : ScreenPresenter
             _currentBoxIndex++;
 
             if (_currentBoxIndex > 0)
-            {
                 _shop.Clean(_boxes[_currentBoxIndex - 1]);
-            }
         }
 
         _shop.Show(_boxes[_currentBoxIndex]);
@@ -56,17 +56,34 @@ public class ShopPresenter : ScreenPresenter
             _currentBoxIndex--;
 
             if (_currentBoxIndex < _boxes.Length - 1)
-            {
                 _shop.Clean(_boxes[_currentBoxIndex + 1]);
-            }
         }
 
         _shop.Show(_boxes[_currentBoxIndex]);
+    }
+    protected override void OpenScreen()
+    {
+        if (_boxes != null)
+            _shop.Show(_boxes[_currentBoxIndex]);
+
+        base.OpenScreen();
+    }
+
+    protected override void CloseScreen()
+    {
+        CleanAll();
+        base.CloseScreen();
     }
 
     private void OnCloseButtonClick()
     {
         Close();
         OpenedMenu?.Invoke();
+    }
+
+    private void CleanAll()
+    {
+        foreach (var box in _boxes)
+            _shop.Clean(box);
     }
 }

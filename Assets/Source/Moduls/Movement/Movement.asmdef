@@ -1,9 +1,8 @@
 {
-    "name": "DeliveryOfGoods",
+    "name": "Movement",
     "rootNamespace": "",
     "references": [
-        "GUID:c2c96670df4dc0e49af9014565aa2463",
-        "GUID:e0cd932a6ec4d0e4e9201044cfc13683"
+        "GUID:c2c96670df4dc0e49af9014565aa2463"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

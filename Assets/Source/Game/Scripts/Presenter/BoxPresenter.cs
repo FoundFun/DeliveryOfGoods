@@ -14,7 +14,7 @@ public class BoxPresenter : MonoBehaviour
 
     public Vector3 TargetPosition { get; private set; }
 
-    private void Awake()
+    public void Init()
     {
         TargetPosition = transform.position;
         _rigidbody = GetComponent<Rigidbody>();
@@ -22,7 +22,7 @@ public class BoxPresenter : MonoBehaviour
 
     public void Complete()
     {
-        Debug.Log("Compalte");
+        Debug.Log("+1");
     }
 
     public void Return()
