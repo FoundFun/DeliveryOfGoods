@@ -21,7 +21,13 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
         Init();
     }
 
-    private void Start()
+    public void Reset()
+    {
+        foreach(BoxPresenter box in _boxes)
+            box.gameObject.SetActive(false);
+    }
+
+    public void Active()
     {
         UpdateBoxs();
 
@@ -29,6 +35,12 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
             StopCoroutine(_spawnCoroutine);
 
         _spawnCoroutine = StartCoroutine(Generate());
+    }
+
+    public void Inactive()
+    {
+        if (_spawnCoroutine != null)
+            StopCoroutine(_spawnCoroutine);
     }
 
     public void UpdateBoxs()

@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GamePresenter : ScreenPresenter
 {
     [SerializeField] private GameView _gameView;
+    [SerializeField] private SpawnerBox _spawnerBox;
 
     public event Action OpenedMenu;
 
@@ -18,6 +16,18 @@ public class GamePresenter : ScreenPresenter
     private void OnDisable()
     {
         _gameView.ExitButtonClick -= OnCloseButtonClick;
+    }
+
+    protected override void OpenScreen()
+    {
+        _spawnerBox.Active();
+        base.OpenScreen();
+    }
+
+    protected override void CloseScreen()
+    {
+        _spawnerBox.Inactive();
+        base.CloseScreen();
     }
 
     private void OnCloseButtonClick()

@@ -40,37 +40,33 @@ public class SettingsView : MonoBehaviour
 
     private void OnMusicOnButtonClick()
     {
-        _musicOffButton.gameObject.SetActive(false);
-        _musicOffButton.interactable = false;
-        _musicOnButton.gameObject.SetActive(true);
-        _musicOnButton.interactable = true;
+        ChangeButton(_soundOffButton, _musicOnButton);
         MusicOnButtonClick?.Invoke();
     }
 
     private void OnMusicOffButtonClick()
     {
-        _musicOnButton.gameObject.SetActive(false);
-        _musicOnButton.interactable = false;
-        _musicOffButton.gameObject.SetActive(true);
-        _musicOffButton.interactable = true;
+        ChangeButton(_musicOnButton, _musicOffButton);
         MusicOffButtonClick?.Invoke();
     }
 
     private void OnSoundOnButtonClick()
     {
-        _soundOffButton.gameObject.SetActive(false);
-        _soundOffButton.interactable = false;
-        _soundOnButton.gameObject.SetActive(true);
-        _soundOnButton.interactable = true;
+        ChangeButton(_soundOffButton, _soundOnButton);
         SoundOnButtonClick?.Invoke();
     }
 
     private void OnSoundOffButtonClick()
     {
-        _soundOnButton.gameObject.SetActive(false);
-        _soundOnButton.interactable = false;
-        _soundOffButton.gameObject.SetActive(true);
-        _soundOffButton.interactable = true;
+        ChangeButton(_soundOnButton, _soundOffButton);
         SoundOffButtonClick?.Invoke();
+    }
+
+    private void ChangeButton(Button buttonToDisable, Button buttonToEnable)
+    {
+        buttonToDisable.gameObject.SetActive(false);
+        buttonToDisable.interactable = false;
+        buttonToEnable.gameObject.SetActive(true);
+        buttonToEnable.interactable = true;
     }
 }
