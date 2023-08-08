@@ -3,23 +3,12 @@ using DeliveryOfGoods.Model;
 
 public class GameRoot : MonoBehaviour
 {
-    [SerializeField] private BeltPresenter[] _beltsPresenter;
-    [SerializeField] private BoxPresenter[] _boxsPresenter;
     [SerializeField] private MenuGamePresenter _menuGamePresenter;
     [SerializeField] private GamePresenter _gamePresenter;
     [SerializeField] private ShopPresenter _shopPresenter;
     [SerializeField] private SettingsPresenter _settingsPresenter;
 
     private void Awake()
-    {
-        foreach (var beltPresenter in _beltsPresenter)
-        {
-            Belt belt = new Belt();
-            beltPresenter.Init(belt);
-        }
-    }
-
-    private void Start()
     {
         Shop shop = new Shop();
         _shopPresenter.Init(shop);

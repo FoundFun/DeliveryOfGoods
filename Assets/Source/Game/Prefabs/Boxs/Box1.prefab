@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 139059762447807428}
   - component: {fileID: 7032033442298968594}
   - component: {fileID: 3352844523480088385}
-  - component: {fileID: -938026991089584924}
-  - component: {fileID: -7636982069994825055}
   m_Layer: 0
   m_Name: Box1
   m_TagString: Untagged
@@ -149,29 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: 0
---- !u!114 &-938026991089584924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7351828744856529750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c21a5e41dba8c40b88e19f13a801b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _price: 0
---- !u!114 &-7636982069994825055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7351828744856529750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c21a5e41dba8c40b88e19f13a801b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _price: 0
+  _isBuy: 1

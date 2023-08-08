@@ -1,56 +1,49 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TruckPresenter : MonoBehaviour
 {
-    [SerializeField] private DeliverPoint _deliverPoint;
+    [SerializeField] private DeliverPoint _endDeliverPoint;
 
-    private Vector3 _startPosition;
+    private int _boxsInBody;
 
-    private List<BoxPresenter> _boxsInBody = new List<BoxPresenter>();
+    public bool IsDelivery { get; private set; }
 
-    private void Awake()
-    {
-        _startPosition = transform.position;
-    }
+    public event Action SceneChanged;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out BoxPresenter box))
         {
-            _boxsInBody.Add(box);
             box.Complete();
+            _boxsInBody++;
 
-            if (_boxsInBody.Count >= 3)
-                Deliver(_deliverPoint);
-        }
-
-        if (other.TryGetComponent(out DeliverPoint deliverPoint))
-        {
-            Debug.Log("Deliver");
-            CleanBody();
-            ArriveToLoad();
+            if (_boxsInBody >= 3 && IsDelivery == false)
+                Deliver(_endDeliverPoint.transform.position);
         }
     }
 
-    private void Deliver(DeliverPoint deliverPoint)
+    public void Reset()
     {
-        Debug.Log("Move");
-        transform.LeanMoveZ(deliverPoint.transform.position.z, 3);
+        IsDelivery = false;
+        _boxsInBody = 0;
     }
 
-    private void ArriveToLoad()
+    public void Move(Vector3 targetPosition)
     {
-        transform.LeanMoveLocalZ(_startPosition.z, 3);
+        transform.LeanMoveZ(targetPosition.z, 3);
     }
 
-    private void CleanBody()
+    private void Deliver(Vector3 targetPosition)
     {
-        for (int i = 0; i < _boxsInBody.Count; i++)
-        {
-            _boxsInBody[i].Return();
+        IsDelivery = true;
+        transform.LeanMoveZ(targetPosition.z, 3).setOnComplete(SwitchScene);
+    }
 
-            _boxsInBody.Remove(_boxsInBody[i]);
-        }
+    private void SwitchScene()
+    {
+        SceneManager.LoadScene("Level1");
+        SceneChanged?.Invoke();
     }
 }

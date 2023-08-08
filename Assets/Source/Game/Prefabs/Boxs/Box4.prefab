@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1154701284027541565}
   - component: {fileID: 14124533236682753}
   - component: {fileID: 6108489149289466245}
-  - component: {fileID: 8176931236809117701}
   m_Layer: 0
   m_Name: Box4
   m_TagString: Untagged
@@ -148,16 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: 0
---- !u!114 &8176931236809117701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879255117630526141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c21a5e41dba8c40b88e19f13a801b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _price: 0
+  _isBuy: 1

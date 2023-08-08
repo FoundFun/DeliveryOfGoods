@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ScreenPresenter : MonoBehaviour
@@ -8,12 +6,22 @@ public abstract class ScreenPresenter : MonoBehaviour
 
     public void Open()
     {
+        OpenScreen();
+    }
+
+    public void Close()
+    {
+        CloseScreen();
+    }
+
+    protected virtual void OpenScreen()
+    {
         _canvasGroup.alpha = 1;
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
     }
 
-    public void Close()
+    protected virtual void CloseScreen()
     {
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;

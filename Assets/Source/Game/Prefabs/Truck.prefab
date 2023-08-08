@@ -1046,7 +1046,7 @@ Transform:
   - {fileID: 5961856403129056416}
   - {fileID: 1208793707393097165}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &2907292861463938884
 MonoBehaviour:
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd7dcb6cb2081804682d102eac744982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deliverPoint: {fileID: 0}
+  _endDeliverPoint: {fileID: 0}
 --- !u!65 &6468750541938478497
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1101,8 +1101,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.06614064, y: 0.16613661, z: 0.26398468}
-  m_Center: {x: 0.4106155, y: 0.1662039, z: 0.002621341}
+  m_Size: {x: 0.06614064, y: 0.27517572, z: 0.26398468}
+  m_Center: {x: 0.4106155, y: 0.22072351, z: 0.002621341}
 --- !u!65 &8941096784991489089
 BoxCollider:
   m_ObjectHideFlags: 0
