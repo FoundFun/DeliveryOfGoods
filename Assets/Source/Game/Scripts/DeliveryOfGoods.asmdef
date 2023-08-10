@@ -1,0 +1,21 @@
+{
+    "name": "DeliveryOfGoods",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c2c96670df4dc0e49af9014565aa2463",
+        "GUID:e0cd932a6ec4d0e4e9201044cfc13683",
+        "GUID:ef7e0e3eb213f324c87b70a782844fb6",
+        "GUID:8f22d867f50f3884892cfde18442bbf9",
+        "GUID:b5a64b239ef00ed419a19e22c7c6a2f0",
+        "GUID:0bffb403296d1df4e8015b725ed16aff"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
