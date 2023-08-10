@@ -11,14 +11,12 @@ public class MenuGameView : MonoBehaviour
 
     public event Action StartButtonClick;
     public event Action ShopButtonClick;
-    public event Action AdsRewardButtonClick;
     public event Action SettingsButtonClick;
 
     private void OnEnable()
     {
         _startButton.onClick.AddListener(OnStartButtonClick);
         _shopButton.onClick.AddListener(OnShopButtonClick);
-        _adsReward.onClick.AddListener(OnAdsRewardButtonClick);
         _settingsButton.onClick.AddListener(OnSettingsButtonClick);
     }
 
@@ -26,7 +24,6 @@ public class MenuGameView : MonoBehaviour
     {
         _startButton.onClick.RemoveListener(OnStartButtonClick);
         _shopButton.onClick.RemoveListener(OnShopButtonClick);
-        _adsReward.onClick.RemoveListener(OnAdsRewardButtonClick);
         _settingsButton.onClick.RemoveListener(OnSettingsButtonClick);
     }
 
@@ -38,11 +35,6 @@ public class MenuGameView : MonoBehaviour
     private void OnShopButtonClick()
     {
         ShopButtonClick?.Invoke();
-    }
-
-    private void OnAdsRewardButtonClick()
-    {
-        AdsRewardButtonClick?.Invoke();
     }
 
     private void OnSettingsButtonClick()

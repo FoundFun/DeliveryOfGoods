@@ -22,6 +22,12 @@ public class WerehousePresenter : MonoBehaviour
         MoveTruck();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out BoxPresenter boxPresenter))
+            Clean(boxPresenter);
+    }
+
     private void MoveTruck()
     {
         Debug.Log("PUSH");
@@ -29,5 +35,10 @@ public class WerehousePresenter : MonoBehaviour
         _truckPresenter.transform.position = _startDeliverPoint.position;
         _truckPresenter.Reset();
         _truckPresenter.Move(_loadingArea.position);
+    }
+
+    private void Clean(BoxPresenter boxPresenter)
+    {
+        boxPresenter.Clean();
     }
 }

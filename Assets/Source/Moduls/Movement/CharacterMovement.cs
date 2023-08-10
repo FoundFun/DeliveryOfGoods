@@ -7,11 +7,13 @@ namespace Movement
     internal class CharacterMovement : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private BeltView _beltView;
+        [SerializeField] private MovementView _movementView;
         [SerializeField] private float _speed;
 
         private const float MaxAngleRotation = 360;
         private const float AngleRotation = 90;
+        private const float SpeedAnimationRotate = 0.5f;
+        private const float LerpMaterial = 4;
 
         private Material _material;
         private Vector3 _moveDirection;
@@ -22,8 +24,8 @@ namespace Movement
 
         private void Awake()
         {
-            _material = _beltView.GetComponent<Renderer>().material;
-            _speedMaterial = _speed / 4;
+            _material = _movementView.GetComponent<Renderer>().material;
+            _speedMaterial = _speed / LerpMaterial;
         }
 
         internal void Init()
@@ -36,7 +38,7 @@ namespace Movement
         {
             IsReady = false;
             _nextRotateY = transform.eulerAngles.y + AngleRotation;
-            transform.LeanRotateY(_nextRotateY, 2).setOnComplete(UpdateDirection);
+            transform.LeanRotateY(_nextRotateY, SpeedAnimationRotate).setOnComplete(UpdateDirection);
         }
 
         internal void Scroll()

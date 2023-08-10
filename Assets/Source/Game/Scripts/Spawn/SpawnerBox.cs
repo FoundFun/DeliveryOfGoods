@@ -11,8 +11,10 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
     private readonly WaitForSeconds _spawnTime = new WaitForSeconds(3);
 
     private List<BoxPresenter> _boxes;
+    private List<BoxPresenter> _purchasedBoxes;
     private SpawnPoint _spawnPoints;
     private Coroutine _spawnCoroutine;
+    private int _boxIndex;
 
     private void Awake()
     {
@@ -24,12 +26,12 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
     public void Reset()
     {
         foreach(BoxPresenter box in _boxes)
-            box.gameObject.SetActive(false);
+            box.Reset();
     }
 
     public void Active()
     {
-        UpdateBoxs();
+        UpdatePurchasedBoxs();
 
         if (_spawnCoroutine != null)
             StopCoroutine(_spawnCoroutine);
@@ -43,22 +45,29 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
             StopCoroutine(_spawnCoroutine);
     }
 
-    public void UpdateBoxs()
+    public void UpdatePurchasedBoxs()
     {
-        BoxPresenter[] boxs = _boxs.Where(box => box.IsBuy == true).ToArray();
+        _purchasedBoxes = _boxs.Where(box => box.IsBuy == true).ToList();
     }
 
     private IEnumerator Generate()
     {
         while (true)
         {
-            if (TryGetObject(out BoxPresenter box))
+            if (TryGetObject(out BoxPresenter box, _boxIndex))
             {
                 box.transform.position = _spawnPoints.transform.position;
                 box.gameObject.SetActive(true);
+
+                yield return _spawnTime;
             }
 
-            yield return _spawnTime;
+            _boxIndex++;
+
+            if (_boxIndex >= _purchasedBoxes.Count)
+                _boxIndex = 0;
+
+            yield return null;
         }
     }
 

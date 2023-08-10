@@ -9768,6 +9768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4252527210203203815}
   - component: {fileID: 8470044905348824715}
+  - component: {fileID: 9052776970687166135}
   m_Layer: 0
   m_Name: Werehouse
   m_TagString: Untagged
@@ -9817,6 +9818,28 @@ MonoBehaviour:
   _truckPresenter: {fileID: 3198015695288375897}
   _startDeliverPoint: {fileID: 8671137015099442294}
   _loadingArea: {fileID: 1356242308372553375}
+  _spawnerBox: {fileID: 0}
+--- !u!65 &9052776970687166135
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142321250148816832}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 36.449368, y: 1.4195462, z: 26.57883}
+  m_Center: {x: 11.244268, y: 0.20977314, z: 12.789415}
 --- !u!1 &1146511853081931414
 GameObject:
   m_ObjectHideFlags: 0

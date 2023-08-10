@@ -1,4 +1,3 @@
-using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
 
@@ -6,23 +5,31 @@ public class ShopPresenter : ScreenPresenter
 {
     [SerializeField] private ShopView _shopView;
 
-    private Shop _shop;
-
     public event Action OpenedMenu;
 
     private void OnEnable()
     {
         _shopView.ExitButtonClick += OnCloseButtonClick;
+        _shopView.UpgradedConveyorButtonClick += OnUpgradeConveyor;
+        _shopView.UpgradedSpawnButtonClick += OnUpgradeSpawn;
     }
 
     private void OnDisable()
     {
         _shopView.ExitButtonClick -= OnCloseButtonClick;
+        _shopView.UpgradedConveyorButtonClick -= OnUpgradeConveyor;
+        _shopView.UpgradedSpawnButtonClick -= OnUpgradeSpawn;
     }
 
-    public void Init(Shop shop)
+
+    private void OnUpgradeConveyor()
     {
-        _shop = shop;
+
+    }
+
+    private void OnUpgradeSpawn()
+    {
+        
     }
 
     private void OnCloseButtonClick()

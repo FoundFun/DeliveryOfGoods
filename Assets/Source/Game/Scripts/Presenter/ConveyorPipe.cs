@@ -4,9 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class ConveyorPipe : MonoBehaviour
 {
-    private const float _speedRotation = 1.07f;
-
-    private readonly float _speedMaterial = 0.3f;
+    private const float SpeedRotation = 1.07f;
+    private const float SpeedMaterial = 0.3f;
+    private const float MultiplierSpeed = 400;
 
     private Rigidbody _rigidbody;
     private Material _material;
@@ -25,9 +25,9 @@ public class ConveyorPipe : MonoBehaviour
     private void Rotate()
     {
         Quaternion rotation = _rigidbody.rotation;
-        Quaternion move = Quaternion.Euler(0, 400 * _speedRotation / (51 * Mathf.PI), 0);
+        Quaternion move = Quaternion.Euler(0, MultiplierSpeed * SpeedRotation / (51 * Mathf.PI), 0);
         _rigidbody.MoveRotation(rotation * move);
 
-        _material.mainTextureOffset += Vector2.right * _speedMaterial * _speedRotation * Time.fixedDeltaTime;
+        _material.mainTextureOffset += Vector2.right * SpeedMaterial * SpeedRotation * Time.fixedDeltaTime;
     }
 }

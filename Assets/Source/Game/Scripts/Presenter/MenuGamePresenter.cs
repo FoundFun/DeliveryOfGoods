@@ -7,14 +7,12 @@ public class MenuGamePresenter : ScreenPresenter
 
     public event Action OpenedGame;
     public event Action OpenedShop;
-    public event Action OpenedAdsReward;
     public event Action OpenedSettings;
 
     private void OnEnable()
     {
         _menuGameView.StartButtonClick += OnStartButtonClick;
         _menuGameView.ShopButtonClick += OnShopButtonClick;
-        _menuGameView.AdsRewardButtonClick += OnAdsRewardButtonClick;
         _menuGameView.SettingsButtonClick += OnSettingsButtonClick;
 
     }
@@ -23,7 +21,6 @@ public class MenuGamePresenter : ScreenPresenter
     {
         _menuGameView.StartButtonClick -= OnStartButtonClick;
         _menuGameView.ShopButtonClick -= OnShopButtonClick;
-        _menuGameView.AdsRewardButtonClick -= OnAdsRewardButtonClick;
         _menuGameView.SettingsButtonClick -= OnSettingsButtonClick;
     }
 
@@ -37,12 +34,6 @@ public class MenuGamePresenter : ScreenPresenter
     {
         Close();
         OpenedShop?.Invoke();
-    }
-
-    private void OnAdsRewardButtonClick()
-    {
-        Close();
-        OpenedAdsReward?.Invoke();
     }
 
     private void OnSettingsButtonClick()

@@ -1,5 +1,4 @@
 using UnityEngine;
-using DeliveryOfGoods.Model;
 
 public class GameRoot : MonoBehaviour
 {
@@ -7,12 +6,7 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private GamePresenter _gamePresenter;
     [SerializeField] private ShopPresenter _shopPresenter;
     [SerializeField] private SettingsPresenter _settingsPresenter;
-
-    private void Awake()
-    {
-        Shop shop = new Shop();
-        _shopPresenter.Init(shop);
-    }
+    [SerializeField] private SpawnerBox _spawnerBox;
 
     private void OnEnable()
     {

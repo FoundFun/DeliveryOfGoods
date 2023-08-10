@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7008693690217606444}
   - component: {fileID: 3884048927205417176}
   - component: {fileID: 6095647409993004859}
-  - component: {fileID: 2576658178035287485}
+  - component: {fileID: 1664351057471332786}
   m_Layer: 7
   m_Name: OnBeltView
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2576658178035287485
+--- !u!114 &1664351057471332786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2034103271099633543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23473b3272bf4444682a586b5daa70fc, type: 3}
+  m_Script: {fileID: 11500000, guid: ea11d190fbd8d02469011404e9a81714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2141871869599003060
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2532188220892640819}
-  _beltView: {fileID: 2576658178035287485}
+  _movementView: {fileID: 1664351057471332786}
   _speed: 2.3
 --- !u!1 &3558593004501735195
 GameObject:

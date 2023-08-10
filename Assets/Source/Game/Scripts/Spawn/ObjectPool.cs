@@ -21,9 +21,10 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : BoxPresenter
         return _poolObject;
     }
 
-    protected bool TryGetObject(out T gameObject)
+    protected bool TryGetObject(out T gameObject, int index)
     {
-        gameObject = _poolObject.FirstOrDefault(template => template.gameObject.activeSelf == false && template.IsBuy == true);
+        gameObject = _poolObject.Where(gameObject => gameObject.IsBuy == true
+        && gameObject == gameObject.gameObject.activeSelf == false).ElementAtOrDefault(index);
 
         return gameObject != null;
     }

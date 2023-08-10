@@ -6,6 +6,11 @@ public class TruckPresenter : MonoBehaviour
 {
     [SerializeField] private DeliverPoint _endDeliverPoint;
 
+    private const float AnimationTime = 3;
+
+    private int _targetNumberBoxs = 3;
+    private int _currentLevel = 0;
+
     private int _boxsInBody;
 
     public bool IsDelivery { get; private set; }
@@ -19,8 +24,11 @@ public class TruckPresenter : MonoBehaviour
             box.Complete();
             _boxsInBody++;
 
-            if (_boxsInBody >= 3 && IsDelivery == false)
+            if (_boxsInBody >= _targetNumberBoxs && IsDelivery == false)
+            {
                 Deliver(_endDeliverPoint.transform.position);
+                _targetNumberBoxs++;
+            }
         }
     }
 
@@ -32,18 +40,19 @@ public class TruckPresenter : MonoBehaviour
 
     public void Move(Vector3 targetPosition)
     {
-        transform.LeanMoveZ(targetPosition.z, 3);
+        transform.LeanMoveZ(targetPosition.z, AnimationTime);
     }
 
     private void Deliver(Vector3 targetPosition)
     {
         IsDelivery = true;
-        transform.LeanMoveZ(targetPosition.z, 3).setOnComplete(SwitchScene);
+        transform.LeanMoveZ(targetPosition.z, AnimationTime).setOnComplete(SwitchScene);
     }
 
     private void SwitchScene()
     {
-        SceneManager.LoadScene("Level1");
+        _currentLevel++;
+        SceneManager.LoadScene($"Level{_currentLevel}");
         SceneChanged?.Invoke();
     }
 }
