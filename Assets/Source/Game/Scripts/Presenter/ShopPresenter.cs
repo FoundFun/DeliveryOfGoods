@@ -1,3 +1,4 @@
+using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class ShopPresenter : ScreenPresenter
         _shopView.ExitButtonClick += OnCloseButtonClick;
         _shopView.UpgradedConveyorButtonClick += OnUpgradeConveyor;
         _shopView.UpgradedSpawnButtonClick += OnUpgradeSpawn;
+        _shopView.UpgradedNumberBoxsButtonClick += OnUpgradeNumberBoxs;
     }
 
     private void OnDisable()
@@ -24,12 +26,17 @@ public class ShopPresenter : ScreenPresenter
 
     private void OnUpgradeConveyor()
     {
-
+        Config.UpgradeConveyor();
     }
 
     private void OnUpgradeSpawn()
     {
-        
+        Config.UpgradeSpawn();
+    }
+
+    private void OnUpgradeNumberBoxs()
+    {
+        Config.UpgradeNumberBoxs();
     }
 
     private void OnCloseButtonClick()

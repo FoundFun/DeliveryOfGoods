@@ -1,3 +1,4 @@
+using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace Movement
         private void Awake()
         {
             _material = _movementView.GetComponent<Renderer>().material;
-            _speedMaterial = _speed / LerpMaterial;
+            _speedMaterial = Config.ConveyorSpeed / LerpMaterial;
         }
 
         internal void Init()
@@ -44,10 +45,10 @@ namespace Movement
         internal void Scroll()
         {
             Vector3 nextPosition = _rigidbody.position;
-            _rigidbody.position += _moveDirection * _speed * Time.fixedDeltaTime;
+            _rigidbody.position += _moveDirection * Config.ConveyorSpeed * Time.fixedDeltaTime;
             _rigidbody.MovePosition(nextPosition);
 
-            _material.mainTextureOffset += Vector2.up * _speedMaterial * _speed * Time.fixedDeltaTime;
+            _material.mainTextureOffset += Vector2.up * _speedMaterial * Config.ConveyorSpeed * Time.fixedDeltaTime;
         }
 
         private void UpdateDirection()
