@@ -2,13 +2,12 @@ using System.Collections;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using DeliveryOfGoods.Model;
 
 public class SpawnerBox : ObjectPool<BoxPresenter>
 {
     [SerializeField] private BoxPresenter[] _boxs;
     [SerializeField] private GameObject _container;
-
-    private readonly WaitForSeconds _spawnTime = new WaitForSeconds(3);
 
     private List<BoxPresenter> _boxes;
     private List<BoxPresenter> _purchasedBoxes;
@@ -47,7 +46,7 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
 
     public void UpdatePurchasedBoxs()
     {
-        _purchasedBoxes = _boxs.Where(box => box.IsBuy == true).ToList();
+        _purchasedBoxes = _boxes.Take(Config.MaxNumberBoxs).ToList();
     }
 
     private IEnumerator Generate()
@@ -59,7 +58,7 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
                 box.transform.position = _spawnPoints.transform.position;
                 box.gameObject.SetActive(true);
 
-                yield return _spawnTime;
+                yield return new WaitForSeconds(Config.SpawnSpeed);
             }
 
             _boxIndex++;
