@@ -6,7 +6,12 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private GamePresenter _gamePresenter;
     [SerializeField] private ShopPresenter _shopPresenter;
     [SerializeField] private SettingsPresenter _settingsPresenter;
-    [SerializeField] private SpawnerBox _spawnerBox;
+    [SerializeField] private WalletPresenter _playerPresenter;
+
+    private void Start()
+    {
+        _playerPresenter.Init();
+    }
 
     private void OnEnable()
     {

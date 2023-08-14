@@ -23,7 +23,6 @@ public class ShopPresenter : ScreenPresenter
         _shopView.UpgradedSpawnButtonClick -= OnUpgradeSpawn;
     }
 
-
     private void OnUpgradeConveyor()
     {
         Config.UpgradeConveyor();
