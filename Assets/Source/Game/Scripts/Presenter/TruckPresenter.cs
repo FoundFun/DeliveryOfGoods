@@ -1,3 +1,4 @@
+using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TruckPresenter : MonoBehaviour
 {
     [SerializeField] private DeliverPoint _endDeliverPoint;
+    [SerializeField] private ParticleSystem _smokeExplosion;
 
     private const float AnimationTime = 3;
 
@@ -53,6 +55,8 @@ public class TruckPresenter : MonoBehaviour
     {
         _currentLevel++;
         SceneManager.LoadScene($"Level{_currentLevel}");
+        _smokeExplosion.Play();
         SceneChanged?.Invoke();
+        Config.Improve();
     }
 }
