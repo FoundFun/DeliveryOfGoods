@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class ShopView : MonoBehaviour
 {
     [SerializeField] private Button _exitButton;
-    [SerializeField] private Button _UpgradeConveyor;
-    [SerializeField] private Button _UpgradeSpawn;
-    [SerializeField] private Button _UpgradeNumberBoxs;
+    [SerializeField] private Button _upgradeConveyor;
+    [SerializeField] private Button _upgradeSpawn;
+    [SerializeField] private Button _upgradeNumberBoxs;
     [SerializeField] private WalletPresenter _wallet;
 
     private string _priceConveyor;
@@ -22,25 +22,25 @@ public class ShopView : MonoBehaviour
 
     private void Start()
     {
-        _priceConveyor = _UpgradeConveyor.GetComponentInChildren<TMP_Text>().text;
-        _priceSpawn = _UpgradeSpawn.GetComponentInChildren<TMP_Text>().text;
-        _priceNumberBoxs = _UpgradeNumberBoxs.GetComponentInChildren<TMP_Text>().text;
+        _priceConveyor = _upgradeConveyor.GetComponentInChildren<TMP_Text>().text;
+        _priceSpawn = _upgradeSpawn.GetComponentInChildren<TMP_Text>().text;
+        _priceNumberBoxs = _upgradeNumberBoxs.GetComponentInChildren<TMP_Text>().text;
     }
 
     private void OnEnable()
     {
         _exitButton.onClick.AddListener(OnExitButtonClick);
-        _UpgradeConveyor.onClick.AddListener(OnUpgradedConveyorButtonClick);
-        _UpgradeSpawn.onClick.AddListener(OnUpgradedSpawnButtonClick);
-        _UpgradeNumberBoxs.onClick.AddListener(OnUpgradedNumberBoxsButtonClick);
+        _upgradeConveyor.onClick.AddListener(OnUpgradedConveyorButtonClick);
+        _upgradeSpawn.onClick.AddListener(OnUpgradedSpawnButtonClick);
+        _upgradeNumberBoxs.onClick.AddListener(OnUpgradedNumberBoxsButtonClick);
     }
 
     private void OnDisable()
     {
         _exitButton.onClick.RemoveListener(OnExitButtonClick);
-        _UpgradeConveyor.onClick.RemoveListener(OnUpgradedConveyorButtonClick);
-        _UpgradeSpawn.onClick.RemoveListener(OnUpgradedSpawnButtonClick);
-        _UpgradeNumberBoxs.onClick.RemoveListener(OnUpgradedNumberBoxsButtonClick);
+        _upgradeConveyor.onClick.RemoveListener(OnUpgradedConveyorButtonClick);
+        _upgradeSpawn.onClick.RemoveListener(OnUpgradedSpawnButtonClick);
+        _upgradeNumberBoxs.onClick.RemoveListener(OnUpgradedNumberBoxsButtonClick);
     }
 
     private void OnUpgradedConveyorButtonClick()

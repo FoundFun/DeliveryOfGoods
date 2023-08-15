@@ -123,38 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &2146832807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9187749685163560566, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-  m_PrefabInstance: {fileID: 7518559191809855953}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2146832811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146832807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c2957f417b018949b81813751c5b011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _money: 1000
---- !u!114 &2146832812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146832807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b8fdd463bbffa429f4ce92f7622d95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _money: {fileID: 7518559191809855955}
-  _player: {fileID: 2146832811}
 --- !u!1001 &3911730150102892771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -224,26 +192,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 696794084750404756, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: _money
-      value: 
-      objectReference: {fileID: 7518559191809855955}
-    - target: {fileID: 696794084750404756, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: _wallet
-      value: 
-      objectReference: {fileID: 2146832811}
-    - target: {fileID: 2643121613351453688, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2643121613351453688, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2643121613351453688, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5550860161990193917, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
       propertyPath: m_Name
       value: DontDestoyObjects
@@ -292,45 +240,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6916556126698620802, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6916556126698620802, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6916556126698620802, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8163208874621624652, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: _playerPresenter
-      value: 
-      objectReference: {fileID: 2146832811}
-    - target: {fileID: 9187749685163560566, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      propertyPath: m_Name
-      value: Wallet
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9187749685163560566, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2146832812}
-    - targetCorrespondingSourceObject: {fileID: 9187749685163560566, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2146832811}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
---- !u!114 &7518559191809855955 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3394790621814027645, guid: 19995de1b23b5954d9f73acc2d8f6ca1, type: 3}
-  m_PrefabInstance: {fileID: 7518559191809855953}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

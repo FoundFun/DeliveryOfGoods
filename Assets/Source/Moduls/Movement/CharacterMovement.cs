@@ -1,4 +1,3 @@
-using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
 
@@ -9,12 +8,12 @@ namespace Movement
     {
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private MovementView _movementView;
-        [SerializeField] private float _speed;
 
+        private const float Speed = 2.4f;
         private const float MaxAngleRotation = 360;
         private const float AngleRotation = 90;
         private const float SpeedAnimationRotate = 0.5f;
-        private const float LerpMaterial = 4;
+        private const float LerpMaterial = 8;
 
         private Material _material;
         private Vector3 _moveDirection;
@@ -26,7 +25,7 @@ namespace Movement
         private void Awake()
         {
             _material = _movementView.GetComponent<Renderer>().material;
-            _speedMaterial = Config.ConveyorSpeed / LerpMaterial;
+            _speedMaterial = Speed / LerpMaterial;
         }
 
         internal void Init()
@@ -45,10 +44,10 @@ namespace Movement
         internal void Scroll()
         {
             Vector3 nextPosition = _rigidbody.position;
-            _rigidbody.position += _moveDirection * Config.ConveyorSpeed * Time.fixedDeltaTime;
+            _rigidbody.position += _moveDirection * Speed * Time.fixedDeltaTime;
             _rigidbody.MovePosition(nextPosition);
 
-            _material.mainTextureOffset += Vector2.up * _speedMaterial * Config.ConveyorSpeed * Time.fixedDeltaTime;
+            _material.mainTextureOffset += Vector2.up * _speedMaterial * Speed * Time.fixedDeltaTime;
         }
 
         private void UpdateDirection()
