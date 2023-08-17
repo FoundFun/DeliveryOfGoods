@@ -4,17 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class BoxPresenter : MonoBehaviour
 {
-    [SerializeField] private int _price;
-    [SerializeField] private bool _isBuy;
+    [SerializeField] private ParticleSystem _particleSystem;
 
     private const float SpeedCleanAnimation = 1;
+    private const float MoveParticleAnimation = 2;
 
     private Rigidbody _rigidbody;
     private Coroutine _coroutine;
-
-    public int Price => _price;
-
-    public bool IsBuy => _isBuy;
 
     public Vector3 TargetPosition { get; private set; }
 
@@ -35,11 +31,6 @@ public class BoxPresenter : MonoBehaviour
         Debug.Log("+1");
     }
 
-    public void Buy()
-    {
-        _isBuy = true;
-    }
-
     public void Clean()
     {
         if (_coroutine != null)
@@ -50,15 +41,17 @@ public class BoxPresenter : MonoBehaviour
 
     private IEnumerator OnClean()
     {
-        const float delayClean = 1;
+        const float Delay = 1;
 
-        yield return new WaitForSeconds(delayClean);
+        _particleSystem.Play();
+
+        yield return new WaitForSeconds(Delay);
 
         Vector3 templateScale = transform.localScale;
 
         transform.LeanScale(Vector3.zero, SpeedCleanAnimation);
 
-        yield return new WaitForSeconds(delayClean);
+        yield return new WaitForSeconds(Delay);
 
         Reset();
         transform.localScale = templateScale;
