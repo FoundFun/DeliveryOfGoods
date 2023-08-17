@@ -10,9 +10,6 @@ public class TruckPresenter : MonoBehaviour
 
     private const float AnimationTime = 3;
 
-    private int _targetNumberBoxs = 3;
-    private int _currentLevel = 0;
-
     private int _boxsInBody;
 
     public bool IsDelivery { get; private set; }
@@ -26,11 +23,8 @@ public class TruckPresenter : MonoBehaviour
             box.Complete();
             _boxsInBody++;
 
-            if (_boxsInBody >= _targetNumberBoxs && IsDelivery == false)
-            {
+            if (_boxsInBody >= Config.CurrentDeliverBoxs && IsDelivery == false)
                 Deliver(_endDeliverPoint.transform.position);
-                _targetNumberBoxs++;
-            }
         }
     }
 
@@ -38,6 +32,13 @@ public class TruckPresenter : MonoBehaviour
     {
         IsDelivery = false;
         _boxsInBody = 0;
+    }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(Config.NameScene + Config.CurrentLevel);
+        _smokeExplosion.Play();
+        SceneChanged?.Invoke();
     }
 
     public void Move(Vector3 targetPosition)
@@ -53,10 +54,9 @@ public class TruckPresenter : MonoBehaviour
 
     private void SwitchScene()
     {
-        _currentLevel++;
-        SceneManager.LoadScene($"Level{_currentLevel}");
+        Config.Improve();
+        SceneManager.LoadScene(Config.NameScene + Config.CurrentLevel);
         _smokeExplosion.Play();
         SceneChanged?.Invoke();
-        Config.Improve();
     }
 }

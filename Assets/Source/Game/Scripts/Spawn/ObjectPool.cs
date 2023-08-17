@@ -23,8 +23,7 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : BoxPresenter
 
     protected bool TryGetObject(out T gameObject, int index)
     {
-        gameObject = _poolObject.Where(gameObject => gameObject.IsBuy == true
-        && gameObject == gameObject.gameObject.activeSelf == false).ElementAtOrDefault(index);
+        gameObject = _poolObject.Where(gameObject => gameObject.gameObject.activeSelf == false).ElementAtOrDefault(index);
 
         return gameObject != null;
     }
