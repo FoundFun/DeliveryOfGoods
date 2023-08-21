@@ -6,6 +6,11 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private GamePresenter _gamePresenter;
     [SerializeField] private SettingsPresenter _settingsPresenter;
 
+    private void Awake()
+    {
+        _gamePresenter.Init();
+    }
+
     private void OnEnable()
     {
         _menuGamePresenter.OpenedGame += _gamePresenter.Open;
