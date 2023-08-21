@@ -1,4 +1,5 @@
 using DeliveryOfGoods.Model;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,8 @@ public class WerehousePresenter : MonoBehaviour
     private int _maxMissBox = 5;
 
     private int _currentMissBox;
+
+    public event Action BoxFallen;
 
     private void OnEnable()
     {
@@ -33,8 +36,8 @@ public class WerehousePresenter : MonoBehaviour
     {
         if(other.TryGetComponent(out BoxPresenter boxPresenter))
         {
+            BoxFallen?.Invoke();
             boxPresenter.Clean();
-            _currentMissBox++;
 
             if (_currentMissBox >= _maxMissBox)
             {
