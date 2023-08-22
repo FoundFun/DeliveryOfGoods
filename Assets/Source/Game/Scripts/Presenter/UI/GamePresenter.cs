@@ -1,21 +1,16 @@
 using System;
 using UnityEngine;
-using System.Linq;
-using System.Collections;
 
 public class GamePresenter : ScreenPresenter
 {
-    [SerializeField] private HeartPresenter[] _hearts;
     [SerializeField] private GameView _gameView;
     [SerializeField] private SpawnerBox _spawnerBox;
     [SerializeField] private WerehousePresenter _werehousePresenter;
-    [SerializeField] private BordResurrectPresenter _bordResurrect;
-    [SerializeField] private BordSkipPresenter _bordSkip;
-
-    private Coroutine _coroutine;
-    private int _numberHeart;
+    [SerializeField] private BordHeartPresenter _bordHeart;
 
     public event Action OpenedMenu;
+    public event Action ResetScene;
+    public event Action ResetHeart;
 
     private void OnEnable()
     {
@@ -29,13 +24,6 @@ public class GamePresenter : ScreenPresenter
         _werehousePresenter.BoxFallen -= OnBoxFallen;
     }
 
-    public void Init()
-    {
-        _numberHeart = _hearts.Where(heart => heart.gameObject.activeSelf == true).Count();
-        _bordResurrect.gameObject.SetActive(false);
-        _bordSkip.gameObject.SetActive(false);
-    }
-
     protected override void OpenScreen()
     {
         _spawnerBox.Active();
@@ -45,6 +33,8 @@ public class GamePresenter : ScreenPresenter
     protected override void CloseScreen()
     {
         _spawnerBox.Inactive();
+        ResetScene?.Invoke();
+        ResetHeart?.Invoke();
         base.CloseScreen();
     }
 
@@ -56,31 +46,6 @@ public class GamePresenter : ScreenPresenter
 
     private void OnBoxFallen()
     {
-        HeartPresenter lastHeart = _hearts.LastOrDefault(heart => heart.gameObject.activeSelf == true);
-
-        if (lastHeart != null)
-        {
-            lastHeart.gameObject.SetActive(false);
-            _numberHeart--;
-        }
-
-        if (_numberHeart <= 0)
-        {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-
-            _coroutine = StartCoroutine(EnableGameOverBord());
-        }
-    }
-
-    private IEnumerator EnableGameOverBord()
-    {
-        const float Delay = 4;
-
-        _bordResurrect.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(Delay);
-
-        _bordSkip.gameObject.SetActive(true);
+        _bordHeart.TakeDamage();
     }
 }
