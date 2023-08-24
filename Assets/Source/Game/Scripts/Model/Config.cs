@@ -10,12 +10,19 @@ namespace DeliveryOfGoods.Model
         public static int CurrentLevel { get; private set; } = 0;
 
         private static float _stepSpeedImprove = 0.2f;
+        private static int _stepLevel = 10;
+        private static int _tragetLevel = CurrentLevel + _stepLevel;
 
         public static void Improve()
         {
+            if (CurrentLevel == _tragetLevel)
+            {
+                CurrentDeliverBoxs++;
+                _tragetLevel += _stepLevel;
+            }
+
             SpawnSpeed += _stepSpeedImprove;
             MaxNumberBoxs++;
-            CurrentDeliverBoxs++;
             CurrentLevel++;
         }
     }

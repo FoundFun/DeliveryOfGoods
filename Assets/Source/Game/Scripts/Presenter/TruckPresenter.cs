@@ -1,5 +1,6 @@
 using DeliveryOfGoods.Model;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ public class TruckPresenter : MonoBehaviour
 {
     [SerializeField] private DeliverPoint _endDeliverPoint;
     [SerializeField] private ParticleSystem _smokeExplosion;
+    [SerializeField] private TMP_Text _scoreText;
 
     private const float AnimationTime = 3;
 
