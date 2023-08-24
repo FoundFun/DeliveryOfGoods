@@ -1,10 +1,8 @@
-using Agava.YandexGames.Samples;
 using UnityEngine;
 
 public class BordResurrectPresenter : MonoBehaviour
 {
     [SerializeField] private BordResurrectView _view;
-    [SerializeField] private PlaytestingCanvas _canvas;
     [SerializeField] private BordHeartPresenter _heartPresenter;
 
     private void OnEnable()
@@ -19,7 +17,6 @@ public class BordResurrectPresenter : MonoBehaviour
 
     public void OnResurrect()
     {
-        _canvas.OnShowVideoButtonClick();
         _heartPresenter.Recover();
     }
 }

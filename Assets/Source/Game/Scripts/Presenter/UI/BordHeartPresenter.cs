@@ -10,39 +10,40 @@ public class BordHeartPresenter : MonoBehaviour
 
     private HeartPresenter[] _hearts;
     private Coroutine _coroutine;
+    private Vector2 _startPosition;
     private int _numberHeart;
 
     public void Reset()
     {
         foreach (var heart in _hearts)
         {
-            heart.gameObject.SetActive(true);
+            heart.ToFill();
             _numberHeart = _hearts.Length;
         }
 
-        _bordResurrect.gameObject.SetActive(false);
-        _bordSkip.gameObject.SetActive(false);
+        DisableBord();
     }
 
     public void Init()
     {
         _hearts = GetComponentsInChildren<HeartPresenter>();
-        _numberHeart = _hearts.Where(heart => heart.gameObject.activeSelf == true).Count();
-        _bordResurrect.gameObject.SetActive(false);
-        _bordSkip.gameObject.SetActive(false);
+        _numberHeart = _hearts.Where(heart => heart.Fill == 1).Count();
+        DisableBord();
+        Reset();
+        _startPosition = transform.position;
     }
 
     public void TakeDamage()
     {
-        HeartPresenter lastHeart = _hearts.LastOrDefault(heart => heart.gameObject.activeSelf == true);
+        HeartPresenter lastHeart = _hearts.LastOrDefault(heart => heart.Fill == 1);
 
         if (lastHeart != null)
         {
-            lastHeart.gameObject.SetActive(false);
+            lastHeart.Empty();
             _numberHeart--;
         }
 
-        if (_numberHeart <= 0 && _bordResurrect.gameObject.activeSelf == false)
+        if (_numberHeart <= 0 || lastHeart == null)
         {
             _spawnerBox.Inactive();
 
@@ -61,12 +62,18 @@ public class BordHeartPresenter : MonoBehaviour
 
     private IEnumerator EnableGameOverBord()
     {
-        const float Delay = 3;
+        const float Delay = 2;
 
-        _bordResurrect.gameObject.SetActive(true);
+        _bordResurrect.transform.LeanMoveLocalY(_startPosition.y, 0.5f).setEaseOutExpo();
 
         yield return new WaitForSeconds(Delay);
 
-        _bordSkip.gameObject.SetActive(true);
+        _bordSkip.transform.LeanMoveLocalY(_startPosition.y - 200, 0.5f).setEaseOutExpo();
+    }
+
+    private void DisableBord()
+    {
+        _bordResurrect.transform.LeanMoveLocalY(-Screen.height, 0.1f).setEaseOutExpo();
+        _bordSkip.transform.LeanMoveLocalY(-Screen.height, 0.1f).setEaseOutExpo();
     }
 }
