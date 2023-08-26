@@ -18,18 +18,18 @@ public class WerehousePresenter : MonoBehaviour
 
     private void OnEnable()
     {
-        _truckPresenter.SceneChanged += MoveTruck;
+        _truckPresenter.SceneChanged += Reset;
     }
 
     private void OnDisable()
     {
-        _truckPresenter.SceneChanged -= MoveTruck;
+        _truckPresenter.SceneChanged -= Reset;
     }
 
     private void Start()
     {
         SceneManager.LoadScene(Config.NameScene + Config.CurrentLevel);
-        MoveTruck();
+        Reset();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,7 +47,7 @@ public class WerehousePresenter : MonoBehaviour
         }
     }
 
-    private void MoveTruck()
+    private void Reset()
     {
         Debug.Log("PUSH");
         _spawnerBox.Reset();
