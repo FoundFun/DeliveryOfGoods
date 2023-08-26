@@ -12,15 +12,15 @@ public class BordHeartPresenter : MonoBehaviour
     private Coroutine _coroutine;
     private Vector2 _startPosition;
     private int _numberHeart;
+    private bool _isLive;
 
     public void Reset()
     {
         foreach (var heart in _hearts)
-        {
             heart.ToFill();
-            _numberHeart = _hearts.Length;
-        }
 
+        _numberHeart = _hearts.Length;
+        _isLive = true;
         DisableBord();
     }
 
@@ -37,20 +37,23 @@ public class BordHeartPresenter : MonoBehaviour
     {
         HeartPresenter lastHeart = _hearts.LastOrDefault(heart => heart.Fill == 1);
 
-        if (lastHeart != null)
+        if (_numberHeart <= 0 || lastHeart == null && _isLive == true)
         {
-            lastHeart.Empty();
-            _numberHeart--;
-        }
-
-        if (_numberHeart <= 0 || lastHeart == null)
-        {
+            _isLive = false;
             _spawnerBox.Inactive();
+            _spawnerBox.Reset();
 
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
             _coroutine = StartCoroutine(EnableGameOverBord());
+        }
+
+        if (lastHeart != null)
+        {
+            _isLive = true;
+            lastHeart.Empty();
+            _numberHeart--;
         }
     }
 
@@ -62,13 +65,15 @@ public class BordHeartPresenter : MonoBehaviour
 
     private IEnumerator EnableGameOverBord()
     {
+        const float AnimationTime = 0.5f;
         const float Delay = 2;
+        const float BordPosition = 200;
 
-        _bordResurrect.transform.LeanMoveLocalY(_startPosition.y, 0.5f).setEaseOutExpo();
+        _bordResurrect.transform.LeanMoveLocalY(_startPosition.y, AnimationTime).setEaseOutExpo();
 
         yield return new WaitForSeconds(Delay);
 
-        _bordSkip.transform.LeanMoveLocalY(_startPosition.y - 200, 0.5f).setEaseOutExpo();
+        _bordSkip.transform.LeanMoveLocalY(_startPosition.y - BordPosition, AnimationTime).setEaseOutExpo();
     }
 
     private void DisableBord()
