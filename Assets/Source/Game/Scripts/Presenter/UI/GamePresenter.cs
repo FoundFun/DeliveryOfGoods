@@ -5,7 +5,6 @@ public class GamePresenter : ScreenPresenter
 {
     [SerializeField] private GameView _gameView;
     [SerializeField] private SpawnerBox _spawnerBox;
-    [SerializeField] private WerehousePresenter _werehousePresenter;
     [SerializeField] private BordHeartPresenter _bordHeart;
 
     public event Action OpenedMenu;
@@ -15,13 +14,26 @@ public class GamePresenter : ScreenPresenter
     private void OnEnable()
     {
         _gameView.ExitButtonClick += OnCloseButtonClick;
-        _werehousePresenter.BoxFallen += OnBoxFallen;
     }
 
     private void OnDisable()
     {
         _gameView.ExitButtonClick -= OnCloseButtonClick;
-        _werehousePresenter.BoxFallen -= OnBoxFallen;
+    }
+
+    public void Init()
+    {
+        _gameView.Init();
+    }
+
+    public void OnAddScore(int score)
+    {
+        _gameView.AddScore(score);
+    }
+
+    public void OnBoxFallen()
+    {
+        _bordHeart.TakeDamage();
     }
 
     protected override void OpenScreen()
@@ -42,10 +54,5 @@ public class GamePresenter : ScreenPresenter
     {
         Close();
         OpenedMenu?.Invoke();
-    }
-
-    private void OnBoxFallen()
-    {
-        _bordHeart.TakeDamage();
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class BoxPresenter : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private ParticleSystem _badParticle;
+    [SerializeField] private ParticleSystem _goodParticle;
 
     private const float SpeedCleanAnimation = 1;
-    private const float MoveParticleAnimation = 2;
 
     private Rigidbody _rigidbody;
     private Coroutine _coroutine;
@@ -16,34 +16,37 @@ public class BoxPresenter : MonoBehaviour
 
     public void Init()
     {
-        TargetPosition = transform.position;
         _rigidbody = GetComponent<Rigidbody>();
+        TargetPosition = transform.position;
     }
 
     public void Reset()
     {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
         gameObject.SetActive(false);
         _rigidbody.velocity = Vector3.zero;
     }
 
-    public void Complete()
+    public void PlayGoodParticle()
     {
-        Debug.Log("+1");
+        _goodParticle.Play();
     }
 
-    public void Clean()
+    public void PlayBadParticle()
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(OnClean());
+        _coroutine = StartCoroutine(OnPlayBadParticle(_badParticle));
     }
 
-    private IEnumerator OnClean()
+    private IEnumerator OnPlayBadParticle(ParticleSystem typeParticle)
     {
         const float Delay = 1;
 
-        _particleSystem.Play();
+        typeParticle.Play();
 
         yield return new WaitForSeconds(Delay);
 
