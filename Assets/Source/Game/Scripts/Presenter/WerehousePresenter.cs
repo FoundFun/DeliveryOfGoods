@@ -37,7 +37,7 @@ public class WerehousePresenter : MonoBehaviour
         if(other.TryGetComponent(out BoxPresenter boxPresenter))
         {
             BoxFallen?.Invoke();
-            boxPresenter.Clean();
+            boxPresenter.PlayBadParticle();
 
             if (_currentMissBox >= _maxMissBox)
             {
@@ -49,7 +49,6 @@ public class WerehousePresenter : MonoBehaviour
 
     private void Reset()
     {
-        Debug.Log("PUSH");
         _spawnerBox.Reset();
         _truckPresenter.transform.position = _startDeliverPoint.position;
         _truckPresenter.Reset();

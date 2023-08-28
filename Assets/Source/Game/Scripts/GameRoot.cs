@@ -8,10 +8,12 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private TruckPresenter _truckPresenter;
     [SerializeField] private BordSkipPresenter _bordSkipPresenter;
     [SerializeField] private BordHeartPresenter _bordHeartPresenter;
+    [SerializeField] private WerehousePresenter _werehousePresenter;
 
     private void Awake()
     {
         _bordHeartPresenter.Init();
+        _gamePresenter.Init();
     }
 
     private void OnEnable()
@@ -23,6 +25,8 @@ public class GameRoot : MonoBehaviour
         _gamePresenter.ResetScene += _truckPresenter.ResetScene;
         _gamePresenter.ResetHeart += _bordHeartPresenter.Reset;
         _bordSkipPresenter.Restart += _truckPresenter.ResetScene;
+        _truckPresenter.AddScoreBody += _gamePresenter.OnAddScore;
+        _werehousePresenter.BoxFallen += _gamePresenter.OnBoxFallen;
     }
 
     private void OnDisable()
@@ -34,5 +38,7 @@ public class GameRoot : MonoBehaviour
         _gamePresenter.ResetScene -= _truckPresenter.ResetScene;
         _gamePresenter.ResetHeart -= _bordHeartPresenter.Reset;
         _bordSkipPresenter.Restart -= _truckPresenter.ResetScene;
+        _truckPresenter.AddScoreBody -= _gamePresenter.OnAddScore;
+        _werehousePresenter.BoxFallen -= _gamePresenter.OnBoxFallen;
     }
 }
