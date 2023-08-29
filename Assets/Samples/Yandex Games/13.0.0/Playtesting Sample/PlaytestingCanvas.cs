@@ -6,20 +6,12 @@ using Agava.YandexGames.Samples;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DeliveryOfGoods.Model;
 
 namespace Agava.YandexGames.Samples
 {
     public class PlaytestingCanvas : MonoBehaviour
     {
-        //[SerializeField]
-        //private Text _authorizationStatusText;
-
-        //[SerializeField]
-        //private Text _personalProfileDataPermissionStatusText;
-
-        [SerializeField]
-        private InputField _cloudSaveDataInputField;
-
         private void Awake()
         {
             YandexGamesSdk.CallbackLogging = true;
@@ -121,12 +113,13 @@ namespace Agava.YandexGames.Samples
 
         public void OnSetCloudSaveDataButtonClick()
         {
-            PlayerAccount.SetCloudSaveData(_cloudSaveDataInputField.text);
+            PlayerAccount.SetCloudSaveData(Config.CurrentLevel.ToString());
         }
 
         public void OnGetCloudSaveDataButtonClick()
         {
-            PlayerAccount.GetCloudSaveData((data) => _cloudSaveDataInputField.text = data);
+            PlayerAccount.GetCloudSaveData((data) => Config.GetValueCloud(data));
+
         }
 
         public void OnGetEnvironmentButtonClick()

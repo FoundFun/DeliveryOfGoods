@@ -4,8 +4,8 @@ namespace Movement
 {
     public class MovementInput : MonoBehaviour
     {
-        [SerializeField] CharacterMovement _movement;
-
+        [SerializeField] private CharacterMovement _movement;
+ 
         private void Start()
         {
             _movement.Init();

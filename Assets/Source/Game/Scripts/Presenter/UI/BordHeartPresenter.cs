@@ -37,7 +37,14 @@ public class BordHeartPresenter : MonoBehaviour
     {
         HeartPresenter lastHeart = _hearts.LastOrDefault(heart => heart.Fill == 1);
 
-        if (_numberHeart <= 0 || lastHeart == null && _isLive == true)
+        if (lastHeart != null)
+        {
+            _isLive = true;
+            lastHeart.Empty();
+            _numberHeart--;
+        }
+
+        if (_numberHeart <= 0 && _isLive == true)
         {
             _isLive = false;
             _spawnerBox.Inactive();
@@ -47,13 +54,6 @@ public class BordHeartPresenter : MonoBehaviour
                 StopCoroutine(_coroutine);
 
             _coroutine = StartCoroutine(EnableGameOverBord());
-        }
-
-        if (lastHeart != null)
-        {
-            _isLive = true;
-            lastHeart.Empty();
-            _numberHeart--;
         }
     }
 

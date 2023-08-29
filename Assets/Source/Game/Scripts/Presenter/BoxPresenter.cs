@@ -36,10 +36,13 @@ public class BoxPresenter : MonoBehaviour
 
     public void PlayBadParticle()
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        if (gameObject.activeSelf == true)
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(OnPlayBadParticle(_badParticle));
+            _coroutine = StartCoroutine(OnPlayBadParticle(_badParticle));
+        }
     }
 
     private IEnumerator OnPlayBadParticle(ParticleSystem typeParticle)
