@@ -25,5 +25,10 @@ namespace DeliveryOfGoods.Model
             MaxNumberBoxs++;
             CurrentLevel++;
         }
+
+        public static void GetValueCloud(string data)
+        {
+            CurrentLevel = int.Parse(data);
+        }
     }
 }

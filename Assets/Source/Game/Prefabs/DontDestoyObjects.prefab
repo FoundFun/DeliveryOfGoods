@@ -71,6 +71,7 @@ MonoBehaviour:
   - {fileID: 7275354047044804770}
   _endDeliverPoint: {fileID: 5626569867540937664}
   _smokeExplosion: {fileID: 337555504842743590}
+  _playtestingCanvas: {fileID: 3368263277116461409}
 --- !u!65 &8427918328327553682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2021,7 +2022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c5de85996737f488737e20891023ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cloudSaveDataInputField: {fileID: 0}
 --- !u!114 &3797531932588307102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29497,6 +29497,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1348437333594371620}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1915638417850444493
 GameObject:
   m_ObjectHideFlags: 0
@@ -30375,6 +30387,7 @@ MonoBehaviour:
   _bordSkipPresenter: {fileID: 9020576250849349898}
   _bordHeartPresenter: {fileID: 9220302085141975028}
   _werehousePresenter: {fileID: 6676951007610262243}
+  _playtestingCanvas: {fileID: 3368263277116461409}
 --- !u!1 &2050727845430893347
 GameObject:
   m_ObjectHideFlags: 0
@@ -43474,6 +43487,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3368263277116461409}
         m_TargetAssemblyTypeName: Agava.YandexGames.Samples.PlaytestingCanvas, Agava.YandexGames.Samples.Playtesting
         m_MethodName: OnShowVideoButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1348437333594371620}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
