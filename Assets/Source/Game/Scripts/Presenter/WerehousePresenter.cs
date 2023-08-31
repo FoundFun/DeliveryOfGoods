@@ -1,3 +1,4 @@
+using Agava.YandexGames.Samples;
 using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class WerehousePresenter : MonoBehaviour
     [SerializeField] private Transform _startDeliverPoint;
     [SerializeField] private Transform _loadingArea;
     [SerializeField] private SpawnerBox _spawnerBox;
+    [SerializeField] private PlaytestingCanvas _playtestingCanvas;
 
     private int _maxMissBox = 5;
 

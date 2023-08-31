@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DeliveryOfGoods.Model;
+using UnityEngine.SceneManagement;
 
 namespace Agava.YandexGames.Samples
 {
@@ -25,18 +26,6 @@ namespace Agava.YandexGames.Samples
 
             // Always wait for it if invoking something immediately in the first scene.
             yield return YandexGamesSdk.Initialize();
-
-            while (true)
-            {
-                //_authorizationStatusText.color = PlayerAccount.IsAuthorized ? Color.green : Color.red;
-
-                //if (PlayerAccount.IsAuthorized)
-                    //_personalProfileDataPermissionStatusText.color = PlayerAccount.HasPersonalProfileDataPermission ? Color.green : Color.red;
-                //else
-                    //_personalProfileDataPermissionStatusText.color = Color.red;
-
-                yield return new WaitForSecondsRealtime(0.25f);
-            }
         }
 
         public void OnShowInterstitialButtonClick()
@@ -113,13 +102,12 @@ namespace Agava.YandexGames.Samples
 
         public void OnSetCloudSaveDataButtonClick()
         {
-            PlayerAccount.SetCloudSaveData(Config.CurrentLevel.ToString());
+            //PlayerAccount.SetCloudSaveData(Config.CurrentLevel.ToString());
         }
 
         public void OnGetCloudSaveDataButtonClick()
         {
-            PlayerAccount.GetCloudSaveData((data) => Config.GetValueCloud(data));
-
+            //PlayerAccount.GetCloudSaveData((data) => Config.GetValueCloud(data));
         }
 
         public void OnGetEnvironmentButtonClick()

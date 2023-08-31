@@ -1,4 +1,4 @@
-using Agava.YandexGames.Samples;
+using DeliveryOfGoods.Model;
 using UnityEngine;
 
 public class GameRoot : MonoBehaviour
@@ -10,11 +10,10 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private BordSkipPresenter _bordSkipPresenter;
     [SerializeField] private BordHeartPresenter _bordHeartPresenter;
     [SerializeField] private WerehousePresenter _werehousePresenter;
-    [SerializeField] private PlaytestingCanvas _playtestingCanvas;
 
     private void Awake()
     {
-        _playtestingCanvas.OnGetCloudSaveDataButtonClick();
+        Config.Init();
         _bordHeartPresenter.Init();
         _gamePresenter.Init();
     }
