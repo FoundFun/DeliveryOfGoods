@@ -5,12 +5,11 @@ using UnityEngine;
 public class BordHeartPresenter : MonoBehaviour
 {
     [SerializeField] private SpawnerBox _spawnerBox;
-    [SerializeField] private BordResurrectPresenter _bordResurrect;
-    [SerializeField] private BordSkipPresenter _bordSkip;
+    [SerializeField] private RectTransform _bordResurrect;
+    [SerializeField] private RectTransform _bordSkip;
 
     private HeartPresenter[] _hearts;
     private Coroutine _coroutine;
-    private Vector2 _startPosition;
     private int _numberHeart;
     private bool _isLive;
 
@@ -30,7 +29,6 @@ public class BordHeartPresenter : MonoBehaviour
         _numberHeart = _hearts.Where(heart => heart.Fill == 1).Count();
         DisableBord();
         Reset();
-        _startPosition = transform.position;
     }
 
     public void TakeDamage()
@@ -67,18 +65,17 @@ public class BordHeartPresenter : MonoBehaviour
     {
         const float AnimationTime = 0.5f;
         const float Delay = 2;
-        const float BordPosition = 200;
 
-        _bordResurrect.transform.LeanMoveLocalY(_startPosition.y, AnimationTime).setEaseOutExpo();
+        _bordResurrect.transform.LeanScale(Vector3.one, AnimationTime).setEaseOutExpo();
 
         yield return new WaitForSeconds(Delay);
 
-        _bordSkip.transform.LeanMoveLocalY(_startPosition.y - BordPosition, AnimationTime).setEaseOutExpo();
+        _bordSkip.transform.LeanScale(Vector3.one, AnimationTime).setEaseOutExpo();
     }
 
     private void DisableBord()
     {
-        _bordResurrect.transform.LeanMoveLocalY(-Screen.height, 0.1f).setEaseOutExpo();
-        _bordSkip.transform.LeanMoveLocalY(-Screen.height, 0.1f).setEaseOutExpo();
+        _bordResurrect.transform.LeanScale(Vector3.zero, 0.1f).setEaseOutExpo();
+        _bordSkip.transform.LeanScale(Vector3.zero, 0.1f).setEaseOutExpo();
     }
 }
