@@ -16,6 +16,9 @@ public class GameRoot : MonoBehaviour
         Config.Init();
         _bordHeartPresenter.Init();
         _gamePresenter.Init();
+        _menuGamePresenter.Open();
+        _gamePresenter.Close();
+        _settingsPresenter.Close();
     }
 
     private void OnEnable()

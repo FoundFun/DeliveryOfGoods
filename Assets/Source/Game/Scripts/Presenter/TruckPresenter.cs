@@ -67,7 +67,7 @@ public class TruckPresenter : MonoBehaviour
         _smokeExplosion.Play();
         StopExhaust();
         SceneChanged?.Invoke();
-        _playtestingCanvas.OnSetCloudSaveDataButtonClick();
+        _playtestingCanvas.OnShowInterstitialButtonClick();
     }
 
     private void PlayExhaust()
