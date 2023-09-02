@@ -1,4 +1,3 @@
-using Agava.YandexGames.Samples;
 using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
@@ -9,7 +8,7 @@ public class TruckPresenter : MonoBehaviour
     [SerializeField] private ParticleSystem[] _smokesExhaust;
     [SerializeField] private DeliverPoint _endDeliverPoint;
     [SerializeField] private ParticleSystem _smokeExplosion;
-    [SerializeField] private PlaytestingCanvas _playtestingCanvas;
+    [SerializeField] private YandexShowAds _yandexShowAds;
 
     private const float AnimationTime = 3;
 
@@ -25,6 +24,7 @@ public class TruckPresenter : MonoBehaviour
         if (other.TryGetComponent(out BoxPresenter box))
         {
             box.PlayGoodParticle();
+            box.PlayAudio();
             _boxsInBody++;
             AddScoreBody?.Invoke(_boxsInBody);
 
@@ -67,7 +67,7 @@ public class TruckPresenter : MonoBehaviour
         _smokeExplosion.Play();
         StopExhaust();
         SceneChanged?.Invoke();
-        _playtestingCanvas.OnShowInterstitialButtonClick();
+        _yandexShowAds.OnShowInterstitialButtonClick();
     }
 
     private void PlayExhaust()

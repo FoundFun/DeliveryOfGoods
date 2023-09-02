@@ -4,16 +4,12 @@ using System.Collections;
 using Agava.YandexGames;
 using Agava.YandexGames.Samples;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using DeliveryOfGoods.Model;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 namespace Agava.YandexGames.Samples
 {
     public class PlaytestingCanvas : MonoBehaviour
     {
-        [SerializeField] private AudioSource _gameMusic;
         private void Awake()
         {
             YandexGamesSdk.CallbackLogging = true;
@@ -31,7 +27,7 @@ namespace Agava.YandexGames.Samples
 
         public void OnShowInterstitialButtonClick()
         {
-            InterstitialAd.Show(StopGame, StartGame);
+            InterstitialAd.Show();
         }
 
         public void OnShowVideoButtonClick()
@@ -80,6 +76,7 @@ namespace Agava.YandexGames.Samples
             Leaderboard.GetEntries("PlaytestBoard", (result) =>
             {
                 Debug.Log($"My rank = {result.userRank}");
+
                 foreach (var entry in result.entries)
                 {
                     string name = entry.player.publicName;
@@ -114,21 +111,6 @@ namespace Agava.YandexGames.Samples
         public void OnGetEnvironmentButtonClick()
         {
             Debug.Log($"Environment = {JsonUtility.ToJson(YandexGamesSdk.Environment)}");
-        }
-
-        private void StartGame(bool wasShow)
-        {
-            if (wasShow)
-            {
-                Time.timeScale = 1;
-                _gameMusic.mute = false;
-            }
-        }
-
-        private void StopGame()
-        {
-            Time.timeScale = 0;
-            _gameMusic.mute = true;
         }
     }
 }

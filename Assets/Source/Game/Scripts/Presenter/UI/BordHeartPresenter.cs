@@ -5,8 +5,8 @@ using UnityEngine;
 public class BordHeartPresenter : MonoBehaviour
 {
     [SerializeField] private SpawnerBox _spawnerBox;
-    [SerializeField] private RectTransform _bordResurrect;
-    [SerializeField] private RectTransform _bordSkip;
+    [SerializeField] private BordResurrectPresenter _bordResurrect;
+    [SerializeField] private BordSkipPresenter _bordSkip;
 
     private HeartPresenter[] _hearts;
     private Coroutine _coroutine;
