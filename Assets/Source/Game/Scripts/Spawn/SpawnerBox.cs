@@ -14,6 +14,7 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
     private SpawnPoint _spawnPoints;
     private Coroutine _spawnCoroutine;
     private int _boxIndex;
+    private bool _isGenerate;
 
     private void Awake()
     {
@@ -30,6 +31,8 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
 
     public void Active()
     {
+        _isGenerate = true;
+
         UpdatePurchasedBoxs();
 
         if (_spawnCoroutine != null)
@@ -40,6 +43,8 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
 
     public void Inactive()
     {
+        _isGenerate = false;
+
         if (_spawnCoroutine != null)
             StopCoroutine(_spawnCoroutine);
     }
@@ -51,7 +56,7 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
 
     private IEnumerator Generate()
     {
-        while (true)
+        while (_isGenerate)
         {
             if (TryGetObject(out BoxPresenter box, _boxIndex))
             {

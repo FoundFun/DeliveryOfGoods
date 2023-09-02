@@ -2,10 +2,12 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(AudioSource))]
 public class BoxPresenter : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _badParticle;
     [SerializeField] private ParticleSystem _goodParticle;
+    [SerializeField] private AudioSource _audioSource;
 
     private const float SpeedCleanAnimation = 1;
 
@@ -14,12 +16,6 @@ public class BoxPresenter : MonoBehaviour
 
     public Vector3 TargetPosition { get; private set; }
 
-    public void Init()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-        TargetPosition = transform.position;
-    }
-
     public void Reset()
     {
         if (_coroutine != null)
@@ -27,6 +23,18 @@ public class BoxPresenter : MonoBehaviour
 
         gameObject.SetActive(false);
         _rigidbody.velocity = Vector3.zero;
+    }
+
+    public void Init()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        TargetPosition = transform.position;
+    }
+
+    public void PlayAudio()
+    {
+        if (gameObject.activeSelf == true)
+            _audioSource.Play();
     }
 
     public void PlayGoodParticle()
