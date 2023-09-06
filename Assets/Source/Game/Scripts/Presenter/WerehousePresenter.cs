@@ -1,7 +1,6 @@
 using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class WerehousePresenter : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class WerehousePresenter : MonoBehaviour
     [SerializeField] private Transform _loadingArea;
     [SerializeField] private SpawnerBox _spawnerBox;
 
-    private int _maxMissBox = 5;
+    private const int MaxMissBox = 5;
 
     private int _currentMissBox;
 
@@ -26,12 +25,6 @@ public class WerehousePresenter : MonoBehaviour
         _truckPresenter.SceneChanged -= Reset;
     }
 
-    private void Start()
-    {
-        SceneManager.LoadScene(Config.NameScene + Config.CurrentLevel);
-        Reset();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out BoxPresenter boxPresenter))
@@ -40,7 +33,7 @@ public class WerehousePresenter : MonoBehaviour
             boxPresenter.PlayBadParticle();
             boxPresenter.PlayAudio();
 
-            if (_currentMissBox >= _maxMissBox)
+            if (_currentMissBox >= MaxMissBox)
             {
                 _truckPresenter.ResetScene();
                 _currentMissBox = 0;
@@ -48,7 +41,7 @@ public class WerehousePresenter : MonoBehaviour
         }
     }
 
-    private void Reset()
+    public void Reset()
     {
         _spawnerBox.Reset();
         _truckPresenter.transform.position = _startDeliverPoint.position;

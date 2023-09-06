@@ -1,23 +1,22 @@
 using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TruckPresenter : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] _smokesExhaust;
     [SerializeField] private DeliverPoint _endDeliverPoint;
     [SerializeField] private ParticleSystem _smokeExplosion;
-    [SerializeField] private YandexShowAds _yandexShowAds;
+    [SerializeField] private SceneLoader _sceneLoader;
 
     private const float AnimationTime = 3;
 
-    private int _boxsInBody;
-
-    public bool IsDelivery { get; private set; }
+    private int _boxInBody;
+    private bool _isDelivery;
 
     public event Action SceneChanged;
     public event Action<int> AddScoreBody;
+    public event Action LevelCompleted;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,24 +24,24 @@ public class TruckPresenter : MonoBehaviour
         {
             box.PlayGoodParticle();
             box.PlayAudio();
-            _boxsInBody++;
-            AddScoreBody?.Invoke(_boxsInBody);
+            _boxInBody++;
+            AddScoreBody?.Invoke(_boxInBody);
 
-            if (_boxsInBody >= Config.CurrentDeliverBoxs && IsDelivery == false)
+            if (_boxInBody >= Config.CurrentDeliverBoxs && _isDelivery == false)
                 Deliver(_endDeliverPoint.transform.position);
         }
     }
 
     public void Reset()
     {
-        IsDelivery = false;
-        _boxsInBody = 0;
-        AddScoreBody?.Invoke(_boxsInBody);
+        _isDelivery = false;
+        _boxInBody = 0;
+        AddScoreBody?.Invoke(_boxInBody);
     }
 
     public void ResetScene()
     {
-        SceneManager.LoadScene(Config.NameScene + Config.CurrentLevel);
+        _sceneLoader.Load();
         _smokeExplosion.Play();
         SceneChanged?.Invoke();
     }
@@ -52,22 +51,24 @@ public class TruckPresenter : MonoBehaviour
         PlayExhaust();
         transform.LeanMoveZ(targetPosition.z, AnimationTime).setOnComplete(StopExhaust);
     }
-
-    private void Deliver(Vector3 targetPosition)
+    
+    public void PassOnNextLevel()
     {
-        IsDelivery = true;
-        PlayExhaust();
-        transform.LeanMoveZ(targetPosition.z, AnimationTime).setOnComplete(SwitchScene);
-    }
-
-    private void SwitchScene()
-    {
-        Config.Improve();
-        SceneManager.LoadScene(Config.NameScene + Config.CurrentLevel);
         _smokeExplosion.Play();
         StopExhaust();
         SceneChanged?.Invoke();
-        _yandexShowAds.OnShowInterstitialButtonClick();
+    }
+
+    private void Deliver(Vector3 targetPosition)
+    {
+        _isDelivery = true;
+        PlayExhaust();
+        transform.LeanMoveZ(targetPosition.z, AnimationTime).setOnComplete(Complete);
+    }
+
+    private void Complete()
+    {
+        LevelCompleted?.Invoke();
     }
 
     private void PlayExhaust()

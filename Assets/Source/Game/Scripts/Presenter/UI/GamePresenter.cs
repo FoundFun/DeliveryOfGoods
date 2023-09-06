@@ -1,24 +1,30 @@
 using System;
 using UnityEngine;
+using DeliveryOfGoods.Model;
 
 public class GamePresenter : ScreenPresenter
 {
     [SerializeField] private GameView _gameView;
     [SerializeField] private SpawnerBox _spawnerBox;
     [SerializeField] private BordHeartPresenter _bordHeart;
+    [SerializeField] private SceneLoader _sceneLoader;
+    [SerializeField] private YandexShowAds _yandexShowAds;
 
     public event Action OpenedMenu;
     public event Action ResetScene;
     public event Action ResetHeart;
+    public event Action LoadedNextScene;
 
     private void OnEnable()
     {
         _gameView.ExitButtonClick += OnCloseButtonClick;
+        _gameView.LoadNextLevel += OnLoadNextLevel;
     }
 
     private void OnDisable()
     {
         _gameView.ExitButtonClick -= OnCloseButtonClick;
+        _gameView.LoadNextLevel -= OnLoadNextLevel;
     }
 
     public void Init()
@@ -54,5 +60,24 @@ public class GamePresenter : ScreenPresenter
     {
         Close();
         OpenedMenu?.Invoke();
+    }
+
+    public void OnLevelCompleted()
+    {
+        _gameView.EnableNextButton();
+        _spawnerBox.Inactive();
+        _spawnerBox.Reset();
+    }
+    
+    private void OnLoadNextLevel()
+    {
+#if !UNITY_EDITOR
+        _yandexShowAds.OnShowInterstitialButtonClick();
+#endif
+        Config.Improve();
+        _sceneLoader.Load();
+        _gameView.DisableNextButton();
+        LoadedNextScene?.Invoke();
+        _spawnerBox.Active();
     }
 }

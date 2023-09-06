@@ -15,7 +15,7 @@ public class BordSkipView : MonoBehaviour
 
     private void OnDisable()
     {
-        _restartButton?.onClick.RemoveListener(OnRestart);
+        _restartButton.onClick.RemoveListener(OnRestart);
     }
 
     private void OnRestart()

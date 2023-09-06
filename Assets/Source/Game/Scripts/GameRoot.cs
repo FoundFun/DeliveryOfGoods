@@ -1,3 +1,4 @@
+using System;
 using DeliveryOfGoods.Model;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private BordSkipPresenter _bordSkipPresenter;
     [SerializeField] private BordHeartPresenter _bordHeartPresenter;
     [SerializeField] private WerehousePresenter _werehousePresenter;
+    [SerializeField] private SceneLoader _sceneLoader;
 
     private void Awake()
     {
@@ -21,6 +23,12 @@ public class GameRoot : MonoBehaviour
         _settingsPresenter.Close();
     }
 
+    private void Start()
+    {
+        _sceneLoader.Load();
+        _werehousePresenter.Reset();
+    }
+
     private void OnEnable()
     {
         _menuGamePresenter.OpenedGame += _gamePresenter.Open;
@@ -29,8 +37,10 @@ public class GameRoot : MonoBehaviour
         _gamePresenter.OpenedMenu += _menuGamePresenter.Open;
         _gamePresenter.ResetScene += _truckPresenter.ResetScene;
         _gamePresenter.ResetHeart += _bordHeartPresenter.Reset;
+        _gamePresenter.LoadedNextScene += _truckPresenter.PassOnNextLevel;
         _bordSkipPresenter.Restart += _truckPresenter.ResetScene;
         _truckPresenter.AddScoreBody += _gamePresenter.OnAddScore;
+        _truckPresenter.LevelCompleted += _gamePresenter.OnLevelCompleted;
         _werehousePresenter.BoxFallen += _gamePresenter.OnBoxFallen;
     }
 
@@ -42,8 +52,10 @@ public class GameRoot : MonoBehaviour
         _gamePresenter.OpenedMenu -= _menuGamePresenter.Open;
         _gamePresenter.ResetScene -= _truckPresenter.ResetScene;
         _gamePresenter.ResetHeart -= _bordHeartPresenter.Reset;
+        _gamePresenter.LoadedNextScene -= _truckPresenter.PassOnNextLevel;
         _bordSkipPresenter.Restart -= _truckPresenter.ResetScene;
         _truckPresenter.AddScoreBody -= _gamePresenter.OnAddScore;
+        _truckPresenter.LevelCompleted -= _gamePresenter.OnLevelCompleted;
         _werehousePresenter.BoxFallen -= _gamePresenter.OnBoxFallen;
     }
 }

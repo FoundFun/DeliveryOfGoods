@@ -63,14 +63,14 @@ public class BordHeartPresenter : MonoBehaviour
 
     private IEnumerator EnableGameOverBord()
     {
-        const float AnimationTime = 0.5f;
-        const float Delay = 2;
+        const float animationTime = 0.5f;
+        const float delay = 2;
 
-        _bordResurrect.transform.LeanScale(Vector3.one, AnimationTime).setEaseOutExpo();
+        _bordResurrect.transform.LeanScale(Vector3.one, animationTime).setEaseOutExpo();
 
-        yield return new WaitForSeconds(Delay);
+        yield return new WaitForSeconds(delay);
 
-        _bordSkip.transform.LeanScale(Vector3.one, AnimationTime).setEaseOutExpo();
+        _bordSkip.transform.LeanScale(Vector3.one, animationTime).setEaseOutExpo();
     }
 
     private void DisableBord()
