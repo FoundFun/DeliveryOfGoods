@@ -5,6 +5,7 @@ public class BordSkipPresenter : MonoBehaviour
 {
     [SerializeField] private BordSkipView _view;
     [SerializeField] private BordHeartPresenter _heartPresenter;
+    [SerializeField] private YandexShowAds _yandexShowAds;
 
     public event Action Restart;
 
@@ -18,8 +19,11 @@ public class BordSkipPresenter : MonoBehaviour
         _view.Restart -= OnRestart;
     }
 
-    public void OnRestart()
+    private void OnRestart()
     {
+#if !UNITY_EDITOR
+        _yandexShowAds.OnShowInterstitialButtonClick();
+#endif
         Restart?.Invoke();
         _heartPresenter.Recover();
     }

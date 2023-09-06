@@ -14,8 +14,6 @@ public class BoxPresenter : MonoBehaviour
     private Rigidbody _rigidbody;
     private Coroutine _coroutine;
 
-    public Vector3 TargetPosition { get; private set; }
-
     public void Reset()
     {
         if (_coroutine != null)
@@ -28,7 +26,6 @@ public class BoxPresenter : MonoBehaviour
     public void Init()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        TargetPosition = transform.position;
     }
 
     public void PlayAudio()
