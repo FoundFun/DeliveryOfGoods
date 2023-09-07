@@ -52,17 +52,17 @@ public class BoxPresenter : MonoBehaviour
 
     private IEnumerator OnPlayBadParticle(ParticleSystem typeParticle)
     {
-        const float Delay = 1;
+        const float delay = 1;
 
         typeParticle.Play();
 
-        yield return new WaitForSeconds(Delay);
+        yield return new WaitForSeconds(delay);
 
         Vector3 templateScale = transform.localScale;
 
         transform.LeanScale(Vector3.zero, SpeedCleanAnimation);
 
-        yield return new WaitForSeconds(Delay);
+        yield return new WaitForSeconds(delay);
 
         Reset();
         transform.localScale = templateScale;

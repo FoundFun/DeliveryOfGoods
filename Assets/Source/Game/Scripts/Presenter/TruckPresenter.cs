@@ -27,7 +27,7 @@ public class TruckPresenter : MonoBehaviour
             _boxInBody++;
             AddScoreBody?.Invoke(_boxInBody);
 
-            if (_boxInBody >= Config.CurrentDeliverBoxs && _isDelivery == false)
+            if (_boxInBody >= Config.CurrentDeliverBox && _isDelivery == false)
                 Deliver(_endDeliverPoint.transform.position);
         }
     }

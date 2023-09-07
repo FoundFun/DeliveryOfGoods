@@ -58,6 +58,9 @@ public class GamePresenter : ScreenPresenter
 
     private void OnCloseButtonClick()
     {
+#if !UNITY_EDITOR
+        _yandexShowAds.OnShowInterstitialButtonClick();
+#endif
         Close();
         OpenedMenu?.Invoke();
     }
