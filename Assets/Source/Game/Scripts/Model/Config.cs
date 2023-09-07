@@ -4,11 +4,11 @@ namespace DeliveryOfGoods.Model
 {
     public static class Config
     {
-        public static readonly string NameScene = "Level";
+        public const string NameScene = "Level";
 
-        private static readonly string _spawnSpeed = "SpawnSpeed";
-        private static readonly string _maxNumberBoxs = "MaxNumberBox";
-        private static readonly string _currentDeliverBoxs = "CurrentDeliverBoxs";
+        private const string _spawnSpeed = "SpawnSpeed";
+        private static readonly string _maxNumberBox = "MaxNumberBox";
+        private static readonly string _currentDeliverBox = "CurrentDeliverBox";
         private static readonly string _currentLevel = "CurrentLevel";
 
         private static float _stepSpeedImprove = 0.2f;
@@ -16,18 +16,18 @@ namespace DeliveryOfGoods.Model
         private static int _tragetLevel = _stepLevel;
 
         public static float SpawnSpeed { get; private set; } = 3f;
-        public static int MaxNumberBoxs { get; private set; } = 5;
-        public static int CurrentDeliverBoxs { get; private set; } = 3;
+        public static int MaxNumberBox { get; private set; } = 5;
+        public static int CurrentDeliverBox { get; private set; } = 3;
         public static int CurrentLevel { get; private set; } = 0;
 
         public static void Init()
         {
             if (PlayerPrefs.HasKey(_spawnSpeed))
                 SpawnSpeed = PlayerPrefs.GetFloat(_spawnSpeed);
-            if (PlayerPrefs.HasKey(_maxNumberBoxs))
-                MaxNumberBoxs = PlayerPrefs.GetInt(_maxNumberBoxs);
-            if (PlayerPrefs.HasKey(_currentDeliverBoxs))
-                CurrentDeliverBoxs = PlayerPrefs.GetInt(_currentDeliverBoxs);
+            if (PlayerPrefs.HasKey(_maxNumberBox))
+                MaxNumberBox = PlayerPrefs.GetInt(_maxNumberBox);
+            if (PlayerPrefs.HasKey(_currentDeliverBox))
+                CurrentDeliverBox = PlayerPrefs.GetInt(_currentDeliverBox);
             if (PlayerPrefs.HasKey(_currentLevel))
                 CurrentLevel = PlayerPrefs.GetInt(_currentLevel);
         }
@@ -36,17 +36,17 @@ namespace DeliveryOfGoods.Model
         {
             if (CurrentLevel >= _tragetLevel)
             {
-                CurrentDeliverBoxs++;
+                CurrentDeliverBox++;
                 _tragetLevel += _stepLevel;
             }
 
             SpawnSpeed += _stepSpeedImprove;
-            MaxNumberBoxs++;
+            MaxNumberBox++;
             CurrentLevel++;
 
             PlayerPrefs.SetFloat(_spawnSpeed, SpawnSpeed);
-            PlayerPrefs.SetInt(_maxNumberBoxs, MaxNumberBoxs);
-            PlayerPrefs.SetInt(_currentDeliverBoxs, CurrentDeliverBoxs);
+            PlayerPrefs.SetInt(_maxNumberBox, MaxNumberBox);
+            PlayerPrefs.SetInt(_currentDeliverBox, CurrentDeliverBox);
             PlayerPrefs.SetInt(_currentLevel, CurrentLevel);
         }
     }

@@ -9,7 +9,7 @@ public class YandexInitialize : MonoBehaviour
         YandexGamesSdk.CallbackLogging = true;
     }
 
-    private IEnumerator Start()
+    public IEnumerator Start()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield break;

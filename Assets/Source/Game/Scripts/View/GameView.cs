@@ -31,7 +31,7 @@ public class GameView : MonoBehaviour
     public void Init()
     {
         _scoreInBodyText.text = 0.ToString();
-        _scoreTargetText.text = Slash + Config.CurrentDeliverBoxs.ToString();
+        _scoreTargetText.text = Slash + Config.CurrentDeliverBox.ToString();
     }
 
     public void AddScore(int score)

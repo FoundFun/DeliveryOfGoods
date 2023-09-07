@@ -26,7 +26,7 @@ public class BordHeartPresenter : MonoBehaviour
     public void Init()
     {
         _hearts = GetComponentsInChildren<HeartPresenter>();
-        _numberHeart = _hearts.Where(heart => heart.Fill == 1).Count();
+        _numberHeart = _hearts.Count(heart => heart.Fill == 1);
         DisableBord();
         Reset();
     }

@@ -48,10 +48,16 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
         if (_spawnCoroutine != null)
             StopCoroutine(_spawnCoroutine);
     }
-
-    public void UpdatePurchasedBoxs()
+    
+    private void Init()
     {
-        _purchasedBoxes = _boxes.Take(Config.MaxNumberBoxs).ToList();
+        foreach (var box in _boxes)
+            box.Init();
+    }
+
+    private void UpdatePurchasedBoxs()
+    {
+        _purchasedBoxes = _boxes.Take(Config.MaxNumberBox).ToList();
     }
 
     private IEnumerator Generate()
@@ -73,11 +79,5 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
 
             yield return null;
         }
-    }
-
-    private void Init()
-    {
-        foreach (var box in _boxes)
-            box.Init();
     }
 }
