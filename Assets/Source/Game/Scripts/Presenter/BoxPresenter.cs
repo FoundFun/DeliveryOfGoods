@@ -7,25 +7,39 @@ public class BoxPresenter : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _badParticle;
     [SerializeField] private ParticleSystem _goodParticle;
+    [SerializeField] private ParticleSystem _explosion;
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource _pushSound;
 
     private const float SpeedCleanAnimation = 1;
 
     private Rigidbody _rigidbody;
-    private Coroutine _coroutine;
+    private Coroutine _coroutineParticle;
+    private Coroutine _coroutineExplosion;
 
     public void Reset()
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        gameObject.SetActive(false);
-        _rigidbody.velocity = Vector3.zero;
+        if (_coroutineParticle != null)
+            StopCoroutine(_coroutineParticle);
+        
+        if (_coroutineExplosion != null)
+            StopCoroutine(_coroutineExplosion);
+        
+        if (gameObject.activeSelf == true)
+            _coroutineExplosion = StartCoroutine(Deactivate());
     }
 
     public void Init()
     {
         _rigidbody = GetComponent<Rigidbody>();
+    }
+    
+    public void Activate()
+    {        
+        _explosion.Play();
+        gameObject.SetActive(true);
+        _pushSound.Play();
+        _rigidbody.velocity = Vector3.zero;
     }
 
     public void PlayAudio()
@@ -43,10 +57,10 @@ public class BoxPresenter : MonoBehaviour
     {
         if (gameObject.activeSelf == true)
         {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
+            if (_coroutineParticle != null)
+                StopCoroutine(_coroutineParticle);
 
-            _coroutine = StartCoroutine(OnPlayBadParticle(_badParticle));
+            _coroutineParticle = StartCoroutine(OnPlayBadParticle(_badParticle));
         }
     }
 
@@ -58,13 +72,20 @@ public class BoxPresenter : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
+        Reset();
+    }
+
+    private IEnumerator Deactivate()
+    {
+        _explosion.Play();
+        
         Vector3 templateScale = transform.localScale;
 
         transform.LeanScale(Vector3.zero, SpeedCleanAnimation);
-
-        yield return new WaitForSeconds(delay);
-
-        Reset();
-        transform.localScale = templateScale;
+        
+        yield return new WaitWhile(() => _explosion.isPlaying);
+        
+        gameObject.transform.localScale = templateScale;
+        gameObject.SetActive(false);
     }
 }

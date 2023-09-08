@@ -1,7 +1,4 @@
-using System;
-using Agava.YandexGames;
 using DeliveryOfGoods.Model;
-using Lean.Localization;
 using UnityEngine;
 
 public class GameRoot : MonoBehaviour
@@ -14,8 +11,6 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private BordHeartPresenter _bordHeartPresenter;
     [SerializeField] private WerehousePresenter _werehousePresenter;
     [SerializeField] private SceneLoader _sceneLoader;
-    [SerializeField] private LeanLocalization _localization;
-    [SerializeField] private YandexShowAds _yandexShowAds;
 
     private void Awake()
     {
@@ -29,10 +24,6 @@ public class GameRoot : MonoBehaviour
 
     private void Start()
     {
-#if !UNITY_EDITOR
-        _yandexShowAds.OnShowInterstitialButtonClick();
-        _localization.SetCurrentLanguage(YandexGamesSdk.Environment.i18n.lang);
-#endif
         _sceneLoader.Load();
         _werehousePresenter.Reset();
     }

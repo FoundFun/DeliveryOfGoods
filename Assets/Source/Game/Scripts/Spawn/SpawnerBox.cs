@@ -67,7 +67,7 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
             if (TryGetObject(out BoxPresenter box, _boxIndex))
             {
                 box.transform.position = _spawnPoints.transform.position;
-                box.gameObject.SetActive(true);
+                box.Activate();
 
                 yield return new WaitForSeconds(Config.SpawnSpeed);
             }
