@@ -20,6 +20,10 @@ public class BordHeartPresenter : MonoBehaviour
 
         _numberHeart = _hearts.Length;
         _isLive = true;
+        
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        
         DisableBord();
     }
 

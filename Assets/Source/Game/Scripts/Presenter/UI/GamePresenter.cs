@@ -67,6 +67,7 @@ public class GamePresenter : ScreenPresenter
 
     public void OnLevelCompleted()
     {
+        _bordHeart.Reset();
         _gameView.EnableNextButton();
         _spawnerBox.Inactive();
         _spawnerBox.Reset();
