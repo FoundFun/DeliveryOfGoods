@@ -8,6 +8,7 @@ public class GamePresenter : ScreenPresenter
     [SerializeField] private SpawnerBox _spawnerBox;
     [SerializeField] private BordHeartPresenter _bordHeart;
     [SerializeField] private SceneLoader _sceneLoader;
+    [SerializeField] private Config _config;
     [SerializeField] private YandexShowAds _yandexShowAds;
 
     public event Action OpenedMenu;
@@ -78,7 +79,7 @@ public class GamePresenter : ScreenPresenter
 #if !UNITY_EDITOR
         _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
-        Config.Improve();
+        _config.Improve();
         _sceneLoader.Load();
         _gameView.DisableNextButton();
         LoadedNextScene?.Invoke();

@@ -1,8 +1,8 @@
-using DeliveryOfGoods.Model;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DeliveryOfGoods.Model;
 
 public class GameView : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class GameView : MonoBehaviour
     [SerializeField] private Button _nextLevelButton;
     [SerializeField] private TMP_Text _scoreInBodyText;
     [SerializeField] private TMP_Text _scoreTargetText;
+    [SerializeField] private Config _config;
 
     private const string Slash = "/";
 
@@ -31,7 +32,7 @@ public class GameView : MonoBehaviour
     public void Init()
     {
         _scoreInBodyText.text = 0.ToString();
-        _scoreTargetText.text = Slash + Config.CurrentDeliverBox.ToString();
+        _scoreTargetText.text = Slash + _config.CurrentDeliverBox;
     }
 
     public void AddScore(int score)

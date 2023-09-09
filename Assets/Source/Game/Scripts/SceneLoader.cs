@@ -6,8 +6,9 @@ using DeliveryOfGoods.Model;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] private Config _config;
     public void Load()
     {
-        SceneManager.LoadScene(Config.NameScene + Config.CurrentLevel);
+        SceneManager.LoadScene(_config.NameScene + _config.CurrentLevel);
     }
 }

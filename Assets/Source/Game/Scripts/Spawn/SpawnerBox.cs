@@ -8,6 +8,7 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
 {
     [SerializeField] private BoxPresenter[] _boxs;
     [SerializeField] private GameObject _container;
+    [SerializeField] private Config _config;
 
     private List<BoxPresenter> _boxes;
     private List<BoxPresenter> _purchasedBoxes;
@@ -57,7 +58,7 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
 
     private void UpdatePurchasedBoxs()
     {
-        _purchasedBoxes = _boxes.Take(Config.MaxNumberBox).ToList();
+        _purchasedBoxes = _boxes.Take(_config.MaxNumberBox).ToList();
     }
 
     private IEnumerator Generate()
@@ -69,7 +70,7 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
                 box.transform.position = _spawnPoints.transform.position;
                 box.Activate();
 
-                yield return new WaitForSeconds(Config.SpawnSpeed);
+                yield return new WaitForSeconds(_config.SpawnSpeed);
             }
 
             _boxIndex++;

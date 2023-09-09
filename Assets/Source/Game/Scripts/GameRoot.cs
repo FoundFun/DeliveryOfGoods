@@ -1,8 +1,9 @@
-using DeliveryOfGoods.Model;
 using UnityEngine;
+using DeliveryOfGoods.Model;
 
 public class GameRoot : MonoBehaviour
 {
+    [SerializeField] private Config _config;
     [SerializeField] private MenuGamePresenter _menuGamePresenter;
     [SerializeField] private GamePresenter _gamePresenter;
     [SerializeField] private SettingsPresenter _settingsPresenter;
@@ -14,7 +15,7 @@ public class GameRoot : MonoBehaviour
 
     private void Awake()
     {
-        Config.Init();
+        _config.Init();
         _bordHeartPresenter.Init();
         _gamePresenter.Init();
         _menuGamePresenter.Open();

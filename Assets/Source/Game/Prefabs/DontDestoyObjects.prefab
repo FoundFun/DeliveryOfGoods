@@ -1083,6 +1083,7 @@ MonoBehaviour:
   - {fileID: 3112912844157047738, guid: 09564beb6b8570645b3b6f2d0b8ebd22, type: 3}
   - {fileID: 6108489149289466245, guid: 8a685d04421578a4db7937ffd51fe82d, type: 3}
   _container: {fileID: 6635820064807479147}
+  _config: {fileID: 11400000, guid: d2ee2d82adc00d74ca58e572406370ed, type: 2}
 --- !u!1 &100914676490443143
 GameObject:
   m_ObjectHideFlags: 0
@@ -6359,6 +6360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3020ce528af3ae4d8b1f48fbeac61df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: d2ee2d82adc00d74ca58e572406370ed, type: 2}
   _menuGamePresenter: {fileID: 5176032083220865270}
   _gamePresenter: {fileID: 1463413048474126962}
   _settingsPresenter: {fileID: 2801086543075923598}
@@ -14429,6 +14431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d020a3e3ecb4442b5169bbd3542e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: d2ee2d82adc00d74ca58e572406370ed, type: 2}
 --- !u!1 &1920972411711908507
 GameObject:
   m_ObjectHideFlags: 0
@@ -87895,6 +87898,7 @@ MonoBehaviour:
   _endDeliverPoint: {fileID: 5261947870601481202}
   _smokeExplosion: {fileID: 5904449143466687768}
   _sceneLoader: {fileID: 2746041797287887249}
+  _config: {fileID: 11400000, guid: d2ee2d82adc00d74ca58e572406370ed, type: 2}
 --- !u!65 &4868952594359088334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -91421,6 +91425,7 @@ MonoBehaviour:
   _spawnerBox: {fileID: 2605268433913639492}
   _bordHeart: {fileID: 5188531617574998770}
   _sceneLoader: {fileID: 2746041797287887249}
+  _config: {fileID: 11400000, guid: d2ee2d82adc00d74ca58e572406370ed, type: 2}
   _yandexShowAds: {fileID: 5173500599503799201}
 --- !u!114 &6789989737124549979
 MonoBehaviour:
@@ -91438,6 +91443,7 @@ MonoBehaviour:
   _nextLevelButton: {fileID: 5926628301262701939}
   _scoreInBodyText: {fileID: 3832272810454847468}
   _scoreTargetText: {fileID: 6522777167445034695}
+  _config: {fileID: 11400000, guid: d2ee2d82adc00d74ca58e572406370ed, type: 2}
 --- !u!225 &1527772472324842503
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -2,52 +2,54 @@ using UnityEngine;
 
 namespace DeliveryOfGoods.Model
 {
-    public static class Config
+    [CreateAssetMenu(fileName = "Config", order = 51)]
+    public class Config : ScriptableObject
     {
-        public const string NameScene = "Level";
+        public readonly string NameScene = "Level";
 
-        private const string _spawnSpeed = "SpawnSpeed";
-        private static readonly string _maxNumberBox = "MaxNumberBox";
-        private static readonly string _currentDeliverBox = "CurrentDeliverBox";
-        private static readonly string _currentLevel = "CurrentLevel";
+        private const string SpawnSpeedText = "SpawnSpeed";
+        private const string MaxNumberBoxText = "MaxNumberBox";
+        private const string CurrentDeliverBoxText = "CurrentDeliverBox";
+        private const string CurrentLevelText = "CurrentLevel";
 
-        private static float _stepSpeedImprove = 0.2f;
-        private static int _stepLevel = 10;
-        private static int _tragetLevel = _stepLevel;
+        private const float StepSpeedImprove = 0.2f;
+        private const int StepLevel = 10;
+        
+        private int _tragetLevel = StepLevel;
 
-        public static float SpawnSpeed { get; private set; } = 3f;
-        public static int MaxNumberBox { get; private set; } = 5;
-        public static int CurrentDeliverBox { get; private set; } = 3;
-        public static int CurrentLevel { get; private set; } = 0;
+        public float SpawnSpeed { get; private set; } = 3f;
+        public int MaxNumberBox { get; private set; } = 5;
+        public int CurrentDeliverBox { get; private set; } = 3;
+        public int CurrentLevel { get; private set; } = 0;
 
-        public static void Init()
+        public void Init()
         {
-            if (PlayerPrefs.HasKey(_spawnSpeed))
-                SpawnSpeed = PlayerPrefs.GetFloat(_spawnSpeed);
-            if (PlayerPrefs.HasKey(_maxNumberBox))
-                MaxNumberBox = PlayerPrefs.GetInt(_maxNumberBox);
-            if (PlayerPrefs.HasKey(_currentDeliverBox))
-                CurrentDeliverBox = PlayerPrefs.GetInt(_currentDeliverBox);
-            if (PlayerPrefs.HasKey(_currentLevel))
-                CurrentLevel = PlayerPrefs.GetInt(_currentLevel);
+            if (PlayerPrefs.HasKey(SpawnSpeedText))
+                SpawnSpeed = PlayerPrefs.GetFloat(SpawnSpeedText);
+            if (PlayerPrefs.HasKey(MaxNumberBoxText))
+                MaxNumberBox = PlayerPrefs.GetInt(MaxNumberBoxText);
+            if (PlayerPrefs.HasKey(CurrentDeliverBoxText))
+                CurrentDeliverBox = PlayerPrefs.GetInt(CurrentDeliverBoxText);
+            if (PlayerPrefs.HasKey(CurrentLevelText))
+                CurrentLevel = PlayerPrefs.GetInt(CurrentLevelText);
         }
 
-        public static void Improve()
+        public void Improve()
         {
             if (CurrentLevel >= _tragetLevel)
             {
                 CurrentDeliverBox++;
-                _tragetLevel += _stepLevel;
+                _tragetLevel += StepLevel;
             }
 
-            SpawnSpeed += _stepSpeedImprove;
+            SpawnSpeed += StepSpeedImprove;
             MaxNumberBox++;
             CurrentLevel++;
 
-            PlayerPrefs.SetFloat(_spawnSpeed, SpawnSpeed);
-            PlayerPrefs.SetInt(_maxNumberBox, MaxNumberBox);
-            PlayerPrefs.SetInt(_currentDeliverBox, CurrentDeliverBox);
-            PlayerPrefs.SetInt(_currentLevel, CurrentLevel);
+            PlayerPrefs.SetFloat(SpawnSpeedText, SpawnSpeed);
+            PlayerPrefs.SetInt(MaxNumberBoxText, MaxNumberBox);
+            PlayerPrefs.SetInt(CurrentDeliverBoxText, CurrentDeliverBox);
+            PlayerPrefs.SetInt(CurrentLevelText, CurrentLevel);
         }
     }
 }
