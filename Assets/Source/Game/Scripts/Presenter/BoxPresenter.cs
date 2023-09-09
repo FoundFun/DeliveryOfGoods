@@ -39,7 +39,6 @@ public class BoxPresenter : MonoBehaviour
         _explosion.Play();
         gameObject.SetActive(true);
         _pushSound.Play();
-        _rigidbody.velocity = Vector3.zero;
     }
 
     public void PlayAudio()
@@ -86,6 +85,7 @@ public class BoxPresenter : MonoBehaviour
         yield return new WaitWhile(() => _explosion.isPlaying);
         
         gameObject.transform.localScale = templateScale;
+        _rigidbody.velocity = Vector3.zero;
         gameObject.SetActive(false);
     }
 }

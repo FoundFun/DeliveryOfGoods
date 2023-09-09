@@ -1,6 +1,6 @@
-using DeliveryOfGoods.Model;
 using System;
 using UnityEngine;
+using DeliveryOfGoods.Model;
 
 public class TruckPresenter : MonoBehaviour
 {
@@ -8,6 +8,7 @@ public class TruckPresenter : MonoBehaviour
     [SerializeField] private DeliverPoint _endDeliverPoint;
     [SerializeField] private ParticleSystem _smokeExplosion;
     [SerializeField] private SceneLoader _sceneLoader;
+    [SerializeField] private Config _config;
 
     private const float AnimationTime = 3;
 
@@ -27,7 +28,7 @@ public class TruckPresenter : MonoBehaviour
             _boxInBody++;
             AddScoreBody?.Invoke(_boxInBody);
 
-            if (_boxInBody >= Config.CurrentDeliverBox && _isDelivery == false)
+            if (_boxInBody >= _config.CurrentDeliverBox && _isDelivery == false)
                 Deliver(_endDeliverPoint.transform.position);
         }
     }
