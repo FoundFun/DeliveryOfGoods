@@ -38,6 +38,11 @@ public class GamePresenter : ScreenPresenter
         _gameView.AddScore(score);
     }
 
+    public void SetTargetScore(int score)
+    {
+        _gameView.SetTargetScore(score);
+    }
+
     public void OnBoxFallen()
     {
         _bordHeart.TakeDamage();

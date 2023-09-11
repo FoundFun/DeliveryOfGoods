@@ -15,7 +15,6 @@ public class GameRoot : MonoBehaviour
 
     private void Awake()
     {
-        _config.Init();
         _bordHeartPresenter.Init();
         _gamePresenter.Init();
         _menuGamePresenter.Open();
@@ -25,12 +24,14 @@ public class GameRoot : MonoBehaviour
 
     private void Start()
     {
+        _config.UpdateValue();
         _sceneLoader.Load();
         _werehousePresenter.Reset();
     }
 
     private void OnEnable()
     {
+        _config.ChangedTargetScore += _gamePresenter.SetTargetScore;
         _menuGamePresenter.OpenedGame += _gamePresenter.Open;
         _menuGamePresenter.OpenedSettings += _settingsPresenter.Open;
         _settingsPresenter.OpenedMenu += _menuGamePresenter.Open;
@@ -46,6 +47,7 @@ public class GameRoot : MonoBehaviour
 
     private void OnDisable()
     {
+        _config.ChangedTargetScore -= _gamePresenter.SetTargetScore;
         _menuGamePresenter.OpenedGame -= _gamePresenter.Open;
         _menuGamePresenter.OpenedSettings -= _settingsPresenter.Open;
         _settingsPresenter.OpenedMenu -= _menuGamePresenter.Open;

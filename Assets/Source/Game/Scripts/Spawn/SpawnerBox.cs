@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using System.Linq;
 using System.Collections.Generic;
 using DeliveryOfGoods.Model;
 
@@ -11,7 +10,6 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
     [SerializeField] private Config _config;
 
     private List<BoxPresenter> _boxes;
-    private List<BoxPresenter> _purchasedBoxes;
     private SpawnPoint _spawnPoints;
     private Coroutine _spawnCoroutine;
     private int _boxIndex;
@@ -34,8 +32,6 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
     {
         _isGenerate = true;
 
-        UpdatePurchasedBoxs();
-
         if (_spawnCoroutine != null)
             StopCoroutine(_spawnCoroutine);
 
@@ -56,11 +52,6 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
             box.Init();
     }
 
-    private void UpdatePurchasedBoxs()
-    {
-        _purchasedBoxes = _boxes.Take(_config.MaxNumberBox).ToList();
-    }
-
     private IEnumerator Generate()
     {
         while (_isGenerate)
@@ -74,9 +65,6 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
             }
 
             _boxIndex++;
-
-            if (_boxIndex >= _purchasedBoxes.Count)
-                _boxIndex = 0;
 
             yield return null;
         }
