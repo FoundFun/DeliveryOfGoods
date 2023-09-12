@@ -6,8 +6,6 @@ public class TruckPresenter : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] _smokesExhaust;
     [SerializeField] private DeliverPoint _endDeliverPoint;
-    [SerializeField] private ParticleSystem _smokeExplosion;
-    [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private Config _config;
 
     private const float AnimationTime = 3;
@@ -15,7 +13,6 @@ public class TruckPresenter : MonoBehaviour
     private int _boxInBody;
     private bool _isDelivery;
 
-    public event Action SceneChanged;
     public event Action<int> AddScoreBody;
     public event Action LevelCompleted;
 
@@ -40,31 +37,18 @@ public class TruckPresenter : MonoBehaviour
         AddScoreBody?.Invoke(_boxInBody);
     }
 
-    public void ResetScene()
-    {
-        _sceneLoader.Load();
-        _smokeExplosion.Play();
-        SceneChanged?.Invoke();
-    }
-
     public void Move(Vector3 targetPosition)
     {
         PlayExhaust();
         transform.LeanMoveZ(targetPosition.z, AnimationTime).setOnComplete(StopExhaust);
-    }
-    
-    public void PassOnNextLevel()
-    {
-        _smokeExplosion.Play();
-        StopExhaust();
-        SceneChanged?.Invoke();
     }
 
     private void Deliver(Vector3 targetPosition)
     {
         _isDelivery = true;
         PlayExhaust();
-        transform.LeanMoveZ(targetPosition.z, AnimationTime).setOnComplete(Complete);
+        transform.LeanMoveZ(targetPosition.z, AnimationTime);
+        Complete();
     }
 
     private void Complete()

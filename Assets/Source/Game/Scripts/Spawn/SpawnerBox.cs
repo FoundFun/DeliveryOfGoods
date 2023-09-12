@@ -5,27 +5,29 @@ using DeliveryOfGoods.Model;
 
 public class SpawnerBox : ObjectPool<BoxPresenter>
 {
-    [SerializeField] private BoxPresenter[] _boxs;
+    [SerializeField] private BoxPresenter[] _boxes;
     [SerializeField] private GameObject _container;
     [SerializeField] private Config _config;
 
-    private List<BoxPresenter> _boxes;
+    private List<BoxPresenter> _poolBoxes;
     private SpawnPoint _spawnPoints;
     private Coroutine _spawnCoroutine;
     private int _boxIndex;
     private bool _isGenerate;
 
-    private void Awake()
-    {
-        _spawnPoints = GetComponentInChildren<SpawnPoint>();
-        _boxes = Initialize(_boxs, _container);
-        Init();
-    }
-
     public void Reset()
     {
-        foreach(BoxPresenter box in _boxes)
+        foreach(BoxPresenter box in _poolBoxes)
             box.Reset();
+    }
+    
+    public void Init()
+    {
+        _spawnPoints = GetComponentInChildren<SpawnPoint>();
+        _poolBoxes = Initialize(_boxes, _container);
+        
+        foreach (var box in _poolBoxes)
+            box.Init();
     }
 
     public void Active()
@@ -45,12 +47,6 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
         if (_spawnCoroutine != null)
             StopCoroutine(_spawnCoroutine);
     }
-    
-    private void Init()
-    {
-        foreach (var box in _boxes)
-            box.Init();
-    }
 
     private IEnumerator Generate()
     {
@@ -65,6 +61,9 @@ public class SpawnerBox : ObjectPool<BoxPresenter>
             }
 
             _boxIndex++;
+
+            if (_boxIndex >= _poolBoxes.Count)
+                _boxIndex = 0;
 
             yield return null;
         }

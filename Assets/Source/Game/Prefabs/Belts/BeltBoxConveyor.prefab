@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 1522697138163972144}
+  _config: {fileID: 11400000, guid: d2ee2d82adc00d74ca58e572406370ed, type: 2}
 --- !u!114 &1522697138163972144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,9 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc3b2134ad5e8045b5a2968fa30e98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 7255919890128732628}
   _movementView: {fileID: 3257890737252026487}
-  _speed: 2.3
 --- !u!1 &809218071856073556
 GameObject:
   m_ObjectHideFlags: 0

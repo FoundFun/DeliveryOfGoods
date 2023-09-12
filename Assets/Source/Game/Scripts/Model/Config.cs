@@ -12,17 +12,29 @@ namespace DeliveryOfGoods.Model
         private const string CurrentDeliverBoxText = "CurrentDeliverBox";
         private const string CurrentLevelText = "CurrentLevel";
 
-        private const float MinSpawnSpeed = 0.7f;
-        private const float StepSpeedImprove = -0.1f;
+        private const float MinSpawnSpeed = 1f;
+        private const float StepSpeedImprove = -0.2f;
         private const int StepLevel = 10;
         
-        private int _tragetLevel = StepLevel;
+        private int _targetLevel = StepLevel;
 
-        public float SpawnSpeed { get; private set; } = 2f;
+        public float SpawnSpeed { get; private set; } = 2.5f;
         public int CurrentDeliverBox { get; private set; } = 3;
         public int CurrentLevel { get; private set; }
 
+        public bool IsGaming { get; private set; }
+
         public event Action<int> ChangedTargetScore;
+
+        public void EnableGame()
+        {
+            IsGaming = true;
+        }
+
+        public void DisableGame()
+        {
+            IsGaming = false;
+        }
 
         public void UpdateValue()
         {
@@ -38,10 +50,10 @@ namespace DeliveryOfGoods.Model
         
         public void Improve()
         {
-            if (CurrentLevel >= _tragetLevel)
+            if (CurrentLevel >= _targetLevel)
             {
                 CurrentDeliverBox++;
-                _tragetLevel += StepLevel;
+                _targetLevel += StepLevel;
                 ChangedTargetScore?.Invoke(CurrentDeliverBox);
             }
 

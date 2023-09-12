@@ -1,3 +1,4 @@
+using DeliveryOfGoods.Model;
 using UnityEngine;
 
 namespace Movement
@@ -5,6 +6,7 @@ namespace Movement
     public class MovementInput : MonoBehaviour
     {
         [SerializeField] private CharacterMovement _movement;
+        [SerializeField] private Config _config;
  
         private void Start()
         {
@@ -13,7 +15,7 @@ namespace Movement
 
         private void OnMouseDown()
         {
-            if (_movement.IsReady)
+            if (_movement.IsReady && _config.IsGaming)
                 _movement.Rotate();
         }
 

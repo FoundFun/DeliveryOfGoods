@@ -60,6 +60,7 @@ public class GamePresenter : ScreenPresenter
         ResetScene?.Invoke();
         ResetHeart?.Invoke();
         base.CloseScreen();
+        _config.DisableGame();
     }
 
     private void OnCloseButtonClick()
@@ -74,7 +75,7 @@ public class GamePresenter : ScreenPresenter
     public void OnLevelCompleted()
     {
         _bordHeart.Reset();
-        _gameView.EnableNextButton();
+        _gameView.EnableNextLevelButton();
         _spawnerBox.Inactive();
         _spawnerBox.Reset();
     }

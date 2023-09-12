@@ -42,7 +42,7 @@ public class GameView : MonoBehaviour
         _scoreTargetText.text = Slash + score;
     }
 
-    public void EnableNextButton()
+    public void EnableNextLevelButton()
     {
         const float animationTime = 0.5f;
 
