@@ -4,6 +4,7 @@ using DeliveryOfGoods.Model;
 public class GameRoot : MonoBehaviour
 {
     [SerializeField] private Config _config;
+    [SerializeField] private SpawnerBox _spawnerBox;
     [SerializeField] private MenuGamePresenter _menuGamePresenter;
     [SerializeField] private GamePresenter _gamePresenter;
     [SerializeField] private SettingsPresenter _settingsPresenter;
@@ -15,6 +16,7 @@ public class GameRoot : MonoBehaviour
 
     private void Awake()
     {
+        _spawnerBox.Init();
         _bordHeartPresenter.Init();
         _gamePresenter.Init();
         _menuGamePresenter.Open();
@@ -36,10 +38,10 @@ public class GameRoot : MonoBehaviour
         _menuGamePresenter.OpenedSettings += _settingsPresenter.Open;
         _settingsPresenter.OpenedMenu += _menuGamePresenter.Open;
         _gamePresenter.OpenedMenu += _menuGamePresenter.Open;
-        _gamePresenter.ResetScene += _truckPresenter.ResetScene;
+        _gamePresenter.ResetScene += _werehousePresenter.Reset;
         _gamePresenter.ResetHeart += _bordHeartPresenter.Reset;
-        _gamePresenter.LoadedNextScene += _truckPresenter.PassOnNextLevel;
-        _bordSkipPresenter.Restart += _truckPresenter.ResetScene;
+        _gamePresenter.LoadedNextScene += _werehousePresenter.Reset;
+        _bordSkipPresenter.Restart += _werehousePresenter.Reset;
         _truckPresenter.AddScoreBody += _gamePresenter.OnAddScore;
         _truckPresenter.LevelCompleted += _gamePresenter.OnLevelCompleted;
         _werehousePresenter.BoxFallen += _gamePresenter.OnBoxFallen;
@@ -52,10 +54,10 @@ public class GameRoot : MonoBehaviour
         _menuGamePresenter.OpenedSettings -= _settingsPresenter.Open;
         _settingsPresenter.OpenedMenu -= _menuGamePresenter.Open;
         _gamePresenter.OpenedMenu -= _menuGamePresenter.Open;
-        _gamePresenter.ResetScene -= _truckPresenter.ResetScene;
+        _gamePresenter.ResetScene -= _werehousePresenter.Reset;
         _gamePresenter.ResetHeart -= _bordHeartPresenter.Reset;
-        _gamePresenter.LoadedNextScene -= _truckPresenter.PassOnNextLevel;
-        _bordSkipPresenter.Restart -= _truckPresenter.ResetScene;
+        _gamePresenter.LoadedNextScene -= _werehousePresenter.Reset;
+        _bordSkipPresenter.Restart -= _werehousePresenter.Reset;
         _truckPresenter.AddScoreBody -= _gamePresenter.OnAddScore;
         _truckPresenter.LevelCompleted -= _gamePresenter.OnLevelCompleted;
         _werehousePresenter.BoxFallen -= _gamePresenter.OnBoxFallen;

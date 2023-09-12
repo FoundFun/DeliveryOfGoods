@@ -15,11 +15,14 @@ public class BordHeartPresenter : MonoBehaviour
 
     public void Reset()
     {
-        foreach (var heart in _hearts)
-            heart.ToFill();
-
-        _numberHeart = _hearts.Length;
-        _isLive = true;
+        if (!_isLive)
+        {
+            foreach (var heart in _hearts)
+                heart.ToFill();
+            
+            _numberHeart = _hearts.Length;
+            _isLive = true;
+        }
         
         if (_coroutine != null)
             StopCoroutine(_coroutine);

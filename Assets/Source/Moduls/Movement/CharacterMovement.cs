@@ -6,7 +6,6 @@ namespace Movement
     [RequireComponent(typeof(Rigidbody))]
     internal class CharacterMovement : MonoBehaviour
     {
-        [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private MovementView _movementView;
 
         private const float Speed = 2.4f;
@@ -15,15 +14,17 @@ namespace Movement
         private const float SpeedAnimationRotate = 0.5f;
         private const float LerpMaterial = 8;
 
+        private Rigidbody _rigidbody;
         private Material _material;
         private Vector3 _moveDirection;
         private float _nextRotateY;
         private float _speedMaterial;
 
-        public bool IsReady { get; private set; } = false;
+        public bool IsReady { get; private set; }
 
         private void Awake()
         {
+            _rigidbody = GetComponent<Rigidbody>();
             _material = _movementView.GetComponent<Renderer>().material;
             _speedMaterial = Speed / LerpMaterial;
         }
@@ -44,6 +45,7 @@ namespace Movement
         internal void Scroll()
         {
             Vector3 nextPosition = _rigidbody.position;
+            
             _rigidbody.position += _moveDirection * Speed * Time.fixedDeltaTime;
             _rigidbody.MovePosition(nextPosition);
 
@@ -52,14 +54,12 @@ namespace Movement
 
         private void UpdateDirection()
         {
-            const float ZeroAngle = 0;
-            const float RightAngle = 90;
-            const float UnfoldedAngle = 180;
-            const float ConvexAngle = 270;
+            const float zeroAngle = 0;
+            const float rightAngle = 90;
+            const float unfoldedAngle = 180;
+            const float convexAngle = 270;
 
-            Vector3 currentRotate;
-
-            currentRotate = transform.eulerAngles;
+            Vector3 currentRotate = transform.eulerAngles;
             currentRotate.y = _nextRotateY;
 
             if (currentRotate.y >= MaxAngleRotation)
@@ -69,16 +69,16 @@ namespace Movement
 
             switch (transform.eulerAngles.y)
             {
-                case ZeroAngle:
+                case zeroAngle:
                     _moveDirection = Vector3.back;
                     break;
-                case RightAngle:
+                case rightAngle:
                     _moveDirection = Vector3.left;
                     break;
-                case UnfoldedAngle:
+                case unfoldedAngle:
                     _moveDirection = Vector3.forward;
                     break;
-                case ConvexAngle:
+                case convexAngle:
                     _moveDirection = Vector3.right;
                     break;
                 default:
