@@ -12,15 +12,15 @@ namespace DeliveryOfGoods.Model
         private const string CurrentDeliverBoxText = "CurrentDeliverBox";
         private const string CurrentLevelText = "CurrentLevel";
 
-        private const float MinSpawnSpeed = 1f;
-        private const float StepSpeedImprove = -0.2f;
+        private const float MinSpawnSpeed = 1.5f;
+        private const float StepSpeedImprove = -0.02f;
         private const int StepLevel = 10;
         
         private int _targetLevel = StepLevel;
 
         public float SpawnSpeed { get; private set; } = 2.5f;
         public int CurrentDeliverBox { get; private set; } = 3;
-        public int CurrentLevel { get; private set; }
+        public int CurrentLevel { get; private set; } = 0;
 
         public bool IsGaming { get; private set; }
 
