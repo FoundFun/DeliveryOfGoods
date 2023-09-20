@@ -1,94 +1,98 @@
 using System;
+using Source.Game.Scripts.Model;
+using Source.Game.Scripts.Spawn;
 using UnityEngine;
-using DeliveryOfGoods.Model;
 
-public class GamePresenter : ScreenPresenter
+namespace Source.Game.Scripts.Presenter.UI
 {
-    [SerializeField] private GameView _gameView;
-    [SerializeField] private SpawnerBox _spawnerBox;
-    [SerializeField] private BordHeartPresenter _bordHeart;
-    [SerializeField] private SceneLoader _sceneLoader;
-    [SerializeField] private Config _config;
-    [SerializeField] private YandexShowAds _yandexShowAds;
-
-    public event Action OpenedMenu;
-    public event Action ResetScene;
-    public event Action ResetHeart;
-    public event Action LoadedNextScene;
-
-    private void OnEnable()
+    public class GamePresenter : ScreenPresenter
     {
-        _gameView.ExitButtonClick += OnCloseButtonClick;
-        _gameView.LoadNextLevel += OnLoadNextLevel;
-    }
+        [SerializeField] private GameView _gameView;
+        [SerializeField] private SpawnerBox _spawnerBox;
+        [SerializeField] private BordHeartPresenter _bordHeart;
+        [SerializeField] private SceneLoader _sceneLoader;
+        [SerializeField] private Config.Config _config;
+        [SerializeField] private YandexShowAds _yandexShowAds;
 
-    private void OnDisable()
-    {
-        _gameView.ExitButtonClick -= OnCloseButtonClick;
-        _gameView.LoadNextLevel -= OnLoadNextLevel;
-    }
+        public event Action OpenedMenu;
+        public event Action ResetScene;
+        public event Action ResetHeart;
+        public event Action LoadedNextScene;
 
-    public void Init()
-    {
-        _gameView.Init();
-    }
+        private void OnEnable()
+        {
+            _gameView.ExitButtonClick += OnCloseButtonClick;
+            _gameView.LoadNextLevel += OnLoadNextLevel;
+        }
 
-    public void OnAddScore(int score)
-    {
-        _gameView.AddScore(score);
-    }
+        private void OnDisable()
+        {
+            _gameView.ExitButtonClick -= OnCloseButtonClick;
+            _gameView.LoadNextLevel -= OnLoadNextLevel;
+        }
 
-    public void SetTargetScore(int score)
-    {
-        _gameView.SetTargetScore(score);
-    }
+        public void Init()
+        {
+            _gameView.Init();
+        }
 
-    public void OnBoxFallen()
-    {
-        _bordHeart.TakeDamage();
-    }
+        public void OnAddScore(int score)
+        {
+            _gameView.AddScore(score);
+        }
 
-    protected override void OpenScreen()
-    {
-        _spawnerBox.Active();
-        base.OpenScreen();
-    }
+        public void SetTargetScore(int score)
+        {
+            _gameView.SetTargetScore(score);
+        }
 
-    protected override void CloseScreen()
-    {
-        _spawnerBox.Inactive();
-        ResetScene?.Invoke();
-        ResetHeart?.Invoke();
-        base.CloseScreen();
-        _config.DisableGame();
-    }
+        public void OnBoxFallen()
+        {
+            _bordHeart.TakeDamage();
+        }
 
-    private void OnCloseButtonClick()
-    {
+        protected override void OpenScreen()
+        {
+            _spawnerBox.Active();
+            base.OpenScreen();
+        }
+
+        protected override void CloseScreen()
+        {
+            _spawnerBox.Inactive();
+            ResetScene?.Invoke();
+            ResetHeart?.Invoke();
+            base.CloseScreen();
+            _config.DisableGame();
+        }
+
+        private void OnCloseButtonClick()
+        {
 #if !UNITY_EDITOR
         _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
-        Close();
-        OpenedMenu?.Invoke();
-    }
+            Close();
+            OpenedMenu?.Invoke();
+        }
 
-    public void OnLevelCompleted()
-    {
-        _bordHeart.Reset();
-        _gameView.EnableNextLevelButton();
-        _spawnerBox.Inactive();
-        _spawnerBox.Reset();
-    }
-    
-    private void OnLoadNextLevel()
-    {
+        public void OnLevelCompleted()
+        {
+            _bordHeart.Reset();
+            _gameView.EnableNextLevelButton();
+            _spawnerBox.Inactive();
+            _spawnerBox.Reset();
+        }
+
+        private void OnLoadNextLevel()
+        {
 #if !UNITY_EDITOR
         _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
-        _config.Improve();
-        _sceneLoader.Load();
-        _gameView.DisableNextButton();
-        LoadedNextScene?.Invoke();
-        _spawnerBox.Active();
+            _config.Improve();
+            _sceneLoader.Load();
+            _gameView.DisableNextButton();
+            LoadedNextScene?.Invoke();
+            _spawnerBox.Active();
+        }
     }
 }

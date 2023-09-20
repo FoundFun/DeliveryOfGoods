@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class DontDestoy : MonoBehaviour
+namespace Source.Game.Scripts
 {
-    private void Start()
+    public class DontDestoy : MonoBehaviour
     {
-        DontDestroyOnLoad(gameObject);
+        private void Start()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }

@@ -1,30 +1,33 @@
 using UnityEngine;
 
-public abstract class ScreenPresenter : MonoBehaviour
+namespace Source.Game.Scripts.Presenter.UI
 {
-    [SerializeField] private CanvasGroup _canvasGroup;
-
-    public void Open()
+    public abstract class ScreenPresenter : MonoBehaviour
     {
-        OpenScreen();
-    }
+        [SerializeField] private CanvasGroup _canvasGroup;
 
-    public void Close()
-    {
-        CloseScreen();
-    }
+        public void Open()
+        {
+            OpenScreen();
+        }
 
-    protected virtual void OpenScreen()
-    {
-        _canvasGroup.alpha = 1;
-        _canvasGroup.interactable = true;
-        _canvasGroup.blocksRaycasts = true;
-    }
+        public void Close()
+        {
+            CloseScreen();
+        }
 
-    protected virtual void CloseScreen()
-    {
-        _canvasGroup.alpha = 0;
-        _canvasGroup.interactable = false;
-        _canvasGroup.blocksRaycasts = false;
+        protected virtual void OpenScreen()
+        {
+            _canvasGroup.alpha = 1;
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
+        }
+
+        protected virtual void CloseScreen()
+        {
+            _canvasGroup.alpha = 0;
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
+        }
     }
 }

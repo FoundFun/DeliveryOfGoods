@@ -1,25 +1,28 @@
 using System;
 using UnityEngine;
 
-public class SettingsPresenter : ScreenPresenter
+namespace Source.Game.Scripts.Presenter.UI
 {
-    [SerializeField] private SettingsView _settingsView;
-
-    public event Action OpenedMenu;
-
-    private void OnEnable()
+    public class SettingsPresenter : ScreenPresenter
     {
-        _settingsView.ExitButtonClick += OnCloseButtonClick;
-    }
+        [SerializeField] private SettingsView _settingsView;
 
-    private void OnDisable()
-    {
-        _settingsView.ExitButtonClick -= OnCloseButtonClick;
-    }
+        public event Action OpenedMenu;
 
-    private void OnCloseButtonClick()
-    {
-        Close();
-        OpenedMenu?.Invoke();
+        private void OnEnable()
+        {
+            _settingsView.ExitButtonClick += OnCloseButtonClick;
+        }
+
+        private void OnDisable()
+        {
+            _settingsView.ExitButtonClick -= OnCloseButtonClick;
+        }
+
+        private void OnCloseButtonClick()
+        {
+            Close();
+            OpenedMenu?.Invoke();
+        }
     }
 }

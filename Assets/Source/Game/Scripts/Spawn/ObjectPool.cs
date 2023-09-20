@@ -1,30 +1,34 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using Source.Game.Scripts.Presenter;
+using UnityEngine;
 
-public abstract class ObjectPool<T> : MonoBehaviour where T : BoxPresenter
+namespace Source.Game.Scripts.Spawn
 {
-    private List<T> _poolObject;
-
-    protected List<T> Initialize(T[] gameObject, GameObject container)
+    public abstract class ObjectPool<T> : MonoBehaviour where T : BoxPresenter
     {
-        _poolObject = new List<T>();
+        private List<T> _poolObject;
 
-        for (int i = 0; i < gameObject.Length; i++)
+        protected List<T> Initialize(T[] gameObject, GameObject container)
         {
-            T template = Instantiate(gameObject[i], container.transform);
-            template.gameObject.SetActive(false);
+            _poolObject = new List<T>();
 
-            _poolObject.Add(template);
+            foreach (T tObject in gameObject)
+            {
+                T template = Instantiate(tObject, container.transform);
+                template.gameObject.SetActive(false);
+
+                _poolObject.Add(template);
+            }
+
+            return _poolObject;
         }
 
-        return _poolObject;
-    }
+        protected bool TryGetObject(out T gameObject, int index)
+        {
+            gameObject = _poolObject.Where(template => template.gameObject.activeSelf == false).ElementAtOrDefault(index);
 
-    protected bool TryGetObject(out T gameObject, int index)
-    {
-        gameObject = _poolObject.Where(template => template.gameObject.activeSelf == false).ElementAtOrDefault(index);
-
-        return gameObject != null;
+            return gameObject != null;
+        }
     }
 }

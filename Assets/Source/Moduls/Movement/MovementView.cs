@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Movement
+namespace Source.Moduls.Movement
 {
     public class MovementView : MonoBehaviour
     {

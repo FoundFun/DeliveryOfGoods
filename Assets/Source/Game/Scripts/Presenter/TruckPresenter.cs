@@ -1,70 +1,56 @@
 using System;
+using Source.Game.Scripts.Model;
 using UnityEngine;
-using DeliveryOfGoods.Model;
 
-public class TruckPresenter : MonoBehaviour
+namespace Source.Game.Scripts.Presenter
 {
-    [SerializeField] private ParticleSystem[] _smokesExhaust;
-    [SerializeField] private DeliverPoint _endDeliverPoint;
-    [SerializeField] private Config _config;
-
-    private const float AnimationTime = 3;
-
-    private int _boxInBody;
-    private bool _isDelivery;
-
-    public event Action<int> AddScoreBody;
-    public event Action LevelCompleted;
-
-    private void OnTriggerEnter(Collider other)
+    public class TruckPresenter : MonoBehaviour
     {
-        if (other.TryGetComponent(out BoxPresenter box))
+        [SerializeField] private ParticleSystem[] _smokesExhaust;
+        [SerializeField] private DeliverPoint _endDeliverPoint;
+        [SerializeField] private Config.Config _config;
+
+        private TruckModel _model;
+
+        private int _boxInBody;
+        private bool _isDelivery;
+
+        public event Action<int> AddScoreBody;
+        public event Action LevelCompleted;
+
+        private void OnTriggerEnter(Collider other)
         {
+            if (!other.TryGetComponent(out BoxPresenter box))
+                return;
+
             box.PlayGoodParticle();
-            box.PlayAudio();
+            box.PlayAudioComplete();
             _boxInBody++;
             AddScoreBody?.Invoke(_boxInBody);
 
             if (_boxInBody >= _config.CurrentDeliverBox && _isDelivery == false)
-                Deliver(_endDeliverPoint.transform.position);
+                _model.Deliver(gameObject.transform, _endDeliverPoint.transform.position);
         }
-    }
 
-    public void Reset()
-    {
-        _isDelivery = false;
-        _boxInBody = 0;
-        AddScoreBody?.Invoke(_boxInBody);
-    }
+        public void Init(TruckModel model)
+        {
+            _model = model;
+            _model.Init(_smokesExhaust, _endDeliverPoint, _config);
+        }
 
-    public void Move(Vector3 targetPosition)
-    {
-        PlayExhaust();
-        transform.LeanMoveZ(targetPosition.z, AnimationTime).setOnComplete(StopExhaust);
-    }
+        public void Reset()
+        {
+            _isDelivery = false;
+            _boxInBody = 0;
+            AddScoreBody?.Invoke(_boxInBody);
+        }
 
-    private void Deliver(Vector3 targetPosition)
-    {
-        _isDelivery = true;
-        PlayExhaust();
-        transform.LeanMoveZ(targetPosition.z, AnimationTime);
-        Complete();
-    }
+        private void Complete()
+        {
+            LevelCompleted?.Invoke();
+        }
 
-    private void Complete()
-    {
-        LevelCompleted?.Invoke();
-    }
-
-    private void PlayExhaust()
-    {
-        foreach (ParticleSystem smoke in _smokesExhaust)
-            smoke.Play();
-    }
-
-    private void StopExhaust()
-    {
-        foreach (ParticleSystem smoke in _smokesExhaust)
-            smoke.Stop();
+        public void Move(Vector3 loadingAreaPosition) => 
+            _model.Move(gameObject.transform, loadingAreaPosition);
     }
 }

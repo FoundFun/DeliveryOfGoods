@@ -154,7 +154,7 @@ MonoBehaviour:
   _badParticle: {fileID: 2925282664956844751}
   _goodParticle: {fileID: 6859745210238008733}
   _explosion: {fileID: 4114420556020367474}
-  _audioSource: {fileID: 3645104383671982070}
+  _completeSound: {fileID: 3645104383671982070}
   _pushSound: {fileID: -2305329760830087944}
 --- !u!82 &3645104383671982070
 AudioSource:

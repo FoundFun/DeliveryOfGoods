@@ -1,7 +1,7 @@
-using DeliveryOfGoods.Model;
+using Source.Game.Scripts.Config;
 using UnityEngine;
 
-namespace Movement
+namespace Source.Moduls.Movement
 {
     public class MovementInput : MonoBehaviour
     {

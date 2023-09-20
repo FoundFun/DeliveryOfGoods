@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class SpawnPoint : MonoBehaviour
+namespace Source.Game.Scripts.Spawn
 {
+    public class SpawnPoint : MonoBehaviour
+    {
+    }
 }
