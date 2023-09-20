@@ -1,37 +1,40 @@
 using System;
-using DeliveryOfGoods.Model;
+using Source.Game.Scripts.Model;
 using UnityEngine;
 
-public class MenuGamePresenter : ScreenPresenter
+namespace Source.Game.Scripts.Presenter.UI
 {
-    [SerializeField] private MenuGameView _menuGameView;
-    [SerializeField] private Config _config;
-
-    public event Action OpenedGame;
-    public event Action OpenedSettings;
-
-    private void OnEnable()
+    public class MenuGamePresenter : ScreenPresenter
     {
-        _menuGameView.StartButtonClick += OnStartButtonClick;
-        _menuGameView.SettingsButtonClick += OnSettingsButtonClick;
-    }
+        [SerializeField] private MenuGameView _menuGameView;
+        [SerializeField] private Config.Config _config;
 
-    private void OnDisable()
-    {
-        _menuGameView.StartButtonClick -= OnStartButtonClick;
-        _menuGameView.SettingsButtonClick -= OnSettingsButtonClick;
-    }
+        public event Action OpenedGame;
+        public event Action OpenedSettings;
 
-    private void OnStartButtonClick()
-    {
-        Close();
-        OpenedGame?.Invoke();
-        _config.EnableGame();
-    }
+        private void OnEnable()
+        {
+            _menuGameView.StartButtonClick += OnStartButtonClick;
+            _menuGameView.SettingsButtonClick += OnSettingsButtonClick;
+        }
 
-    private void OnSettingsButtonClick()
-    {
-        Close();
-        OpenedSettings?.Invoke();
+        private void OnDisable()
+        {
+            _menuGameView.StartButtonClick -= OnStartButtonClick;
+            _menuGameView.SettingsButtonClick -= OnSettingsButtonClick;
+        }
+
+        private void OnStartButtonClick()
+        {
+            Close();
+            OpenedGame?.Invoke();
+            _config.EnableGame();
+        }
+
+        private void OnSettingsButtonClick()
+        {
+            Close();
+            OpenedSettings?.Invoke();
+        }
     }
 }

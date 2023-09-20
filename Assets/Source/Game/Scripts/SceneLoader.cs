@@ -1,6 +1,7 @@
+using Source.Game.Scripts.Config;
+using Source.Game.Scripts.Model;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DeliveryOfGoods.Model;
 
 public class SceneLoader : MonoBehaviour
 {

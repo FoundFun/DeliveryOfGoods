@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeleteSpecificComponentsFromBuild : MonoBehaviour
+namespace Source.Game.Scripts
 {
-    [SerializeField]
-    private List<Component> _componentsToDelete = new List<Component>();
-
-    public void DeleteComponents()
+    public class DeleteSpecificComponentsFromBuild : MonoBehaviour
     {
-        foreach (Component componentToDelete in _componentsToDelete)
-            DestroyImmediate(componentToDelete);
+        [SerializeField]
+        private List<Component> _componentsToDelete = new List<Component>();
 
-        DestroyImmediate(this);
+        public void DeleteComponents()
+        {
+            foreach (Component componentToDelete in _componentsToDelete)
+                DestroyImmediate(componentToDelete);
+
+            DestroyImmediate(this);
+        }
     }
 }
 #endif

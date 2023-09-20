@@ -1,10 +1,7 @@
 {
-    "name": "Movement",
+    "name": "Configure",
     "rootNamespace": "",
-    "references": [
-        "GUID:c2c96670df4dc0e49af9014565aa2463",
-        "GUID:ba107d768077f7d478ad8ad21468b246"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

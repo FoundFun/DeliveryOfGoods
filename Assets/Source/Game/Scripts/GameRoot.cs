@@ -1,5 +1,9 @@
+using Source.Game.Scripts.Config;
+using Source.Game.Scripts.Model;
+using Source.Game.Scripts.Presenter;
+using Source.Game.Scripts.Presenter.UI;
+using Source.Game.Scripts.Spawn;
 using UnityEngine;
-using DeliveryOfGoods.Model;
 
 public class GameRoot : MonoBehaviour
 {
@@ -13,6 +17,8 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private BordHeartPresenter _bordHeartPresenter;
     [SerializeField] private WerehousePresenter _werehousePresenter;
     [SerializeField] private SceneLoader _sceneLoader;
+
+    private BoxModel _boxModel;
 
     private void Awake()
     {

@@ -1,31 +1,34 @@
 using UnityEngine;
 
-public class BordResurrectPresenter : MonoBehaviour
+namespace Source.Game.Scripts.Presenter.UI
 {
-    [SerializeField] private BordResurrectView _bordResurrectView;
-    [SerializeField] private BordHeartPresenter _heartPresenter;
-    [SerializeField] private YandexShowAds _yandexShowAds;
-
-    private void OnEnable()
+    public class BordResurrectPresenter : MonoBehaviour
     {
-        _bordResurrectView.ShowAds += OnShowAds;
-    }
+        [SerializeField] private BordResurrectView _bordResurrectView;
+        [SerializeField] private BordHeartPresenter _heartPresenter;
+        [SerializeField] private YandexShowAds _yandexShowAds;
 
-    private void OnDisable()
-    {
-        _bordResurrectView.ShowAds -= OnShowAds;
-    }
+        private void OnEnable()
+        {
+            _bordResurrectView.ShowAds += OnShowAds;
+        }
 
-    public void OnResurrect()
-    {
-        _heartPresenter.Recover();
-    }
+        private void OnDisable()
+        {
+            _bordResurrectView.ShowAds -= OnShowAds;
+        }
 
-    private void OnShowAds()
-    {
+        public void OnResurrect()
+        {
+            _heartPresenter.Recover();
+        }
+
+        private void OnShowAds()
+        {
 #if !UNITY_EDITOR
         _yandexShowAds.OnShowVideoButtonClick();
 #endif
-        OnResurrect();
+            OnResurrect();
+        }
     }
 }

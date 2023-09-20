@@ -1,91 +1,40 @@
-using System.Collections;
+using Source.Game.Scripts.Model;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(AudioSource))]
-public class BoxPresenter : MonoBehaviour
+namespace Source.Game.Scripts.Presenter
 {
-    [SerializeField] private ParticleSystem _badParticle;
-    [SerializeField] private ParticleSystem _goodParticle;
-    [SerializeField] private ParticleSystem _explosion;
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioSource _pushSound;
-
-    private const float SpeedCleanAnimation = 1;
-
-    private Rigidbody _rigidbody;
-    private Coroutine _coroutineParticle;
-    private Coroutine _coroutineExplosion;
-
-    public void Reset()
+    [RequireComponent(typeof(Rigidbody))]
+    public class BoxPresenter : MonoBehaviour
     {
-        if (_coroutineParticle != null)
-            StopCoroutine(_coroutineParticle);
-        
-        if (_coroutineExplosion != null)
-            StopCoroutine(_coroutineExplosion);
-        
-        if (gameObject.activeSelf == true)
-            _coroutineExplosion = StartCoroutine(Deactivate());
-    }
+        [SerializeField] private ParticleSystem _badParticle;
+        [SerializeField] private ParticleSystem _goodParticle;
+        [SerializeField] private ParticleSystem _explosion;
+        [SerializeField] private AudioSource _completeSound;
+        [SerializeField] private AudioSource _pushSound;
 
-    public void Init()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-    
-    public void Activate()
-    {        
-        _explosion.Play();
-        gameObject.SetActive(true);
-        _pushSound.Play();
-    }
+        private BoxModel _model;
 
-    public void PlayAudio()
-    {
-        if (gameObject.activeSelf == true)
-            _audioSource.Play();
-    }
+        public void Reset() => 
+            _model.Reset();
 
-    public void PlayGoodParticle()
-    {
-        _goodParticle.Play();
-    }
-
-    public void PlayBadParticle()
-    {
-        if (gameObject.activeSelf == true)
+        public void Init(BoxModel model)
         {
-            if (_coroutineParticle != null)
-                StopCoroutine(_coroutineParticle);
-
-            _coroutineParticle = StartCoroutine(OnPlayBadParticle(_badParticle));
+            _model = model;
+            
+            _model.Init(GetComponent<Rigidbody>(), _badParticle, _goodParticle,
+                _explosion, _completeSound, _pushSound);
         }
-    }
 
-    private IEnumerator OnPlayBadParticle(ParticleSystem typeParticle)
-    {
-        const float delay = 1;
+        public void Activate() => 
+            _model.Activate();
 
-        typeParticle.Play();
+        public void PlayAudioComplete() => 
+            _model.PlayAudioComplete();
 
-        yield return new WaitForSeconds(delay);
+        public void PlayGoodParticle() => 
+            _model.PlayGoodParticle();
 
-        Reset();
-    }
-
-    private IEnumerator Deactivate()
-    {
-        _explosion.Play();
-        
-        Vector3 templateScale = transform.localScale;
-
-        transform.LeanScale(Vector3.zero, SpeedCleanAnimation);
-        
-        yield return new WaitWhile(() => _explosion.isPlaying);
-        
-        gameObject.transform.localScale = templateScale;
-        _rigidbody.velocity = Vector3.zero;
-        gameObject.SetActive(false);
+        public void PlayBadParticle() => 
+            _model.PlayBadParticle();
     }
 }

@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class DeliverPoint : MonoBehaviour
+namespace Source.Game.Scripts
 {
+    public class DeliverPoint : MonoBehaviour
+    {
+    }
 }

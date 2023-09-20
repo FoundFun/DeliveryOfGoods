@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Movement
+namespace Source.Moduls.Movement
 {
     [RequireComponent(typeof(Rigidbody))]
     internal class CharacterMovement : MonoBehaviour

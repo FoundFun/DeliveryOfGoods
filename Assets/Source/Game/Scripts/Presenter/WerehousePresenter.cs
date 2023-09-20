@@ -1,36 +1,40 @@
 using System;
+using Source.Game.Scripts.Spawn;
 using UnityEngine;
 
-public class WerehousePresenter : MonoBehaviour
+namespace Source.Game.Scripts.Presenter
 {
-    [SerializeField] private TruckPresenter _truckPresenter;
-    [SerializeField] private Transform _startDeliverPoint;
-    [SerializeField] private Transform _loadingArea;
-    [SerializeField] private SpawnerBox _spawnerBox;
-    [SerializeField] private SceneLoader _sceneLoader;
-    [SerializeField] private ParticleSystem _smokeExplosion;
-
-    private int _currentMissBox;
-
-    public event Action BoxFallen;
-
-    private void OnTriggerEnter(Collider other)
+    public class WerehousePresenter : MonoBehaviour
     {
-        if(other.TryGetComponent(out BoxPresenter boxPresenter))
+        [SerializeField] private TruckPresenter _truckPresenter;
+        [SerializeField] private Transform _startDeliverPoint;
+        [SerializeField] private Transform _loadingArea;
+        [SerializeField] private SpawnerBox _spawnerBox;
+        [SerializeField] private SceneLoader _sceneLoader;
+        [SerializeField] private ParticleSystem _smokeExplosion;
+
+        private int _currentMissBox;
+
+        public event Action BoxFallen;
+
+        private void OnTriggerEnter(Collider other)
         {
-            BoxFallen?.Invoke();
-            boxPresenter.PlayBadParticle();
-            boxPresenter.PlayAudio();
+            if(other.TryGetComponent(out BoxPresenter boxPresenter))
+            {
+                BoxFallen?.Invoke();
+                boxPresenter.PlayBadParticle();
+                boxPresenter.PlayAudioComplete();
+            }
         }
-    }
 
-    public void Reset()
-    {
-        _smokeExplosion.Play();
-        _sceneLoader.Load();
-        _spawnerBox.Reset();
-        _truckPresenter.transform.position = _startDeliverPoint.position;
-        _truckPresenter.Reset();
-        _truckPresenter.Move(_loadingArea.position);
+        public void Reset()
+        {
+            _smokeExplosion.Play();
+            _sceneLoader.Load();
+            _spawnerBox.Reset();
+            _truckPresenter.transform.position = _startDeliverPoint.position;
+            _truckPresenter.Reset();
+            _truckPresenter.Move(_loadingArea.position);
+        }
     }
 }
