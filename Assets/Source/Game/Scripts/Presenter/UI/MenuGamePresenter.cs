@@ -1,5 +1,5 @@
 using System;
-using Source.Game.Scripts.Model;
+using Source.Game.Scripts.Configure;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
@@ -7,7 +7,8 @@ namespace Source.Game.Scripts.Presenter.UI
     public class MenuGamePresenter : ScreenPresenter
     {
         [SerializeField] private MenuGameView _menuGameView;
-        [SerializeField] private Config.Config _config;
+
+        private Config _config;
 
         public event Action OpenedGame;
         public event Action OpenedSettings;
@@ -23,6 +24,9 @@ namespace Source.Game.Scripts.Presenter.UI
             _menuGameView.StartButtonClick -= OnStartButtonClick;
             _menuGameView.SettingsButtonClick -= OnSettingsButtonClick;
         }
+
+        public void Init(Config config) =>
+            _config = config;
 
         private void OnStartButtonClick()
         {

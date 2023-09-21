@@ -32,7 +32,7 @@ namespace Source.Game.Scripts
 
         private void DeleteComponents(Transform transform, string componentName)
         {
-            var uselessComponent = transform.GetComponent(componentName);
+            Component uselessComponent = transform.GetComponent(componentName);
             if (uselessComponent != null)
                 Object.DestroyImmediate(uselessComponent);
 

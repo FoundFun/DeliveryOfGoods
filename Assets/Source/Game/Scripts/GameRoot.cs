@@ -1,4 +1,5 @@
-using Source.Game.Scripts.Config;
+using Source.Game.Scripts;
+using Source.Game.Scripts.Configure;
 using Source.Game.Scripts.Model;
 using Source.Game.Scripts.Presenter;
 using Source.Game.Scripts.Presenter.UI;
@@ -18,13 +19,19 @@ public class GameRoot : MonoBehaviour
     [SerializeField] private WerehousePresenter _werehousePresenter;
     [SerializeField] private SceneLoader _sceneLoader;
 
-    private BoxModel _boxModel;
+    private TruckModel _truckModel;
 
     private void Awake()
     {
-        _spawnerBox.Init();
+        _truckModel = new TruckModel();
+
+        _truckPresenter.Init(_truckModel, _config);
+        _spawnerBox.Init(_config);
         _bordHeartPresenter.Init();
-        _gamePresenter.Init();
+        _gamePresenter.Init(_config);
+        _menuGamePresenter.Init(_config);
+        _sceneLoader.Init(_config);
+        
         _menuGamePresenter.Open();
         _gamePresenter.Close();
         _settingsPresenter.Close();
@@ -48,8 +55,8 @@ public class GameRoot : MonoBehaviour
         _gamePresenter.ResetHeart += _bordHeartPresenter.Reset;
         _gamePresenter.LoadedNextScene += _werehousePresenter.Reset;
         _bordSkipPresenter.Restart += _werehousePresenter.Reset;
-        _truckPresenter.AddScoreBody += _gamePresenter.OnAddScore;
-        _truckPresenter.LevelCompleted += _gamePresenter.OnLevelCompleted;
+        _truckModel.AddScoreBody += _gamePresenter.OnAddScore;
+        _truckModel.LevelCompleted += _gamePresenter.OnLevelCompleted;
         _werehousePresenter.BoxFallen += _gamePresenter.OnBoxFallen;
     }
 
@@ -64,8 +71,8 @@ public class GameRoot : MonoBehaviour
         _gamePresenter.ResetHeart -= _bordHeartPresenter.Reset;
         _gamePresenter.LoadedNextScene -= _werehousePresenter.Reset;
         _bordSkipPresenter.Restart -= _werehousePresenter.Reset;
-        _truckPresenter.AddScoreBody -= _gamePresenter.OnAddScore;
-        _truckPresenter.LevelCompleted -= _gamePresenter.OnLevelCompleted;
+        _truckModel.AddScoreBody -= _gamePresenter.OnAddScore;
+        _truckModel.LevelCompleted -= _gamePresenter.OnLevelCompleted;
         _werehousePresenter.BoxFallen -= _gamePresenter.OnBoxFallen;
     }
 }

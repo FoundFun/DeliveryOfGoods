@@ -10,7 +10,7 @@ namespace Source.Game.Scripts.Presenter
 
         private void Awake()
         {
-            _pipeModel = new PipeModel(this);
+            _pipeModel = new PipeModel();
             _pipeModel.Init(GetComponent<Rigidbody>(), GetComponent<Renderer>().material);
         }
 

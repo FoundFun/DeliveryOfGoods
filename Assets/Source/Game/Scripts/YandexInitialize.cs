@@ -12,10 +12,8 @@ namespace Source.Game.Scripts
     
         private Coroutine _coroutine;
     
-        private void Awake()
-        {
+        private void Awake() => 
             YandexGamesSdk.CallbackLogging = true;
-        }
 
         private IEnumerator Start()
         {
@@ -45,19 +43,14 @@ namespace Source.Game.Scripts
 
             string localization = YandexGamesSdk.Environment.i18n.lang;
 
-            switch (localization)
+            localization = localization switch
             {
-                case enCulture:
-                    localization = english;
-                    break;
-                case ruCulture:
-                    localization = russian;
-                    break;
-                case trCulture:
-                    localization = turkish;
-                    break;
-            }
-        
+                enCulture => english,
+                ruCulture => russian,
+                trCulture => turkish,
+                _ => localization
+            };
+
             _localization.SetCurrentLanguage(localization);
         }
     }

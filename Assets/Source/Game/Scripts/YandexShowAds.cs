@@ -21,11 +21,11 @@ namespace Source.Game.Scripts
 
         private void StartGame(bool wasShow)
         {
-            if (wasShow)
-            {
-                Time.timeScale = 1;
-                _gameMusic.mute = false;
-            }
+            if (!wasShow)
+                return;
+            
+            Time.timeScale = 1;
+            _gameMusic.mute = false;
         }
 
         private void StartGame()

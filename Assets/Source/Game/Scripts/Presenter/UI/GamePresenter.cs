@@ -1,5 +1,5 @@
 using System;
-using Source.Game.Scripts.Model;
+using Source.Game.Scripts.Configure;
 using Source.Game.Scripts.Spawn;
 using UnityEngine;
 
@@ -11,8 +11,9 @@ namespace Source.Game.Scripts.Presenter.UI
         [SerializeField] private SpawnerBox _spawnerBox;
         [SerializeField] private BordHeartPresenter _bordHeart;
         [SerializeField] private SceneLoader _sceneLoader;
-        [SerializeField] private Config.Config _config;
         [SerializeField] private YandexShowAds _yandexShowAds;
+
+        private Config _config;
 
         public event Action OpenedMenu;
         public event Action ResetScene;
@@ -31,8 +32,9 @@ namespace Source.Game.Scripts.Presenter.UI
             _gameView.LoadNextLevel -= OnLoadNextLevel;
         }
 
-        public void Init()
+        public void Init(Config config)
         {
+            _config = config;
             _gameView.Init();
         }
 

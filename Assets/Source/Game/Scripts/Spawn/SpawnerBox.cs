@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Source.Game.Scripts.Configure;
 using Source.Game.Scripts.Model;
 using Source.Game.Scripts.Presenter;
 using UnityEngine;
@@ -10,8 +11,8 @@ namespace Source.Game.Scripts.Spawn
     {
         [SerializeField] private BoxPresenter[] _boxes;
         [SerializeField] private GameObject _container;
-        [SerializeField] private Config.Config _config;
 
+        private Config _config;
         private List<BoxPresenter> _poolBoxes;
         private SpawnPoint _spawnPoints;
         private Coroutine _spawnCoroutine;
@@ -24,14 +25,15 @@ namespace Source.Game.Scripts.Spawn
                 box.Reset();
         }
     
-        public void Init()
+        public void Init(Config config)
         {
+            _config = config;
             _spawnPoints = GetComponentInChildren<SpawnPoint>();
             _poolBoxes = Initialize(_boxes, _container);
 
             foreach (var box in _poolBoxes)
             {
-                BoxModel model = new BoxModel(box);
+                BoxModel model = new BoxModel();
                 box.Init(model);
             }
         }

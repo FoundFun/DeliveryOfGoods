@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Source.Game.Scripts.Config
+namespace Source.Game.Scripts.Configure
 {
     [CreateAssetMenu(fileName = "Config", order = 51)]
     public class Config : ScriptableObject

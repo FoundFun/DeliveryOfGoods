@@ -1,14 +1,21 @@
-using Source.Game.Scripts.Config;
-using Source.Game.Scripts.Model;
+using Source.Game.Scripts.Configure;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+namespace Source.Game.Scripts
 {
-    [SerializeField] private Config _config;
-    
-    public void Load()
+    public class SceneLoader : MonoBehaviour
     {
-        SceneManager.LoadScene(_config.NameScene + _config.CurrentLevel);
+        private Config _config;
+
+        public void Init(Config config)
+        {
+            _config = config;
+        }
+    
+        public void Load()
+        {
+            SceneManager.LoadScene(_config.NameScene + _config.CurrentLevel);
+        }
     }
 }
