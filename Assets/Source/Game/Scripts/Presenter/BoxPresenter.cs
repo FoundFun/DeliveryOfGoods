@@ -15,7 +15,7 @@ namespace Source.Game.Scripts.Presenter
         private BoxModel _model;
 
         public void Reset() => 
-            _model.Reset();
+            _model.Reset(this);
 
         public void Init(BoxModel model)
         {
@@ -26,15 +26,15 @@ namespace Source.Game.Scripts.Presenter
         }
 
         public void Activate() => 
-            _model.Activate();
+            _model.Activate(gameObject);
 
         public void PlayAudioComplete() => 
-            _model.PlayAudioComplete();
+            _model.PlayAudioComplete(gameObject);
 
         public void PlayGoodParticle() => 
             _model.PlayGoodParticle();
 
         public void PlayBadParticle() => 
-            _model.PlayBadParticle();
+            _model.PlayBadParticle(this);
     }
 }

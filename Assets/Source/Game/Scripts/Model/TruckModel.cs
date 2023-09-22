@@ -1,5 +1,4 @@
 ﻿using System;
-using Source.Game.Scripts.Presenter;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Model
@@ -8,21 +7,14 @@ namespace Source.Game.Scripts.Model
     {
         private ParticleSystem[] _smokesExhaust;
 
-        private TruckPresenter _presenter;
-
         private int _boxInBody;
         private bool _isDelivery;
 
         public event Action<int> AddScoreBody;
         public event Action LevelCompleted;
 
-        public TruckModel(TruckPresenter presenter) =>
-            _presenter = presenter;
-
-        public void Init(ParticleSystem[] smokesExhaust, DeliverPoint endDeliverPoint, Config.Config config)
-        {
+        public void Init(ParticleSystem[] smokesExhaust) => 
             _smokesExhaust = smokesExhaust;
-        }
 
         public void Reset()
         {
@@ -47,6 +39,12 @@ namespace Source.Game.Scripts.Model
             PlayExhaust();
             transform.LeanMoveZ(targetPosition.z, animationTime);
             Complete();
+        }
+
+        public void AddScore(int score)
+        {
+            _boxInBody = score;
+            AddScoreBody?.Invoke(_boxInBody);
         }
 
         private void Complete() =>

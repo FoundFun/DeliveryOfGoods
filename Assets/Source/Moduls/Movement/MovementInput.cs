@@ -1,4 +1,4 @@
-using Source.Game.Scripts.Config;
+using Source.Game.Scripts.Configure;
 using UnityEngine;
 
 namespace Source.Moduls.Movement

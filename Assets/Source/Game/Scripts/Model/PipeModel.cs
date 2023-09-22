@@ -1,5 +1,4 @@
-﻿using Source.Game.Scripts.Presenter;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Source.Game.Scripts.Model
 {
@@ -11,13 +10,6 @@ namespace Source.Game.Scripts.Model
 
         private Rigidbody _rigidbody;
         private Material _material;
-
-        private PipePresenter _presenter;
-
-        public PipeModel(PipePresenter presenter)
-        {
-            _presenter = presenter;
-        }
 
         public void Init(Rigidbody rigidbody, Material material)
         {

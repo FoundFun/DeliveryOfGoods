@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
-using Source.Game.Scripts.Presenter;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Model
 {
     public class BoxModel
     {
-        private readonly BoxPresenter _presenter;
-
         private Rigidbody _rigidbody;
         private Coroutine _coroutineParticle;
         private Coroutine _coroutineExplosion;
@@ -18,19 +14,16 @@ namespace Source.Game.Scripts.Model
         private AudioSource _pushSound;
         private AudioSource _completeSound;
 
-        public BoxModel(BoxPresenter presenter) => 
-            _presenter = presenter;
-
-        public void Reset()
+        public void Reset(MonoBehaviour objectBehaviour)
         {
             if (_coroutineParticle != null)
-                _presenter.StopCoroutine(_coroutineParticle);
+                objectBehaviour.StopCoroutine(_coroutineParticle);
 
             if (_coroutineExplosion != null)
-                _presenter.StopCoroutine(_coroutineExplosion);
+                objectBehaviour.StopCoroutine(_coroutineExplosion);
 
-            if (_presenter.gameObject.activeSelf)
-                _coroutineExplosion = _presenter.StartCoroutine(Deactivate());
+            if (objectBehaviour.gameObject.activeSelf)
+                _coroutineExplosion = objectBehaviour.StartCoroutine(Deactivate(objectBehaviour.gameObject));
         }
 
         public void Init(Rigidbody rigidbody, ParticleSystem badParticle, ParticleSystem goodParticle,
@@ -45,16 +38,16 @@ namespace Source.Game.Scripts.Model
             _pushSound = pushSound;
         }
 
-        public void Activate()
+        public void Activate(GameObject gameObject)
         {
             _explosion.Play();
-            _presenter.gameObject.SetActive(true);
+            gameObject.SetActive(true);
             _pushSound.Play();
         }
 
-        public void PlayAudioComplete()
+        public void PlayAudioComplete(GameObject gameObject)
         {
-            if (_presenter.gameObject.activeSelf)
+            if (gameObject.activeSelf)
                 _completeSound.Play();
         }
 
@@ -63,18 +56,18 @@ namespace Source.Game.Scripts.Model
             _goodParticle.Play();
         }
 
-        public void PlayBadParticle()
+        public void PlayBadParticle(MonoBehaviour objectBehaviour)
         {
-            if (!_presenter.gameObject.activeSelf)
+            if (!objectBehaviour.gameObject.activeSelf)
                 return;
-            
-            if (_coroutineParticle != null)
-                _presenter.StopCoroutine(_coroutineParticle);
 
-            _coroutineParticle = _presenter.StartCoroutine(OnPlayBadParticle(_badParticle));
+            if (_coroutineParticle != null)
+                objectBehaviour.StopCoroutine(_coroutineParticle);
+
+            _coroutineParticle = objectBehaviour.StartCoroutine(OnPlayBadParticle(objectBehaviour, _badParticle));
         }
 
-        private IEnumerator OnPlayBadParticle(ParticleSystem typeParticle)
+        private IEnumerator OnPlayBadParticle(MonoBehaviour objectBehaviour, ParticleSystem typeParticle)
         {
             const float delay = 1;
 
@@ -82,24 +75,24 @@ namespace Source.Game.Scripts.Model
 
             yield return new WaitForSeconds(delay);
 
-            Reset();
+            Reset(objectBehaviour);
         }
 
-        private IEnumerator Deactivate()
+        private IEnumerator Deactivate(GameObject gameObject)
         {
             const float speedCleanAnimation = 1;
 
             _explosion.Play();
 
-            Vector3 templateScale = _presenter.transform.localScale;
+            Vector3 templateScale = gameObject.transform.localScale;
 
-            _presenter.transform.LeanScale(Vector3.zero, speedCleanAnimation);
+            gameObject.transform.LeanScale(Vector3.zero, speedCleanAnimation);
 
             yield return new WaitWhile(() => _explosion.isPlaying);
 
-            _presenter.gameObject.transform.localScale = templateScale;
+            gameObject.gameObject.transform.localScale = templateScale;
             _rigidbody.velocity = Vector3.zero;
-            _presenter.gameObject.SetActive(false);
+            gameObject.gameObject.SetActive(false);
         }
     }
 }
