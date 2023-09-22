@@ -7,7 +7,7 @@ namespace Source.Game.Scripts.Presenter
     public class TruckPresenter : MonoBehaviour
     {
         [SerializeField] private ParticleSystem[] _smokesExhaust;
-        [SerializeField] private DeliverPoint _endDeliverPoint;
+        [SerializeField] private Transform _endDeliverPoint;
 
         private Config _config;
         private TruckModel _model;
@@ -25,7 +25,7 @@ namespace Source.Game.Scripts.Presenter
             _model.AddScore(_boxInBody);
 
             if (_boxInBody >= _config.CurrentDeliverBox && _isDelivery == false)
-                _model.Deliver(gameObject.transform, _endDeliverPoint.transform.position);
+                _model.Deliver(gameObject.transform, _endDeliverPoint.position);
         }
 
         public void Reset() => 
