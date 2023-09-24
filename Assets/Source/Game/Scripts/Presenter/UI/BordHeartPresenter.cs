@@ -7,10 +7,9 @@ namespace Source.Game.Scripts.Presenter.UI
 {
     public class BordHeartPresenter : MonoBehaviour
     {
-        [SerializeField] private SpawnerBox _spawnerBox;
-        [SerializeField] private BordResurrectPresenter _bordResurrect;
-        [SerializeField] private BordSkipPresenter _bordSkip;
-
+        private SpawnerBox _spawnerBox;
+        private BordResurrectPresenter _bordResurrect;
+        private BordSkipPresenter _bordSkip;
         private HeartPresenter[] _hearts;
         private Coroutine _coroutine;
         private int _numberHeart;
@@ -33,8 +32,12 @@ namespace Source.Game.Scripts.Presenter.UI
             DisableBord();
         }
 
-        public void Init()
+        public void Init(SpawnerBox spawnerBox, BordResurrectPresenter bordResurrect, BordSkipPresenter bordSkip)
         {
+            _spawnerBox = spawnerBox;
+            _bordResurrect = bordResurrect;
+            _bordSkip = bordSkip;
+            
             _hearts = GetComponentsInChildren<HeartPresenter>();
             _numberHeart = _hearts.Count(heart => heart.Fill == 1);
             DisableBord();
@@ -52,17 +55,17 @@ namespace Source.Game.Scripts.Presenter.UI
                 _numberHeart--;
             }
 
-            if (_numberHeart <= 0 && _isLive == true)
-            {
-                _isLive = false;
-                _spawnerBox.Inactive();
-                _spawnerBox.Reset();
+            if (_numberHeart > 0 || _isLive != true)
+                return;
+            
+            _isLive = false;
+            _spawnerBox.Inactive();
+            _spawnerBox.Reset();
 
-                if (_coroutine != null)
-                    StopCoroutine(_coroutine);
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-                _coroutine = StartCoroutine(EnableGameOverBord());
-            }
+            _coroutine = StartCoroutine(EnableGameOverBord());
         }
 
         public void Recover()

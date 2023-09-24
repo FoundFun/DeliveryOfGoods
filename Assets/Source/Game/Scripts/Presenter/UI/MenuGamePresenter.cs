@@ -1,5 +1,6 @@
 using System;
 using Source.Game.Scripts.Configure;
+using Source.Game.Scripts.View;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI

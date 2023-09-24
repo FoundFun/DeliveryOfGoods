@@ -2,23 +2,26 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsView : MonoBehaviour
+namespace Source.Game.Scripts.View
 {
-    [SerializeField] private Button _exitButton;
-
-    public event Action ExitButtonClick;
-
-    private void OnEnable()
+    public class SettingsView : MonoBehaviour
     {
-        _exitButton.onClick.AddListener(OnExitButtonClick);
-    }
+        [SerializeField] private Button _exitButton;
 
-    private void OnDisable()
-    {
-        _exitButton.onClick.RemoveListener(OnExitButtonClick);
-    }
-    private void OnExitButtonClick()
-    {
-        ExitButtonClick?.Invoke();
+        public event Action ExitButtonClick;
+
+        private void OnEnable()
+        {
+            _exitButton.onClick.AddListener(OnExitButtonClick);
+        }
+
+        private void OnDisable()
+        {
+            _exitButton.onClick.RemoveListener(OnExitButtonClick);
+        }
+        private void OnExitButtonClick()
+        {
+            ExitButtonClick?.Invoke();
+        }
     }
 }

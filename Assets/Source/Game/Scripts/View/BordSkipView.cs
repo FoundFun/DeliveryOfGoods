@@ -2,24 +2,27 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BordSkipView : MonoBehaviour
+namespace Source.Game.Scripts.View
 {
-    [SerializeField] private Button _restartButton;
-
-    public event Action Restart;
-
-    private void OnEnable()
+    public class BordSkipView : MonoBehaviour
     {
-        _restartButton.onClick.AddListener(OnRestart);
-    }
+        [SerializeField] private Button _restartButton;
 
-    private void OnDisable()
-    {
-        _restartButton.onClick.RemoveListener(OnRestart);
-    }
+        public event Action Restart;
 
-    private void OnRestart()
-    {
-        Restart?.Invoke();
+        private void OnEnable()
+        {
+            _restartButton.onClick.AddListener(OnRestart);
+        }
+
+        private void OnDisable()
+        {
+            _restartButton.onClick.RemoveListener(OnRestart);
+        }
+
+        private void OnRestart()
+        {
+            Restart?.Invoke();
+        }
     }
 }

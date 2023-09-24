@@ -1,3 +1,4 @@
+using Source.Game.Scripts.View;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
@@ -5,8 +6,9 @@ namespace Source.Game.Scripts.Presenter.UI
     public class BordResurrectPresenter : MonoBehaviour
     {
         [SerializeField] private BordResurrectView _bordResurrectView;
-        [SerializeField] private BordHeartPresenter _heartPresenter;
-        [SerializeField] private YandexShowAds _yandexShowAds;
+
+        private BordHeartPresenter _bordHeartPresenter;
+        private YandexShowAds _yandexShowAds;
 
         private void OnEnable()
         {
@@ -18,9 +20,15 @@ namespace Source.Game.Scripts.Presenter.UI
             _bordResurrectView.ShowAds -= OnShowAds;
         }
 
-        public void OnResurrect()
+        public void Init(BordHeartPresenter bordHeart, YandexShowAds yandexShowAds)
         {
-            _heartPresenter.Recover();
+            _bordHeartPresenter = bordHeart;
+            _yandexShowAds = yandexShowAds;
+        }
+
+    public void OnResurrect()
+        {
+            _bordHeartPresenter.Recover();
         }
 
         private void OnShowAds()

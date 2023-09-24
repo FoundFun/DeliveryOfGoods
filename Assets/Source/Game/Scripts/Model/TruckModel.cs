@@ -9,6 +9,9 @@ namespace Source.Game.Scripts.Model
 
         private int _boxInBody;
         private bool _isDelivery;
+        
+        public int BoxInBody => _boxInBody;
+        public bool IsDelivery => _isDelivery;
 
         public event Action<int> AddScoreBody;
         public event Action LevelCompleted;
@@ -41,9 +44,9 @@ namespace Source.Game.Scripts.Model
             Complete();
         }
 
-        public void AddScore(int score)
+        public void AddScore()
         {
-            _boxInBody = score;
+            _boxInBody++;
             AddScoreBody?.Invoke(_boxInBody);
         }
 

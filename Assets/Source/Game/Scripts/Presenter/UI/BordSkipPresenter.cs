@@ -1,4 +1,5 @@
 using System;
+using Source.Game.Scripts.View;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
@@ -6,8 +7,9 @@ namespace Source.Game.Scripts.Presenter.UI
     public class BordSkipPresenter : MonoBehaviour
     {
         [SerializeField] private BordSkipView _view;
-        [SerializeField] private BordHeartPresenter _heartPresenter;
-        [SerializeField] private YandexShowAds _yandexShowAds;
+
+        private BordHeartPresenter _bordHeartPresenter;
+        private YandexShowAds _yandexShowAds;
 
         public event Action Restart;
 
@@ -21,13 +23,19 @@ namespace Source.Game.Scripts.Presenter.UI
             _view.Restart -= OnRestart;
         }
 
+        public void Init(BordHeartPresenter bordHeart, YandexShowAds yandexShowAds)
+        {
+            _bordHeartPresenter = bordHeart;
+            _yandexShowAds = yandexShowAds;
+        }
+
         private void OnRestart()
         {
 #if !UNITY_EDITOR
         _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
             Restart?.Invoke();
-            _heartPresenter.Recover();
+            _bordHeartPresenter.Recover();
         }
     }
 }

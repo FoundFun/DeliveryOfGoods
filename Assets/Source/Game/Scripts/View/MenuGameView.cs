@@ -2,33 +2,36 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuGameView : MonoBehaviour
+namespace Source.Game.Scripts.View
 {
-    [SerializeField] private Button _startButton;
-    [SerializeField] private Button _settingsButton;
-
-    public event Action StartButtonClick;
-    public event Action SettingsButtonClick;
-
-    private void OnEnable()
+    public class MenuGameView : MonoBehaviour
     {
-        _startButton.onClick.AddListener(OnStartButtonClick);
-        _settingsButton.onClick.AddListener(OnSettingsButtonClick);
-    }
+        [SerializeField] private Button _startButton;
+        [SerializeField] private Button _settingsButton;
 
-    private void OnDisable()
-    {
-        _startButton.onClick.RemoveListener(OnStartButtonClick);
-        _settingsButton.onClick.RemoveListener(OnSettingsButtonClick);
-    }
+        public event Action StartButtonClick;
+        public event Action SettingsButtonClick;
 
-    private void OnStartButtonClick()
-    {
-        StartButtonClick?.Invoke();
-    }
+        private void OnEnable()
+        {
+            _startButton.onClick.AddListener(OnStartButtonClick);
+            _settingsButton.onClick.AddListener(OnSettingsButtonClick);
+        }
 
-    private void OnSettingsButtonClick()
-    {
-        SettingsButtonClick?.Invoke();
+        private void OnDisable()
+        {
+            _startButton.onClick.RemoveListener(OnStartButtonClick);
+            _settingsButton.onClick.RemoveListener(OnSettingsButtonClick);
+        }
+
+        private void OnStartButtonClick()
+        {
+            StartButtonClick?.Invoke();
+        }
+
+        private void OnSettingsButtonClick()
+        {
+            SettingsButtonClick?.Invoke();
+        }
     }
 }

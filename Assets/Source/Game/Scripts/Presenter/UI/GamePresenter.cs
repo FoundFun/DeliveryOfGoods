@@ -1,19 +1,21 @@
 using System;
 using Source.Game.Scripts.Configure;
 using Source.Game.Scripts.Spawn;
+using Source.Game.Scripts.View;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
 {
     public class GamePresenter : ScreenPresenter
     {
+        [SerializeField] private ParticleSystem _confetti;
         [SerializeField] private GameView _gameView;
-        [SerializeField] private SpawnerBox _spawnerBox;
-        [SerializeField] private BordHeartPresenter _bordHeart;
-        [SerializeField] private SceneLoader _sceneLoader;
-        [SerializeField] private YandexShowAds _yandexShowAds;
 
         private Config _config;
+        private SpawnerBox _spawnerBox;
+        private SceneLoader _sceneLoader;
+        private BordHeartPresenter _bordHeart;
+        private YandexShowAds _yandexShowAds;
 
         public event Action OpenedMenu;
         public event Action ResetScene;
@@ -32,9 +34,14 @@ namespace Source.Game.Scripts.Presenter.UI
             _gameView.LoadNextLevel -= OnLoadNextLevel;
         }
 
-        public void Init(Config config)
+        public void Init(Config config, BordHeartPresenter bordHeart,
+            SpawnerBox spawnerBox, SceneLoader sceneLoader, YandexShowAds yandexShowAds)
         {
             _config = config;
+            _bordHeart = bordHeart;
+            _spawnerBox = spawnerBox;
+            _sceneLoader = sceneLoader;
+            _yandexShowAds = yandexShowAds;
             _gameView.Init();
         }
 
@@ -79,6 +86,7 @@ namespace Source.Game.Scripts.Presenter.UI
 
         public void OnLevelCompleted()
         {
+            _confetti.Play();
             _bordHeart.Reset();
             _gameView.EnableNextLevelButton();
             _spawnerBox.Inactive();
