@@ -1,4 +1,5 @@
 using Source.Game.Scripts.View;
+using Source.Game.Scripts.Yandex;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
@@ -10,15 +11,11 @@ namespace Source.Game.Scripts.Presenter.UI
         private BordHeartPresenter _bordHeartPresenter;
         private YandexShowAds _yandexShowAds;
 
-        private void OnEnable()
-        {
+        private void OnEnable() => 
             _bordResurrectView.ShowAds += OnShowAds;
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() => 
             _bordResurrectView.ShowAds -= OnShowAds;
-        }
 
         public void Init(BordHeartPresenter bordHeart, YandexShowAds yandexShowAds)
         {
@@ -26,14 +23,12 @@ namespace Source.Game.Scripts.Presenter.UI
             _yandexShowAds = yandexShowAds;
         }
 
-    public void OnResurrect()
-        {
+        public void OnResurrect() => 
             _bordHeartPresenter.Recover();
-        }
 
         private void OnShowAds()
         {
-#if !UNITY_EDITOR
+#if YANDEX_GAMES
         _yandexShowAds.OnShowVideoButtonClick();
 #endif
             OnResurrect();

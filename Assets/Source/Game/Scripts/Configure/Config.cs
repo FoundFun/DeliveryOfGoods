@@ -6,7 +6,7 @@ namespace Source.Game.Scripts.Configure
     [CreateAssetMenu(fileName = "Config", order = 51)]
     public class Config : ScriptableObject
     {
-        public readonly string NameScene = "Level";
+        public const string NameScene = "Level";
 
         private const string SpawnSpeedText = "SpawnSpeed";
         private const string CurrentDeliverBoxText = "CurrentDeliverBox";
@@ -26,18 +26,20 @@ namespace Source.Game.Scripts.Configure
 
         public event Action<int> ChangedTargetScore;
 
-        public void EnableGame()
-        {
+        public void EnableGame() => 
             IsGaming = true;
-        }
 
-        public void DisableGame()
-        {
+        public void DisableGame() => 
             IsGaming = false;
-        }
 
         public void UpdateValue()
         {
+            PlayerPrefs.DeleteAll();
+
+            SpawnSpeed = 2.5f;
+            CurrentDeliverBox = 3;
+            CurrentLevel = 0;
+
             if (PlayerPrefs.HasKey(SpawnSpeedText))
                 SpawnSpeed = PlayerPrefs.GetFloat(SpawnSpeedText);
             if (PlayerPrefs.HasKey(CurrentDeliverBoxText))

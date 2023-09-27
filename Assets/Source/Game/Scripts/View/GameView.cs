@@ -11,9 +11,10 @@ namespace Source.Game.Scripts.View
         [SerializeField] private Button _exitButton;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _tutorialButton;
+        [SerializeField] private Button _emptyTutorialButton;
         [SerializeField] private TMP_Text _scoreInBodyText;
         [SerializeField] private TMP_Text _scoreTargetText;
-        [SerializeField] private TMP_Text _tutorial;
+        [SerializeField] private TMP_Text _tutorialText;
 
         private const string Slash = "/";
 
@@ -28,6 +29,7 @@ namespace Source.Game.Scripts.View
             _exitButton.onClick.AddListener(OnExitButtonClick);
             _nextLevelButton.onClick.AddListener(OnLoadNextLevel);
             _tutorialButton.onClick.AddListener(EnableTutorial);
+            _emptyTutorialButton.onClick.AddListener(DisableTutorial);
         }
 
         private void OnDisable()
@@ -35,22 +37,17 @@ namespace Source.Game.Scripts.View
             _exitButton.onClick.RemoveListener(OnExitButtonClick);
             _nextLevelButton.onClick.RemoveListener(OnLoadNextLevel);
             _tutorialButton.onClick.RemoveListener(EnableTutorial);
+            _emptyTutorialButton.onClick.RemoveListener(DisableTutorial);
         }
 
-        public void Init()
-        {
+        public void Init() => 
             _scoreInBodyText.text = 0.ToString();
-        }
 
-        public void AddScore(int score)
-        {
+        public void AddScore(int score) => 
             _scoreInBodyText.text = score.ToString();
-        }
 
-        public void SetTargetScore(int score)
-        {
+        public void SetTargetScore(int score) => 
             _scoreTargetText.text = Slash + score;
-        }
 
         public void EnableNextLevelButton()
         {
@@ -66,7 +63,19 @@ namespace Source.Game.Scripts.View
             _nextLevelButton.transform.LeanScale(Vector3.zero, animationTime).setEaseOutExpo();
         }
 
-        private void EnableTutorial()
+        public void DisableTutorial()
+        {
+            const float animationTime = 0.2f;
+        
+            _tutorialText.transform.LeanScale(Vector3.zero, animationTime);
+        
+            _isTutorial = false;
+            
+            if (_emptyTutorialButton.gameObject.activeSelf) 
+                _emptyTutorialButton.gameObject.SetActive(false);
+        }
+
+        public void EnableTutorial()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
@@ -77,36 +86,23 @@ namespace Source.Game.Scripts.View
                 DisableTutorial();
         }
 
-        private void DisableTutorial()
-        {
-            const float animationTime = 0.2f;
-        
-            _tutorial.transform.LeanScale(Vector3.zero, animationTime);
-        
-            _isTutorial = false;
-        }
-
         private IEnumerator OnEnableTutorial()
         {
             const float delay = 2;
             const float animationTime = 0.2f;
 
             _isTutorial = true;
-            _tutorial.gameObject.LeanScale(Vector3.one, animationTime);
+            _tutorialText.gameObject.LeanScale(Vector3.one, animationTime);
 
             yield return new WaitForSeconds(delay);
 
             DisableTutorial();
         }
 
-        private void OnExitButtonClick()
-        {
+        private void OnExitButtonClick() => 
             ExitButtonClick?.Invoke();
-        }
 
-        private void OnLoadNextLevel()
-        {
+        private void OnLoadNextLevel() => 
             LoadNextLevel?.Invoke();
-        }
     }
 }

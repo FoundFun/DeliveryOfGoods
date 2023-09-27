@@ -51,10 +51,8 @@ namespace Source.Game.Scripts.Model
                 _completeSound.Play();
         }
 
-        public void PlayGoodParticle()
-        {
+        public void PlayGoodParticle() => 
             _goodParticle.Play();
-        }
 
         public void PlayBadParticle(MonoBehaviour objectBehaviour)
         {

@@ -10,19 +10,13 @@ namespace Source.Game.Scripts.View
 
         public event Action Restart;
 
-        private void OnEnable()
-        {
+        private void OnEnable() => 
             _restartButton.onClick.AddListener(OnRestart);
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() => 
             _restartButton.onClick.RemoveListener(OnRestart);
-        }
 
-        private void OnRestart()
-        {
+        private void OnRestart() => 
             Restart?.Invoke();
-        }
     }
 }

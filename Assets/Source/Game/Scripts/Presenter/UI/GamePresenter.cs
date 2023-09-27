@@ -2,12 +2,14 @@ using System;
 using Source.Game.Scripts.Configure;
 using Source.Game.Scripts.Spawn;
 using Source.Game.Scripts.View;
+using Source.Game.Scripts.Yandex;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
 {
     public class GamePresenter : ScreenPresenter
     {
+        private const int FirstLevel = 1;
         [SerializeField] private ParticleSystem _confetti;
         [SerializeField] private GameView _gameView;
 
@@ -45,20 +47,20 @@ namespace Source.Game.Scripts.Presenter.UI
             _gameView.Init();
         }
 
-        public void OnAddScore(int score)
+        public void EnableStartTutorial()
         {
+            if (_config.CurrentLevel == FirstLevel) 
+                _gameView.EnableTutorial();
+        }
+
+        public void OnAddScore(int score) => 
             _gameView.AddScore(score);
-        }
 
-        public void SetTargetScore(int score)
-        {
+        public void SetTargetScore(int score) => 
             _gameView.SetTargetScore(score);
-        }
 
-        public void OnBoxFallen()
-        {
+        public void OnBoxFallen() => 
             _bordHeart.TakeDamage();
-        }
 
         protected override void OpenScreen()
         {
@@ -77,15 +79,18 @@ namespace Source.Game.Scripts.Presenter.UI
 
         private void OnCloseButtonClick()
         {
-#if !UNITY_EDITOR
+#if YANDEX_GAMES
         _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
-            Close();
+            CloseScreen();
+            _gameView.DisableNextButton();
+            _gameView.DisableTutorial();
             OpenedMenu?.Invoke();
         }
 
         public void OnLevelCompleted()
         {
+            _config.DisableGame();
             _confetti.Play();
             _bordHeart.Reset();
             _gameView.EnableNextLevelButton();
@@ -95,7 +100,7 @@ namespace Source.Game.Scripts.Presenter.UI
 
         private void OnLoadNextLevel()
         {
-#if !UNITY_EDITOR
+#if YANDEX_GAMES
         _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
             _config.Improve();
@@ -103,6 +108,7 @@ namespace Source.Game.Scripts.Presenter.UI
             _gameView.DisableNextButton();
             LoadedNextScene?.Invoke();
             _spawnerBox.Active();
+            _config.EnableGame();
         }
     }
 }

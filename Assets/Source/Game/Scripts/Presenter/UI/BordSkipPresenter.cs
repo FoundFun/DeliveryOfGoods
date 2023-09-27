@@ -1,5 +1,6 @@
 using System;
 using Source.Game.Scripts.View;
+using Source.Game.Scripts.Yandex;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
@@ -13,15 +14,11 @@ namespace Source.Game.Scripts.Presenter.UI
 
         public event Action Restart;
 
-        private void OnEnable()
-        {
+        private void OnEnable() => 
             _view.Restart += OnRestart;
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() => 
             _view.Restart -= OnRestart;
-        }
 
         public void Init(BordHeartPresenter bordHeart, YandexShowAds yandexShowAds)
         {
@@ -31,7 +28,7 @@ namespace Source.Game.Scripts.Presenter.UI
 
         private void OnRestart()
         {
-#if !UNITY_EDITOR
+#if YANDEX_GAMES
         _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
             Restart?.Invoke();

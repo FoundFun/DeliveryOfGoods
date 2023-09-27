@@ -8,14 +8,10 @@ namespace Source.Game.Scripts
     {
         private Config _config;
 
-        public void Init(Config config)
-        {
+        public void Init(Config config) => 
             _config = config;
-        }
-    
-        public void Load()
-        {
-            SceneManager.LoadScene(_config.NameScene + _config.CurrentLevel);
-        }
+
+        public void Load() => 
+            SceneManager.LoadScene(Config.NameScene + _config.CurrentLevel);
     }
 }

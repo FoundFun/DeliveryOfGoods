@@ -4,9 +4,7 @@ namespace Source.Game.Scripts
 {
     public class DontDestroy : MonoBehaviour
     {
-        private void Start()
-        {
+        private void Start() => 
             DontDestroyOnLoad(gameObject);
-        }
     }
 }

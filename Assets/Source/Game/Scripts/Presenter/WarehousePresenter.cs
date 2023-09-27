@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter
 {
-    public class WerehousePresenter : MonoBehaviour
+    public class WarehousePresenter : MonoBehaviour
     {
         [SerializeField] private Transform _startDeliverPoint;
         [SerializeField] private Transform _loadingArea;
@@ -19,12 +19,12 @@ namespace Source.Game.Scripts.Presenter
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out BoxPresenter boxPresenter))
-            {
-                BoxFallen?.Invoke();
-                boxPresenter.PlayBadParticle();
-                boxPresenter.PlayAudioComplete();
-            }
+            if (!other.TryGetComponent(out BoxPresenter boxPresenter)) 
+                return;
+            
+            BoxFallen?.Invoke();
+            boxPresenter.PlayBadParticle();
+            boxPresenter.PlayAudioComplete();
         }
 
         public void Reset()

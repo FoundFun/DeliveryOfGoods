@@ -2,22 +2,18 @@ using Agava.YandexGames;
 using Source.Game.Scripts.Presenter.UI;
 using UnityEngine;
 
-namespace Source.Game.Scripts
+namespace Source.Game.Scripts.Yandex
 {
     public class YandexShowAds : MonoBehaviour
     {
         [SerializeField] private AudioSource _gameMusic;
         [SerializeField] private BordResurrectPresenter _bordResurrectPresenter;
 
-        public void OnShowInterstitialButtonClick()
-        {
+        public void OnShowInterstitialButtonClick() => 
             InterstitialAd.Show(StopGame, StartGame);
-        }
 
-        public void OnShowVideoButtonClick()
-        {
+        public void OnShowVideoButtonClick() => 
             VideoAd.Show(StopGame, _bordResurrectPresenter.OnResurrect, StartGame);
-        }
 
         private void StartGame(bool wasShow)
         {

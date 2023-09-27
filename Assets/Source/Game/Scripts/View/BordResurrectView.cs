@@ -10,19 +10,13 @@ namespace Source.Game.Scripts.View
     
         public event Action ShowAds;
     
-        private void OnEnable()
-        {
+        private void OnEnable() => 
             _showAdsButton.onClick.AddListener(OnShowAds);
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() => 
             _showAdsButton.onClick.RemoveListener(OnShowAds);
-        }
 
-        private void OnShowAds()
-        {
+        private void OnShowAds() => 
             ShowAds?.Invoke();
-        }
     }
 }

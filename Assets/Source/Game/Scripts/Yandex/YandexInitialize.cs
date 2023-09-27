@@ -3,7 +3,7 @@ using Agava.YandexGames;
 using Lean.Localization;
 using UnityEngine;
 
-namespace Source.Game.Scripts
+namespace Source.Game.Scripts.Yandex
 {
     public class YandexInitialize : MonoBehaviour
     {
@@ -17,7 +17,7 @@ namespace Source.Game.Scripts
 
         private IEnumerator Start()
         {
-#if !UNITY_WEBGL || UNITY_EDITOR
+#if !YANDEX_GAMES
             yield break;
 #endif
             if (_coroutine != null)
@@ -39,8 +39,6 @@ namespace Source.Game.Scripts
 
             yield return new WaitUntil(() => YandexGamesSdk.IsInitialized);
         
-            _yandexShowAds.OnShowInterstitialButtonClick();
-
             string localization = YandexGamesSdk.Environment.i18n.lang;
 
             localization = localization switch
