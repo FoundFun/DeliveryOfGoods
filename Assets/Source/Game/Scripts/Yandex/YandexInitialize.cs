@@ -7,7 +7,6 @@ namespace Source.Game.Scripts.Yandex
 {
     public class YandexInitialize : MonoBehaviour
     {
-        [SerializeField] private YandexShowAds _yandexShowAds;
         [SerializeField] private LeanLocalization _localization;
     
         private Coroutine _coroutine;
