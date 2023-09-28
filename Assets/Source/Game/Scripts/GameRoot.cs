@@ -21,6 +21,7 @@ namespace Source.Game.Scripts
         [SerializeField] private WarehousePresenter _warehousePresenter;
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private YandexShowAds _yandexShowAds;
+        [SerializeField] private SoundChangePresenter _soundChangePresenter;
 
         private TruckModel _truckModel;
 
@@ -41,6 +42,7 @@ namespace Source.Game.Scripts
             _gamePresenter.Init(_config, _bordHeartPresenter,
                 _spawnerBox, _sceneLoader, _yandexShowAds);
             _menuGamePresenter.Init(_config);
+            _soundChangePresenter.Init(_config);
 
             _menuGamePresenter.Open();
             _gamePresenter.Close();

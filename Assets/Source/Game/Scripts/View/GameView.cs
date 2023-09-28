@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Source.Game.Scripts.Yandex;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +9,13 @@ namespace Source.Game.Scripts.View
 {
     public class GameView : MonoBehaviour
     {
+        [SerializeField] private YandexLeaderBord _leaderBord;
         [SerializeField] private Button _exitButton;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _tutorialButton;
         [SerializeField] private Button _emptyTutorialButton;
+        [SerializeField] private Button _openLeaderBordButton;
+        [SerializeField] private Button _closeLeaderBordButton;
         [SerializeField] private TMP_Text _scoreInBodyText;
         [SerializeField] private TMP_Text _scoreTargetText;
         [SerializeField] private TMP_Text _tutorialText;
@@ -30,6 +34,8 @@ namespace Source.Game.Scripts.View
             _nextLevelButton.onClick.AddListener(OnLoadNextLevel);
             _tutorialButton.onClick.AddListener(EnableTutorial);
             _emptyTutorialButton.onClick.AddListener(DisableTutorial);
+            _openLeaderBordButton.onClick.AddListener(OpenLeaderBord);
+            _closeLeaderBordButton.onClick.AddListener(CloseLeaderBord);
         }
 
         private void OnDisable()
@@ -38,6 +44,8 @@ namespace Source.Game.Scripts.View
             _nextLevelButton.onClick.RemoveListener(OnLoadNextLevel);
             _tutorialButton.onClick.RemoveListener(EnableTutorial);
             _emptyTutorialButton.onClick.RemoveListener(DisableTutorial);
+            _openLeaderBordButton.onClick.RemoveListener(OpenLeaderBord);
+            _closeLeaderBordButton.onClick.RemoveListener(CloseLeaderBord);
         }
 
         public void Init() => 
@@ -84,6 +92,20 @@ namespace Source.Game.Scripts.View
                 _coroutine = StartCoroutine(OnEnableTutorial());
             else
                 DisableTutorial();
+        }
+
+        private void OpenLeaderBord()
+        {
+            const float timeAnimation = 1f;
+
+            _leaderBord.gameObject.LeanScale(Vector3.one, timeAnimation).setEaseOutElastic();
+        }
+
+        private void CloseLeaderBord()
+        {
+            const float timeAnimation = 0.5f;
+
+            _leaderBord.gameObject.LeanScale(Vector3.zero, timeAnimation).setEaseInBack();
         }
 
         private IEnumerator OnEnableTutorial()

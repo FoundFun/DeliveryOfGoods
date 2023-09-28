@@ -11,6 +11,7 @@ namespace Source.Game.Scripts.Configure
         private const string SpawnSpeedText = "SpawnSpeed";
         private const string CurrentDeliverBoxText = "CurrentDeliverBox";
         private const string CurrentLevelText = "CurrentLevel";
+        private const string CurrentSoundVolumeText = "CurrentSoundVolume";
 
         private const float MinSpawnSpeed = 1.5f;
         private const float StepSpeedImprove = -0.02f;
@@ -23,6 +24,8 @@ namespace Source.Game.Scripts.Configure
         public int CurrentLevel { get; private set; } = 0;
 
         public bool IsGaming { get; private set; }
+        
+        public float SoundVolume { get; private set; }
 
         public event Action<int> ChangedTargetScore;
 
@@ -46,8 +49,16 @@ namespace Source.Game.Scripts.Configure
                 CurrentDeliverBox = PlayerPrefs.GetInt(CurrentDeliverBoxText);
             if (PlayerPrefs.HasKey(CurrentLevelText))
                 CurrentLevel = PlayerPrefs.GetInt(CurrentLevelText);
-            
+            if (PlayerPrefs.HasKey(CurrentSoundVolumeText)) 
+                SoundVolume = PlayerPrefs.GetFloat(CurrentSoundVolumeText);
+
             ChangedTargetScore?.Invoke(CurrentDeliverBox);
+        }
+
+        public void SetSoundVolume(float currentVolume)
+        {
+            SoundVolume = currentVolume;
+            PlayerPrefs.SetFloat(CurrentSoundVolumeText, SoundVolume);
         }
         
         public void Improve()
