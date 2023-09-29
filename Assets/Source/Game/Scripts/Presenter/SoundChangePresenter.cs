@@ -1,5 +1,4 @@
-﻿using Source.Game.Scripts.Configure;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
@@ -10,35 +9,34 @@ namespace Source.Game.Scripts.Presenter
         [SerializeField] private AudioMixerGroup _master;
         [SerializeField] private Toggle _toggle;
 
-        private Config _config;
+        private const string MasterVolume = "MasterVolume";
 
         private void OnEnable() => 
             _toggle.onValueChanged.AddListener(ToggleMusic);
 
-        private void OnDisable() => 
+        private void OnDisable() =>
             _toggle.onValueChanged.RemoveListener(ToggleMusic);
-
-        public void Init(Config config) => 
-            _config = config;
 
         public void PlayMusic()
         {
-            _config.SetSoundVolume(0f);
-            _master.audioMixer.SetFloat("MasterVolume", _config.SoundVolume);
+            const float volume = 0f;
+
+            _master.audioMixer.SetFloat(MasterVolume, volume);
         }
 
         public void StopMusic()
         {
-            _config.SetSoundVolume(-80f);
-            _master.audioMixer.SetFloat("MasterVolume", _config.SoundVolume);
+            const float volume = -80f;
+
+            _master.audioMixer.SetFloat(MasterVolume, volume);
         }
 
         private void ToggleMusic(bool isEnabled)
         {
             if (isEnabled)
-                PlayMusic();
-            else
                 StopMusic();
+            else
+                PlayMusic();
         }
     }
 }

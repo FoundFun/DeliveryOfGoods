@@ -16,6 +16,12 @@ namespace Source.Game.Scripts.View
         private void OnDisable() => 
             _restartButton.onClick.RemoveListener(OnRestart);
 
+        public void ActiveRestartButton() => 
+            _restartButton.interactable = true;
+
+        public void InactiveRestartButton() => 
+            _restartButton.interactable = false;
+
         private void OnRestart() => 
             Restart?.Invoke();
     }

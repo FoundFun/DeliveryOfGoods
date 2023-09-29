@@ -26,6 +26,9 @@ namespace Source.Game.Scripts.Presenter.UI
             _yandexShowAds = yandexShowAds;
         }
 
+        public void ActiveRestartButton() => 
+            _view.ActiveRestartButton();
+
         private void OnRestart()
         {
 #if YANDEX_GAMES

@@ -18,10 +18,11 @@ namespace Source.Game.Scripts
         [SerializeField] private BordSkipPresenter _bordSkipPresenter;
         [SerializeField] private BordHeartPresenter _bordHeartPresenter;
         [SerializeField] private BordResurrectPresenter _bordResurrectPresenter;
+        [SerializeField] private ScorePresenter _scorePresenter;
         [SerializeField] private WarehousePresenter _warehousePresenter;
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private YandexShowAds _yandexShowAds;
-        [SerializeField] private SoundChangePresenter _soundChangePresenter;
+        [SerializeField] private YandexLeaderBord _yandexLeaderBord;
 
         private TruckModel _truckModel;
 
@@ -40,9 +41,10 @@ namespace Source.Game.Scripts
             _bordResurrectPresenter.Init(_bordHeartPresenter,
                 _yandexShowAds);
             _gamePresenter.Init(_config, _bordHeartPresenter,
-                _spawnerBox, _sceneLoader, _yandexShowAds);
+                _spawnerBox, _sceneLoader, _yandexShowAds, _yandexLeaderBord);
             _menuGamePresenter.Init(_config);
-            _soundChangePresenter.Init(_config);
+            _scorePresenter.Init();
+            _yandexLeaderBord.Init(_config,_spawnerBox);
 
             _menuGamePresenter.Open();
             _gamePresenter.Close();

@@ -15,6 +15,12 @@ namespace Source.Game.Scripts.View
 
         private void OnDisable() => 
             _showAdsButton.onClick.RemoveListener(OnShowAds);
+        
+        public void ActiveRestartButton() => 
+            _showAdsButton.interactable = true;
+
+        public void InactiveRestartButton() => 
+            _showAdsButton.interactable = false;
 
         private void OnShowAds() => 
             ShowAds?.Invoke();

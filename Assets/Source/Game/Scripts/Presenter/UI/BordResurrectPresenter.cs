@@ -26,12 +26,15 @@ namespace Source.Game.Scripts.Presenter.UI
         public void OnResurrect() => 
             _bordHeartPresenter.Recover();
 
+        public void ActiveRestartButton() => 
+            _bordResurrectView.ActiveRestartButton();
+
         private void OnShowAds()
         {
 #if YANDEX_GAMES
         _yandexShowAds.OnShowVideoButtonClick();
 #endif
-            OnResurrect();
+            _bordResurrectView.InactiveRestartButton();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Source.Game.Scripts.Configure
         private const string SpawnSpeedText = "SpawnSpeed";
         private const string CurrentDeliverBoxText = "CurrentDeliverBox";
         private const string CurrentLevelText = "CurrentLevel";
-        private const string CurrentSoundVolumeText = "CurrentSoundVolume";
+        private const string ScoreLeaderBordText = "ScoreLeaderBord";
 
         private const float MinSpawnSpeed = 1.5f;
         private const float StepSpeedImprove = -0.02f;
@@ -25,8 +25,8 @@ namespace Source.Game.Scripts.Configure
 
         public bool IsGaming { get; private set; }
         
-        public float SoundVolume { get; private set; }
-
+        public int ScoreLeaderBord { get; private set; }
+        
         public event Action<int> ChangedTargetScore;
 
         public void EnableGame() => 
@@ -49,18 +49,12 @@ namespace Source.Game.Scripts.Configure
                 CurrentDeliverBox = PlayerPrefs.GetInt(CurrentDeliverBoxText);
             if (PlayerPrefs.HasKey(CurrentLevelText))
                 CurrentLevel = PlayerPrefs.GetInt(CurrentLevelText);
-            if (PlayerPrefs.HasKey(CurrentSoundVolumeText)) 
-                SoundVolume = PlayerPrefs.GetFloat(CurrentSoundVolumeText);
+            if (PlayerPrefs.HasKey(ScoreLeaderBordText))
+                ScoreLeaderBord = PlayerPrefs.GetInt(ScoreLeaderBordText);
 
             ChangedTargetScore?.Invoke(CurrentDeliverBox);
         }
 
-        public void SetSoundVolume(float currentVolume)
-        {
-            SoundVolume = currentVolume;
-            PlayerPrefs.SetFloat(CurrentSoundVolumeText, SoundVolume);
-        }
-        
         public void Improve()
         {
             if (CurrentLevel >= _targetLevel)
@@ -78,6 +72,12 @@ namespace Source.Game.Scripts.Configure
             PlayerPrefs.SetFloat(SpawnSpeedText, SpawnSpeed);
             PlayerPrefs.SetInt(CurrentDeliverBoxText, CurrentDeliverBox);
             PlayerPrefs.SetInt(CurrentLevelText, CurrentLevel);
+        }
+
+        public void AddScoreLeaderBord()
+        {
+            ScoreLeaderBord++;
+            PlayerPrefs.SetInt(ScoreLeaderBordText, ScoreLeaderBord);
         }
     }
 }

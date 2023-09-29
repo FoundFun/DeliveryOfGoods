@@ -20,6 +20,7 @@ namespace Source.Game.Scripts.Presenter
             box.PlayGoodParticle();
             box.PlayAudioComplete();
             _model.AddScore();
+            _config.AddScoreLeaderBord();
 
             if (_model.BoxInBody >= _config.CurrentDeliverBox && _model.IsDelivery == false)
                 _model.Deliver(gameObject.transform, _endDeliverPoint.position);

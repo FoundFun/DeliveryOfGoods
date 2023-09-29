@@ -85,10 +85,12 @@ namespace Source.Game.Scripts.Presenter.UI
             const float animationTime = 0.5f;
             const float delay = 2;
 
+            _bordResurrect.ActiveRestartButton();
             _bordResurrect.transform.LeanScale(Vector3.one, animationTime).setEaseOutExpo();
 
             yield return new WaitForSeconds(delay);
 
+            _bordSkip.ActiveRestartButton();
             _bordSkip.transform.LeanScale(Vector3.one, animationTime).setEaseOutExpo();
         }
 

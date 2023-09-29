@@ -9,15 +9,18 @@ namespace Source.Game.Scripts.Presenter.UI
 {
     public class GamePresenter : ScreenPresenter
     {
-        private const int FirstLevel = 1;
-        [SerializeField] private ParticleSystem _confetti;
         [SerializeField] private GameView _gameView;
+        [SerializeField] private ParticleSystem _confetti;
+        [SerializeField] private ScorePresenter _scorePresenter;
+
+        private const int FirstLevel = 1;
 
         private Config _config;
         private SpawnerBox _spawnerBox;
         private SceneLoader _sceneLoader;
         private BordHeartPresenter _bordHeart;
         private YandexShowAds _yandexShowAds;
+        private YandexLeaderBord _yandexLeaderBord;
 
         public event Action OpenedMenu;
         public event Action ResetScene;
@@ -37,29 +40,29 @@ namespace Source.Game.Scripts.Presenter.UI
         }
 
         public void Init(Config config, BordHeartPresenter bordHeart,
-            SpawnerBox spawnerBox, SceneLoader sceneLoader, YandexShowAds yandexShowAds)
+            SpawnerBox spawnerBox, SceneLoader sceneLoader, YandexShowAds yandexShowAds, YandexLeaderBord yandexLeaderBord)
         {
             _config = config;
             _bordHeart = bordHeart;
             _spawnerBox = spawnerBox;
             _sceneLoader = sceneLoader;
             _yandexShowAds = yandexShowAds;
-            _gameView.Init();
+            _yandexLeaderBord = yandexLeaderBord;
         }
 
         public void EnableStartTutorial()
         {
-            if (_config.CurrentLevel == FirstLevel) 
+            if (_config.CurrentLevel == FirstLevel)
                 _gameView.EnableTutorial();
         }
 
-        public void OnAddScore(int score) => 
-            _gameView.AddScore(score);
+        public void OnAddScore(int score) =>
+            _scorePresenter.AddScore(score);
 
-        public void SetTargetScore(int score) => 
-            _gameView.SetTargetScore(score);
+        public void SetTargetScore(int score) =>
+            _scorePresenter.SetTargetScore(score);
 
-        public void OnBoxFallen() => 
+        public void OnBoxFallen() =>
             _bordHeart.TakeDamage();
 
         protected override void OpenScreen()
@@ -80,7 +83,7 @@ namespace Source.Game.Scripts.Presenter.UI
         private void OnCloseButtonClick()
         {
 #if YANDEX_GAMES
-        _yandexShowAds.OnShowInterstitialButtonClick();
+            _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
             CloseScreen();
             _gameView.DisableNextButton();
@@ -101,7 +104,8 @@ namespace Source.Game.Scripts.Presenter.UI
         private void OnLoadNextLevel()
         {
 #if YANDEX_GAMES
-        _yandexShowAds.OnShowInterstitialButtonClick();
+            _yandexShowAds.OnShowInterstitialButtonClick();
+            _yandexLeaderBord.OnSetLeaderboardScoreButtonClick();
 #endif
             _config.Improve();
             _sceneLoader.Load();
