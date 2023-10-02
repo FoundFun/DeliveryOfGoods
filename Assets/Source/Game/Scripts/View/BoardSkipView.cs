@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Source.Game.Scripts.View
 {
-    public class BordSkipView : MonoBehaviour
+    public class BoardSkipView : MonoBehaviour
     {
         [SerializeField] private Button _restartButton;
 

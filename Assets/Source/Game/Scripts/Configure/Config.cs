@@ -37,12 +37,6 @@ namespace Source.Game.Scripts.Configure
 
         public void UpdateValue()
         {
-            PlayerPrefs.DeleteAll();
-
-            SpawnSpeed = 2.5f;
-            CurrentDeliverBox = 3;
-            CurrentLevel = 0;
-
             if (PlayerPrefs.HasKey(SpawnSpeedText))
                 SpawnSpeed = PlayerPrefs.GetFloat(SpawnSpeedText);
             if (PlayerPrefs.HasKey(CurrentDeliverBoxText))

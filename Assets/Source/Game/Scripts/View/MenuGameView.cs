@@ -43,7 +43,9 @@ namespace Source.Game.Scripts.View
         private IEnumerator PlayAnimationText()
         {
             const float time = 1;
-            Vector3 startScale = new (0.6f, 0.6f, 0.6f);
+            const float defaultScale = 0.6f;
+
+            Vector3 startScale = new(defaultScale, defaultScale, defaultScale);
 
             while (_isMenuGame)
             {
@@ -52,7 +54,7 @@ namespace Source.Game.Scripts.View
                 yield return new WaitForSeconds(time);
 
                 _startText.gameObject.LeanScale(startScale, time).setLoopPingPong();
-                
+
                 yield return new WaitForSeconds(time);
             }
         }

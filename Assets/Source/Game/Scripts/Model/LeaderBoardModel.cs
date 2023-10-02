@@ -1,13 +1,15 @@
-﻿namespace Source.Game.Scripts.Yandex
+﻿using Source.Game.Scripts.View;
+
+namespace Source.Game.Scripts.Model
 {
-    public class Bord
+    public class LeaderBoardModel
     {
-        private readonly BordView _view;
+        private readonly LeaderBoardView _view;
         private readonly int _number;
         private readonly string _name;
         private readonly int _score;
 
-        public Bord(BordView view,int number, string name, int score)
+        public LeaderBoardModel(LeaderBoardView view,int number, string name, int score)
         {
             _view = view;
             _number = number;

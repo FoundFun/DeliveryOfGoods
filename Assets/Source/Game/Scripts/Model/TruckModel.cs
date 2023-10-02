@@ -7,11 +7,9 @@ namespace Source.Game.Scripts.Model
     {
         private ParticleSystem[] _smokesExhaust;
 
-        private int _boxInBody;
-        private bool _isDelivery;
-        
-        public int BoxInBody => _boxInBody;
-        public bool IsDelivery => _isDelivery;
+        public int BoxInBody { get; private set; }
+
+        public bool IsDelivery { get; private set; }
 
         public event Action<int> AddScoreBody;
         public event Action LevelCompleted;
@@ -21,9 +19,9 @@ namespace Source.Game.Scripts.Model
 
         public void Reset()
         {
-            _isDelivery = false;
-            _boxInBody = 0;
-            AddScoreBody?.Invoke(_boxInBody);
+            IsDelivery = false;
+            BoxInBody = 0;
+            AddScoreBody?.Invoke(BoxInBody);
         }
 
         public void Move(Transform transform, Vector3 targetPosition)
@@ -38,7 +36,7 @@ namespace Source.Game.Scripts.Model
         {
             const float animationTime = 3;
 
-            _isDelivery = true;
+            IsDelivery = true;
             PlayExhaust();
             transform.LeanMoveZ(targetPosition.z, animationTime);
             Complete();
@@ -46,8 +44,8 @@ namespace Source.Game.Scripts.Model
 
         public void AddScore()
         {
-            _boxInBody++;
-            AddScoreBody?.Invoke(_boxInBody);
+            BoxInBody++;
+            AddScoreBody?.Invoke(BoxInBody);
         }
 
         private void Complete() =>

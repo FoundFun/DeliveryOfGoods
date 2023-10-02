@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
 {
-    public class BordSkipPresenter : MonoBehaviour
+    public class BoardSkipPresenter : MonoBehaviour
     {
-        [SerializeField] private BordSkipView _view;
+        [SerializeField] private BoardSkipView _view;
 
-        private BordHeartPresenter _bordHeartPresenter;
+        private BoardHeartPresenter _boardHeartPresenter;
         private YandexShowAds _yandexShowAds;
 
         public event Action Restart;
@@ -20,9 +20,9 @@ namespace Source.Game.Scripts.Presenter.UI
         private void OnDisable() => 
             _view.Restart -= OnRestart;
 
-        public void Init(BordHeartPresenter bordHeart, YandexShowAds yandexShowAds)
+        public void Init(BoardHeartPresenter boardHeart, YandexShowAds yandexShowAds)
         {
-            _bordHeartPresenter = bordHeart;
+            _boardHeartPresenter = boardHeart;
             _yandexShowAds = yandexShowAds;
         }
 
@@ -35,7 +35,7 @@ namespace Source.Game.Scripts.Presenter.UI
         _yandexShowAds.OnShowInterstitialButtonClick();
 #endif
             Restart?.Invoke();
-            _bordHeartPresenter.Recover();
+            _boardHeartPresenter.Recover();
         }
     }
 }

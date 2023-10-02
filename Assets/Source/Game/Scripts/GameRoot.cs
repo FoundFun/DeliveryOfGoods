@@ -15,14 +15,14 @@ namespace Source.Game.Scripts
         [SerializeField] private MenuGamePresenter _menuGamePresenter;
         [SerializeField] private GamePresenter _gamePresenter;
         [SerializeField] private TruckPresenter _truckPresenter;
-        [SerializeField] private BordSkipPresenter _bordSkipPresenter;
-        [SerializeField] private BordHeartPresenter _bordHeartPresenter;
-        [SerializeField] private BordResurrectPresenter _bordResurrectPresenter;
+        [SerializeField] private BoardSkipPresenter _boardSkipPresenter;
+        [SerializeField] private BoardHeartPresenter _boardHeartPresenter;
+        [SerializeField] private BoardResurrectPresenter _boardResurrectPresenter;
         [SerializeField] private ScorePresenter _scorePresenter;
         [SerializeField] private WarehousePresenter _warehousePresenter;
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private YandexShowAds _yandexShowAds;
-        [SerializeField] private YandexLeaderBord _yandexLeaderBord;
+        [SerializeField] private YandexLeaderBoard _yandexLeaderBoard;
 
         private TruckModel _truckModel;
 
@@ -35,16 +35,17 @@ namespace Source.Game.Scripts
             _spawnerBox.Init(_config);
             _warehousePresenter.Init(_spawnerBox,
                 _sceneLoader, _truckPresenter);
-            _bordHeartPresenter.Init(_spawnerBox,
-                _bordResurrectPresenter, _bordSkipPresenter, _config);
-            _bordSkipPresenter.Init(_bordHeartPresenter, _yandexShowAds);
-            _bordResurrectPresenter.Init(_bordHeartPresenter,
+            _boardHeartPresenter.Init(_spawnerBox,
+                _boardResurrectPresenter, _boardSkipPresenter, _config);
+            _boardSkipPresenter.Init(_boardHeartPresenter, _yandexShowAds);
+            _boardResurrectPresenter.Init(_boardHeartPresenter,
                 _yandexShowAds);
-            _gamePresenter.Init(_config, _bordHeartPresenter,
-                _spawnerBox, _sceneLoader, _yandexShowAds, _yandexLeaderBord);
+            _gamePresenter.Init(_config, _boardHeartPresenter,
+                _spawnerBox, _sceneLoader, _yandexShowAds, _yandexLeaderBoard);
             _menuGamePresenter.Init(_config);
             _scorePresenter.Init();
-            _yandexLeaderBord.Init(_config,_spawnerBox);
+            _yandexLeaderBoard.Init(_config,_spawnerBox);
+            _yandexShowAds.Init(_boardResurrectPresenter);
 
             _menuGamePresenter.Open();
             _gamePresenter.Close();
@@ -53,9 +54,9 @@ namespace Source.Game.Scripts
         private void Start()
         {
             _config.UpdateValue();
-            _gamePresenter.EnableStartTutorial();
             _sceneLoader.Load();
             _warehousePresenter.Reset();
+            _gamePresenter.EnableStartTutorial();
         }
 
         private void OnEnable()
@@ -64,9 +65,9 @@ namespace Source.Game.Scripts
             _menuGamePresenter.OpenedGame += _gamePresenter.Open;
             _gamePresenter.OpenedMenu += _menuGamePresenter.Open;
             _gamePresenter.ResetScene += _warehousePresenter.Reset;
-            _gamePresenter.ResetHeart += _bordHeartPresenter.Reset;
+            _gamePresenter.ResetHeart += _boardHeartPresenter.Reset;
             _gamePresenter.LoadedNextScene += _warehousePresenter.Reset;
-            _bordSkipPresenter.Restart += _warehousePresenter.Reset;
+            _boardSkipPresenter.Restart += _warehousePresenter.Reset;
             _truckModel.AddScoreBody += _gamePresenter.OnAddScore;
             _truckModel.LevelCompleted += _gamePresenter.OnLevelCompleted;
             _warehousePresenter.BoxFallen += _gamePresenter.OnBoxFallen;
@@ -78,9 +79,9 @@ namespace Source.Game.Scripts
             _menuGamePresenter.OpenedGame -= _gamePresenter.Open;
             _gamePresenter.OpenedMenu -= _menuGamePresenter.Open;
             _gamePresenter.ResetScene -= _warehousePresenter.Reset;
-            _gamePresenter.ResetHeart -= _bordHeartPresenter.Reset;
+            _gamePresenter.ResetHeart -= _boardHeartPresenter.Reset;
             _gamePresenter.LoadedNextScene -= _warehousePresenter.Reset;
-            _bordSkipPresenter.Restart -= _warehousePresenter.Reset;
+            _boardSkipPresenter.Restart -= _warehousePresenter.Reset;
             _truckModel.AddScoreBody -= _gamePresenter.OnAddScore;
             _truckModel.LevelCompleted -= _gamePresenter.OnLevelCompleted;
             _warehousePresenter.BoxFallen -= _gamePresenter.OnBoxFallen;

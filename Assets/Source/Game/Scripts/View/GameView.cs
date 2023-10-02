@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +25,6 @@ namespace Source.Game.Scripts.View
             _nextLevelButton.onClick.AddListener(OnLoadNextLevel);
             _tutorialButton.onClick.AddListener(EnableTutorial);
             _emptyTutorialButton.onClick.AddListener(DisableTutorial);
-
         }
 
         private void OnDisable()
@@ -56,12 +54,12 @@ namespace Source.Game.Scripts.View
         public void DisableTutorial()
         {
             const float animationTime = 0.2f;
-        
+
             _tutorialText.transform.LeanScale(Vector3.zero, animationTime);
-        
+
             _isTutorial = false;
-            
-            if (_emptyTutorialButton.gameObject.activeSelf) 
+
+            if (_emptyTutorialButton.gameObject.activeSelf)
                 _emptyTutorialButton.gameObject.SetActive(false);
         }
 
@@ -71,28 +69,23 @@ namespace Source.Game.Scripts.View
                 StopCoroutine(_coroutine);
 
             if (!_isTutorial)
-                _coroutine = StartCoroutine(OnEnableTutorial());
+                OnEnableTutorial();
             else
                 DisableTutorial();
         }
 
-        private IEnumerator OnEnableTutorial()
+        private void OnEnableTutorial()
         {
-            const float delay = 2;
             const float animationTime = 0.2f;
 
             _isTutorial = true;
             _tutorialText.gameObject.LeanScale(Vector3.one, animationTime);
-
-            yield return new WaitForSeconds(delay);
-
-            DisableTutorial();
         }
 
-        private void OnExitButtonClick() => 
+        private void OnExitButtonClick() =>
             ExitButtonClick?.Invoke();
 
-        private void OnLoadNextLevel() => 
+        private void OnLoadNextLevel() =>
             LoadNextLevel?.Invoke();
     }
 }

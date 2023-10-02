@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Source.Game.Scripts.View
 {
-    public class BordResurrectView : MonoBehaviour
+    public class BoardResurrectView : MonoBehaviour
     {
         [SerializeField] private Button _showAdsButton;
     

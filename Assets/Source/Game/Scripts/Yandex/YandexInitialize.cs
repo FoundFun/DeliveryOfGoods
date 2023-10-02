@@ -58,9 +58,7 @@ namespace Source.Game.Scripts.Yandex
             _localization.SetCurrentLanguage(localization);
         }
         
-        private void OnAuthorizedInBackground()
-        {
+        private void OnAuthorizedInBackground() => 
             Debug.Log($"{nameof(OnAuthorizedInBackground)} {PlayerAccount.IsAuthorized}");
-        }
     }
 }

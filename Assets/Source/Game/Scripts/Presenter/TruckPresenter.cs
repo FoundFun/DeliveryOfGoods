@@ -19,6 +19,7 @@ namespace Source.Game.Scripts.Presenter
 
             box.PlayGoodParticle();
             box.PlayAudioComplete();
+            
             _model.AddScore();
             _config.AddScoreLeaderBord();
 

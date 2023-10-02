@@ -13,14 +13,14 @@ namespace Source.Game.Scripts.Presenter.UI
         [SerializeField] private ParticleSystem _confetti;
         [SerializeField] private ScorePresenter _scorePresenter;
 
-        private const int FirstLevel = 1;
+        private const int FirstLevel = 0;
 
         private Config _config;
         private SpawnerBox _spawnerBox;
         private SceneLoader _sceneLoader;
-        private BordHeartPresenter _bordHeart;
+        private BoardHeartPresenter _boardHeart;
         private YandexShowAds _yandexShowAds;
-        private YandexLeaderBord _yandexLeaderBord;
+        private YandexLeaderBoard _yandexLeaderBoard;
 
         public event Action OpenedMenu;
         public event Action ResetScene;
@@ -39,15 +39,15 @@ namespace Source.Game.Scripts.Presenter.UI
             _gameView.LoadNextLevel -= OnLoadNextLevel;
         }
 
-        public void Init(Config config, BordHeartPresenter bordHeart,
-            SpawnerBox spawnerBox, SceneLoader sceneLoader, YandexShowAds yandexShowAds, YandexLeaderBord yandexLeaderBord)
+        public void Init(Config config, BoardHeartPresenter boardHeart,
+            SpawnerBox spawnerBox, SceneLoader sceneLoader, YandexShowAds yandexShowAds, YandexLeaderBoard yandexLeaderBoard)
         {
             _config = config;
-            _bordHeart = bordHeart;
+            _boardHeart = boardHeart;
             _spawnerBox = spawnerBox;
             _sceneLoader = sceneLoader;
             _yandexShowAds = yandexShowAds;
-            _yandexLeaderBord = yandexLeaderBord;
+            _yandexLeaderBoard = yandexLeaderBoard;
         }
 
         public void EnableStartTutorial()
@@ -63,7 +63,7 @@ namespace Source.Game.Scripts.Presenter.UI
             _scorePresenter.SetTargetScore(score);
 
         public void OnBoxFallen() =>
-            _bordHeart.TakeDamage();
+            _boardHeart.TakeDamage();
 
         protected override void OpenScreen()
         {
@@ -95,7 +95,7 @@ namespace Source.Game.Scripts.Presenter.UI
         {
             _config.DisableGame();
             _confetti.Play();
-            _bordHeart.Reset();
+            _boardHeart.Reset();
             _gameView.EnableNextLevelButton();
             _spawnerBox.Inactive();
             _spawnerBox.Reset();
@@ -105,7 +105,7 @@ namespace Source.Game.Scripts.Presenter.UI
         {
 #if YANDEX_GAMES
             _yandexShowAds.OnShowInterstitialButtonClick();
-            _yandexLeaderBord.OnSetLeaderboardScoreButtonClick();
+            _yandexLeaderBoard.OnSetLeaderboardScoreButtonClick();
 #endif
             _config.Improve();
             _sceneLoader.Load();

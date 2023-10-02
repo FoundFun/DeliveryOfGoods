@@ -4,15 +4,16 @@ using System.Linq;
 using UnityEngine;
 using Agava.YandexGames;
 using Source.Game.Scripts.Configure;
+using Source.Game.Scripts.Model;
 using Source.Game.Scripts.Spawn;
 using Source.Game.Scripts.View;
 
 namespace Source.Game.Scripts.Yandex
 {
-    public class YandexLeaderBord : MonoBehaviour
+    public class YandexLeaderBoard : MonoBehaviour
     {
-        [SerializeField] private List<BordView> _bords;
-        [SerializeField] private YandexLeaderBordView _viewLeaderBord;
+        [SerializeField] private List<LeaderBoardView> _boards;
+        [SerializeField] private YandexLeaderBoardView _viewLeaderBoard;
         [SerializeField] private GameObject _viewErrorBord;
         [SerializeField] private YandexAuthorization _authorization;
 
@@ -27,14 +28,14 @@ namespace Source.Game.Scripts.Yandex
 
         private void OnEnable()
         {
-            _viewLeaderBord.IsOpened += Open;
-            _viewLeaderBord.IsClosed += Close;
+            _viewLeaderBoard.IsOpened += Open;
+            _viewLeaderBoard.IsClosed += Close;
         }
 
         private void OnDisable()
         {
-            _viewLeaderBord.IsOpened -= Open;
-            _viewLeaderBord.IsClosed -= Close;
+            _viewLeaderBoard.IsOpened -= Open;
+            _viewLeaderBoard.IsClosed -= Close;
         }
 
         public void Init(Config config, SpawnerBox spawnerBox)
@@ -47,74 +48,91 @@ namespace Source.Game.Scripts.Yandex
         {
             PlayerAccount.GetProfileData((result) =>
             {
-                string name = result.publicName;
+                string publicName = result.publicName;
 
-                if (string.IsNullOrEmpty(name))
+                if (string.IsNullOrEmpty(publicName))
                 {
-                    name = name switch
+                    publicName = publicName switch
                     {
                         YandexInitialize.English => English,
                         YandexInitialize.Russian => Russian,
                         YandexInitialize.Turkish => Turkish,
-                        _ => name
+                        _ => publicName
                     };
                 }
 
-                Debug.Log($"My id = {result.uniqueID}, name = {name}");
+                Debug.Log($"My id = {result.uniqueID}, name = {publicName}");
             });
         }
 
         public void OnSetLeaderboardScoreButtonClick() =>
-            Leaderboard.SetScore("TheBestLevel", _config.ScoreLeaderBord);
+            OnGetLeaderboardPlayerEntryButtonClick();
 
-        private void Open()
+        private void OnGetLeaderboardPlayerEntryButtonClick()
         {
-#if YANDEX_GAMES   
-            if (_coroutineAuthorize != null)
-                StopCoroutine(_coroutineAuthorize);
-
-            _coroutineAuthorize = StartCoroutine(Authorize());
-#endif
-            if(_coroutineErrorBord != null)
-                StopCoroutine(_coroutineErrorBord);
-
-            _coroutineErrorBord = StartCoroutine(ShowErrorBord());
+            Leaderboard.GetPlayerEntry("TheBestLevel", (result) =>
+            {
+                if (result == null || result.score < _config.ScoreLeaderBord)
+                    Leaderboard.SetScore("TheBestLevel", _config.ScoreLeaderBord);
+            });
         }
 
         private void OnGetLeaderboardEntriesButtonClick()
         {
+            Clear();
+
             Leaderboard.GetEntries("TheBestLevel", (result) =>
             {
-                for (int i = 0; i < result.entries.Take(_bords.Count).Count(); i++)
+                for (int i = 0; i < result.entries.Take(_boards.Count).Count(); i++)
                 {
-                    string name = result.entries[i].player.publicName;
-                    
-                    if (string.IsNullOrEmpty(name))
+                    string publicName = result.entries[i].player.publicName;
+                    int publicScore = result.entries[i].score;
+
+                    if (string.IsNullOrEmpty(publicName))
                     {
-                        name = name switch
+                        publicName = publicName switch
                         {
                             YandexInitialize.English => English,
                             YandexInitialize.Russian => Russian,
                             YandexInitialize.Turkish => Turkish,
-                            _ => name
+                            _ => publicName
                         };
                     }
 
-                    Bord bord = new Bord(_bords[i], i + 1, name, _config.ScoreLeaderBord);
-                    bord.SetValue();
+                    SetValueLeaderBord(i, publicScore, publicName);
                 }
             });
         }
 
-        public void OnGetLeaderboardPlayerEntryButtonClick()
+        private void SetValueLeaderBord(int index, int publicScore, string publicName)
         {
-            Leaderboard.GetPlayerEntry("TheBestLevel", (result) =>
+            LeaderBoardModel leaderBoardModel = new LeaderBoardModel(_boards[index], index + 1, publicName, publicScore);
+            leaderBoardModel.SetValue();
+        }
+
+        private void Open()
+        {
+#if YANDEX_GAMES
+            if (!PlayerAccount.IsAuthorized)
             {
-                if (result == null)
-                    Debug.Log("Player is not present in the leaderboard.");
-                else
-                    Debug.Log($"My rank = {result.rank}, score = {result.score}");
-            });
+                if (_coroutineAuthorize != null)
+                    StopCoroutine(_coroutineAuthorize);
+                
+                _coroutineAuthorize = StartCoroutine(Authorize());
+            }
+#endif
+            if (!PlayerAccount.HasPersonalProfileDataPermission)
+            {
+                if (_coroutineErrorBord != null)
+                    StopCoroutine(_coroutineErrorBord);
+
+                _coroutineErrorBord = StartCoroutine(ShowErrorBord());
+            }
+            else
+            {
+                OnGetLeaderboardEntriesButtonClick();
+                OpenTopListPlayer();   
+            }
         }
 
         private void Close()
@@ -131,23 +149,17 @@ namespace Source.Game.Scripts.Yandex
 
         private IEnumerator Authorize()
         {
-            if (!PlayerAccount.IsAuthorized)
-                _authorization.OnAuthorizeButtonClick();
+            _authorization.OnAuthorizeButtonClick();
 
             yield return new WaitUntil(() => PlayerAccount.IsAuthorized);
 
             _authorization.OnRequestPersonalProfileDataPermissionButtonClick();
-
-            yield return new WaitUntil(() => PlayerAccount.HasPersonalProfileDataPermission);
-            
-            OnGetLeaderboardEntriesButtonClick();
-            OpenTopListPlayer();
         }
 
         private void OpenTopListPlayer()
         {
             const float timeAnimation = 1f;
-            
+
             gameObject.LeanScale(Vector3.one, timeAnimation).setEaseOutElastic();
 
             if (!_config.IsGaming)
@@ -162,11 +174,19 @@ namespace Source.Game.Scripts.Yandex
             const float timeOpenAnimation = 1f;
             const float timeCloseAnimation = 0.5f;
             
+            Close();
+
             _viewErrorBord.LeanScale(Vector3.one, timeOpenAnimation).setEaseOutElastic();
 
             yield return new WaitForSeconds(timeOpenAnimation);
 
             _viewErrorBord.LeanScale(Vector3.zero, timeCloseAnimation).setEaseInBack();
+        }
+
+        private void Clear()
+        {
+            foreach (LeaderBoardView bord in _boards)
+                bord.Clear();
         }
     }
 }

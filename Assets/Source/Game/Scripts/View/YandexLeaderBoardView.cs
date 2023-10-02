@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Source.Game.Scripts.View
 {
-    public class YandexLeaderBordView : MonoBehaviour
+    public class YandexLeaderBoardView : MonoBehaviour
     {
         [SerializeField] private Button _openButton;
         [SerializeField] private Button _closeButton;
@@ -24,18 +24,10 @@ namespace Source.Game.Scripts.View
             _closeButton.onClick.RemoveListener(OnClose);
         }
         
-        private void OnOpen()
-        {
+        private void OnOpen() => 
             IsOpened?.Invoke();
-            _openButton.interactable = false;
-            _closeButton.interactable = true;
-        }
 
-        private void OnClose()
-        {
+        private void OnClose() => 
             IsClosed?.Invoke();
-            _openButton.interactable = true;
-            _closeButton.interactable = false;
-        }
     }
 }
