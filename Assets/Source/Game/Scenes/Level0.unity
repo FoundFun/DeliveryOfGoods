@@ -135,6 +135,22 @@ PrefabInstance:
       propertyPath: _isRotating
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5201083963012834756, guid: 1b90649b95c24d44d9b71f097f810a14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201083963012834756, guid: 1b90649b95c24d44d9b71f097f810a14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201083963012834756, guid: 1b90649b95c24d44d9b71f097f810a14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201083963012834756, guid: 1b90649b95c24d44d9b71f097f810a14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
     - target: {fileID: 6667996869722245714, guid: 1b90649b95c24d44d9b71f097f810a14, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -188,3 +204,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b90649b95c24d44d9b71f097f810a14, type: 3}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 3911730150102892771}
