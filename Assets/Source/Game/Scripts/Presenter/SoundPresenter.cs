@@ -4,12 +4,18 @@ using UnityEngine.UI;
 
 namespace Source.Game.Scripts.Presenter
 {
-    public class SoundChangePresenter : MonoBehaviour
+    public class SoundPresenter : MonoBehaviour
     {
         [SerializeField] private AudioMixerGroup _master;
         [SerializeField] private Toggle _toggle;
 
         private const string MasterVolume = "MasterVolume";
+        private const float OnVolume = 0;
+        private const float OffVolume = -80f;
+
+        private float _currentVolume;
+
+        public bool IsPlay => _currentVolume == OnVolume;
 
         private void OnEnable() => 
             _toggle.onValueChanged.AddListener(ToggleMusic);
@@ -19,16 +25,14 @@ namespace Source.Game.Scripts.Presenter
 
         public void PlayMusic()
         {
-            const float volume = 0f;
-
-            _master.audioMixer.SetFloat(MasterVolume, volume);
+            _currentVolume = OnVolume;
+            _master.audioMixer.SetFloat(MasterVolume, _currentVolume);
         }
 
         public void StopMusic()
         {
-            const float volume = -80f;
-
-            _master.audioMixer.SetFloat(MasterVolume, volume);
+            _currentVolume = OffVolume;
+            _master.audioMixer.SetFloat(MasterVolume, _currentVolume);
         }
 
         private void ToggleMusic(bool isEnabled)

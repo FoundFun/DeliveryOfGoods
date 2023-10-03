@@ -16,23 +16,21 @@ namespace Source.Game.Scripts.Configure
         private const float MinSpawnSpeed = 1.5f;
         private const float StepSpeedImprove = -0.02f;
         private const int StepLevel = 10;
-        
+
         private int _targetLevel = StepLevel;
 
         public float SpawnSpeed { get; private set; } = 2.5f;
         public int CurrentDeliverBox { get; private set; } = 3;
         public int CurrentLevel { get; private set; } = 0;
-
+        public int ScoreLeaderBord { get; private set; } = 0;
         public bool IsGaming { get; private set; }
-        
-        public int ScoreLeaderBord { get; private set; }
-        
+
         public event Action<int> ChangedTargetScore;
 
-        public void EnableGame() => 
+        public void EnableGame() =>
             IsGaming = true;
 
-        public void DisableGame() => 
+        public void DisableGame() =>
             IsGaming = false;
 
         public void UpdateValue()
@@ -60,7 +58,7 @@ namespace Source.Game.Scripts.Configure
 
             if (SpawnSpeed > MinSpawnSpeed)
                 SpawnSpeed += StepSpeedImprove;
-            
+
             CurrentLevel++;
 
             PlayerPrefs.SetFloat(SpawnSpeedText, SpawnSpeed);

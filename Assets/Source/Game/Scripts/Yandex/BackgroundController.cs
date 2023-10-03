@@ -6,7 +6,7 @@ namespace Source.Game.Scripts.Yandex
 {
     public class BackgroundController : MonoBehaviour
     {
-        [SerializeField] private SoundChangePresenter _soundPresenter;
+        [SerializeField] private SoundPresenter _soundPresenter;
         
         private void OnEnable() => 
             WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;

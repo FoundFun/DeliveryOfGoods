@@ -31,7 +31,7 @@ namespace Source.Game.Scripts
             _truckModel = new TruckModel();
 
             _sceneLoader.Init(_config);
-            _truckPresenter.Init(_truckModel, _config);
+            _truckPresenter.Init(_truckModel, _config, _yandexLeaderBoard);
             _spawnerBox.Init(_config);
             _warehousePresenter.Init(_spawnerBox,
                 _sceneLoader, _truckPresenter);

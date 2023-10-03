@@ -7,17 +7,18 @@ namespace Source.Game.Scripts.Yandex
 {
     public class YandexShowAds : MonoBehaviour
     {
-        [SerializeField] private SoundChangePresenter _soundPresenter;
-        
+        [SerializeField] private SoundPresenter _soundPresenter;
+
         private BoardResurrectPresenter _boardResurrectPresenter;
+        private bool _isChangedMusic;
 
         public void OnShowInterstitialButtonClick() =>
             InterstitialAd.Show(StopGame, StartGame);
 
         public void OnShowVideoButtonClick() =>
-            VideoAd.Show(StopGame, _boardResurrectPresenter.OnResurrect, StartGame);
+            VideoAd.Show(StopGame, _boardResurrectPresenter.OnResurrect, ResumeGame);
 
-        public void Init(BoardResurrectPresenter boardResurrectPresenter) => 
+        public void Init(BoardResurrectPresenter boardResurrectPresenter) =>
             _boardResurrectPresenter = boardResurrectPresenter;
 
         private void StartGame(bool wasShow)
@@ -25,20 +26,29 @@ namespace Source.Game.Scripts.Yandex
             if (!wasShow)
                 return;
 
-            Time.timeScale = 1;
-            _soundPresenter.PlayMusic();
-        }
-
-        private void StartGame()
-        {
-            Time.timeScale = 1;
-            _soundPresenter.PlayMusic();
+            ResumeGame();
         }
 
         private void StopGame()
         {
             Time.timeScale = 0;
+
+            if (!_soundPresenter.IsPlay)
+                return;
+            
             _soundPresenter.StopMusic();
+            _isChangedMusic = true;
+        }
+
+        private void ResumeGame()
+        {
+            Time.timeScale = 1;
+
+            if (!_isChangedMusic) 
+                return;
+            
+            _soundPresenter.PlayMusic();
+            _isChangedMusic = false;
         }
     }
 }

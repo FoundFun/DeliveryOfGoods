@@ -105,7 +105,6 @@ namespace Source.Game.Scripts.Presenter.UI
         {
 #if YANDEX_GAMES
             _yandexShowAds.OnShowInterstitialButtonClick();
-            _yandexLeaderBoard.OnSetLeaderboardScoreButtonClick();
 #endif
             _config.Improve();
             _sceneLoader.Load();
