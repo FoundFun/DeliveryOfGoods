@@ -20,6 +20,8 @@ namespace Source.Game.Scripts.Yandex
         {
             if (inBackground)
             {
+                Time.timeScale = 0;
+                
                 if (_soundPresenter.IsPlay)
                 {
                     _isChangedMusic = true;
@@ -27,11 +29,16 @@ namespace Source.Game.Scripts.Yandex
                 }
             }
 
-            if (inBackground && !_isChangedMusic)
-                return;
-            
-            _isChangedMusic = false;
-            _soundPresenter.PlayMusic();
+            if (!inBackground)
+            {
+                Time.timeScale = 1;
+
+                if (_isChangedMusic)
+                {
+                    _isChangedMusic = false;
+                    _soundPresenter.PlayMusic();
+                }
+            }
         }
     }
 }
