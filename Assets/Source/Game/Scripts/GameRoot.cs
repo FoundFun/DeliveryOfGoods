@@ -44,7 +44,7 @@ namespace Source.Game.Scripts
                 _spawnerBox, _sceneLoader, _yandexShowAds, _yandexLeaderBoard);
             _menuGamePresenter.Init(_config);
             _scorePresenter.Init();
-            _yandexLeaderBoard.Init(_config,_spawnerBox);
+            _yandexLeaderBoard.Init(_config, _spawnerBox);
             _yandexShowAds.Init(_boardResurrectPresenter);
 
             _menuGamePresenter.Open();
