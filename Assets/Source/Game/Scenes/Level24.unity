@@ -123,6 +123,72 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &126628888
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.90743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &126628889 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 126628888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &294089006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,6 +255,468 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
   m_PrefabInstance: {fileID: 294089006}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &306929256
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.219999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &306929257 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 306929256}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &357062852
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.28257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.911829
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &357062853 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 357062852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &630722779
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.90743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &630722780 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 630722779}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &642688415
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.911829
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &642688416 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 642688415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &777478313
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 19.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &777478314 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 777478313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &832524719
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.97743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &832524720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 832524719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &997341831
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.002569
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.911829
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &997341832 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 997341831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1061574174
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +740,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1061574174}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.83, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -220,16 +749,27 @@ Transform:
   - {fileID: 9159216086665539879}
   - {fileID: 3526734965951956595}
   - {fileID: 1544910655}
-  - {fileID: 1982949080}
+  - {fileID: 642688416}
+  - {fileID: 1905745170}
   - {fileID: 1975574350}
+  - {fileID: 997341832}
+  - {fileID: 1937932930}
   - {fileID: 1298228512}
+  - {fileID: 357062853}
+  - {fileID: 1494378408}
   - {fileID: 294089007}
+  - {fileID: 306929257}
+  - {fileID: 126628889}
+  - {fileID: 630722780}
   - {fileID: 1822293480}
+  - {fileID: 1707424356}
+  - {fileID: 832524720}
   - {fileID: 1691064901}
   - {fileID: 1868094301}
   - {fileID: 1823470573}
+  - {fileID: 777478314}
+  - {fileID: 1700854123}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1298228511
 PrefabInstance:
@@ -296,6 +836,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
   m_PrefabInstance: {fileID: 1298228511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1494378407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.970001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.911829
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &1494378408 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 1494378407}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1544910654
 PrefabInstance:
@@ -428,6 +1034,138 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
   m_PrefabInstance: {fileID: 1691064900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1700854122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.937431
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 19.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &1700854123 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 1700854122}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1707424355
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.289999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &1707424356 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 1707424355}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1822293479
 PrefabInstance:
@@ -579,7 +1317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.87
+      value: 17.71
       objectReference: {fileID: 0}
     - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -626,6 +1364,138 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
   m_PrefabInstance: {fileID: 1868094300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1905745169
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.347431
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.911829
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &1905745170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 1905745169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1937932929
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1061574175}
+    m_Modifications:
+    - target: {fileID: 305353635195928850, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_Name
+      value: BeltBoxConveyor (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.911829
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+--- !u!4 &1937932930 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
+  m_PrefabInstance: {fileID: 1937932929}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1975574349
 PrefabInstance:
@@ -692,72 +1562,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4256668665773698727, guid: f9958a47e266cee42a6d3232e6fc79cb, type: 3}
   m_PrefabInstance: {fileID: 1975574349}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1982949079
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1061574175}
-    m_Modifications:
-    - target: {fileID: 3213972197294138457, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_Name
-      value: BeltConveyor (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 24.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17.041832
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
---- !u!4 &1982949080 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
-  m_PrefabInstance: {fileID: 1982949079}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &3526734965951956595 stripped
 Transform:
@@ -855,7 +1659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -867,7 +1671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -875,7 +1679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -891,3 +1695,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9023144031354229482, guid: 124b8f69cd5c05840a589fae848bb0e5, type: 3}
   m_PrefabInstance: {fileID: 7112690960580617126}
   m_PrefabAsset: {fileID: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1061574175}

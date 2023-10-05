@@ -1,5 +1,6 @@
 using Source.Game.Scripts.Configure;
 using Source.Game.Scripts.Model;
+using Source.Game.Scripts.Yandex;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter
@@ -11,8 +12,7 @@ namespace Source.Game.Scripts.Presenter
 
         private Config _config;
         private TruckModel _model;
-        private int _boxInBody;
-        private bool _isDelivery;
+        private YandexLeaderBoard _yandexLeaderBoard;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -21,20 +21,25 @@ namespace Source.Game.Scripts.Presenter
 
             box.PlayGoodParticle();
             box.PlayAudioComplete();
-            _boxInBody++;
-            _model.AddScore(_boxInBody);
+            
+            _model.AddScore();
+            _config.AddScoreLeaderBord();
+#if YANDEX_GAMES
+            _yandexLeaderBoard.OnSetLeaderboardScoreButtonClick();
+#endif            
 
-            if (_boxInBody >= _config.CurrentDeliverBox && _isDelivery == false)
+            if (_model.BoxInBody >= _config.CurrentDeliverBox && _model.IsDelivery == false)
                 _model.Deliver(gameObject.transform, _endDeliverPoint.position);
         }
 
         public void Reset() => 
             _model.Reset();
 
-        public void Init(TruckModel model, Config config)
+        public void Init(TruckModel model, Config config, YandexLeaderBoard yandexLeaderBoard)
         {
             _model = model;
             _config = config;
+            _yandexLeaderBoard = yandexLeaderBoard;
 
             _model.Init(_smokesExhaust);
         }

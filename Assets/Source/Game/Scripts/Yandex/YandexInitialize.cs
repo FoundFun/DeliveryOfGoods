@@ -3,21 +3,27 @@ using Agava.YandexGames;
 using Lean.Localization;
 using UnityEngine;
 
-namespace Source.Game.Scripts
+namespace Source.Game.Scripts.Yandex
 {
     public class YandexInitialize : MonoBehaviour
     {
-        [SerializeField] private YandexShowAds _yandexShowAds;
         [SerializeField] private LeanLocalization _localization;
-    
+
+        public const string English = "English";
+        public const string Russian = "Russian";
+        public const string Turkish = "Turkish";
+        
         private Coroutine _coroutine;
     
-        private void Awake() => 
+        private void Awake()
+        {
             YandexGamesSdk.CallbackLogging = true;
+            PlayerAccount.AuthorizedInBackground += OnAuthorizedInBackground;
+        }
 
         private IEnumerator Start()
         {
-#if !UNITY_WEBGL || UNITY_EDITOR
+#if !YANDEX_GAMES
             yield break;
 #endif
             if (_coroutine != null)
@@ -27,31 +33,32 @@ namespace Source.Game.Scripts
         
             yield return YandexGamesSdk.Initialize();
         }
+        
+        private void OnDestroy() => 
+            PlayerAccount.AuthorizedInBackground -= OnAuthorizedInBackground;
 
         private IEnumerator Init()
         {
             const string enCulture = "en";
             const string ruCulture = "ru";
             const string trCulture = "tr";
-            const string english = "English";
-            const string russian = "Russian";
-            const string turkish = "Turkish";
 
             yield return new WaitUntil(() => YandexGamesSdk.IsInitialized);
         
-            _yandexShowAds.OnShowInterstitialButtonClick();
-
             string localization = YandexGamesSdk.Environment.i18n.lang;
 
             localization = localization switch
             {
-                enCulture => english,
-                ruCulture => russian,
-                trCulture => turkish,
+                enCulture => English,
+                ruCulture => Russian,
+                trCulture => Turkish,
                 _ => localization
             };
 
             _localization.SetCurrentLanguage(localization);
         }
+        
+        private void OnAuthorizedInBackground() => 
+            Debug.Log($"{nameof(OnAuthorizedInBackground)} {PlayerAccount.IsAuthorized}");
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using Source.Game.Scripts.Configure;
+using Source.Game.Scripts.View;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
@@ -11,34 +12,28 @@ namespace Source.Game.Scripts.Presenter.UI
         private Config _config;
 
         public event Action OpenedGame;
-        public event Action OpenedSettings;
 
-        private void OnEnable()
-        {
+        private void OnEnable() => 
             _menuGameView.StartButtonClick += OnStartButtonClick;
-            _menuGameView.SettingsButtonClick += OnSettingsButtonClick;
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() => 
             _menuGameView.StartButtonClick -= OnStartButtonClick;
-            _menuGameView.SettingsButtonClick -= OnSettingsButtonClick;
-        }
 
         public void Init(Config config) =>
             _config = config;
 
+        protected override void OpenScreen()
+        {
+            base.OpenScreen();
+            _menuGameView.StartAnimationText();
+        }
+
         private void OnStartButtonClick()
         {
             Close();
+            _menuGameView.StopAnimationText();
             OpenedGame?.Invoke();
             _config.EnableGame();
-        }
-
-        private void OnSettingsButtonClick()
-        {
-            Close();
-            OpenedSettings?.Invoke();
         }
     }
 }

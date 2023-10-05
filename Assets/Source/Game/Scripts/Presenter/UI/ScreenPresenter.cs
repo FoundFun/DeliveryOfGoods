@@ -6,15 +6,11 @@ namespace Source.Game.Scripts.Presenter.UI
     {
         [SerializeField] private CanvasGroup _canvasGroup;
 
-        public void Open()
-        {
+        public void Open() => 
             OpenScreen();
-        }
 
-        public void Close()
-        {
+        public void Close() => 
             CloseScreen();
-        }
 
         protected virtual void OpenScreen()
         {

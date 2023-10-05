@@ -1,34 +1,62 @@
 using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuGameView : MonoBehaviour
+namespace Source.Game.Scripts.View
 {
-    [SerializeField] private Button _startButton;
-    [SerializeField] private Button _settingsButton;
-
-    public event Action StartButtonClick;
-    public event Action SettingsButtonClick;
-
-    private void OnEnable()
+    public class MenuGameView : MonoBehaviour
     {
-        _startButton.onClick.AddListener(OnStartButtonClick);
-        _settingsButton.onClick.AddListener(OnSettingsButtonClick);
-    }
+        [SerializeField] private Button _startButton;
+        [SerializeField] private TMP_Text _startText;
 
-    private void OnDisable()
-    {
-        _startButton.onClick.RemoveListener(OnStartButtonClick);
-        _settingsButton.onClick.RemoveListener(OnSettingsButtonClick);
-    }
+        private Coroutine _coroutine;
+        private bool _isMenuGame;
 
-    private void OnStartButtonClick()
-    {
-        StartButtonClick?.Invoke();
-    }
+        public event Action StartButtonClick;
 
-    private void OnSettingsButtonClick()
-    {
-        SettingsButtonClick?.Invoke();
+        private void OnEnable() =>
+            _startButton.onClick.AddListener(OnStartButtonClick);
+
+        private void OnDisable() =>
+            _startButton.onClick.RemoveListener(OnStartButtonClick);
+
+        private void OnStartButtonClick() =>
+            StartButtonClick?.Invoke();
+
+        public void StartAnimationText()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _isMenuGame = true;
+            _coroutine = StartCoroutine(PlayAnimationText());
+        }
+
+        public void StopAnimationText()
+        {
+            _isMenuGame = false;
+            StopCoroutine(_coroutine);
+        }
+
+        private IEnumerator PlayAnimationText()
+        {
+            const float time = 1;
+            const float defaultScale = 0.6f;
+
+            Vector3 startScale = new(defaultScale, defaultScale, defaultScale);
+
+            while (_isMenuGame)
+            {
+                _startText.gameObject.LeanScale(Vector3.one, time).setLoopPingPong();
+
+                yield return new WaitForSeconds(time);
+
+                _startText.gameObject.LeanScale(startScale, time).setLoopPingPong();
+
+                yield return new WaitForSeconds(time);
+            }
+        }
     }
 }

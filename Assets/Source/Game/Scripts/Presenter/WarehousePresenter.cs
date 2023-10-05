@@ -4,27 +4,27 @@ using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter
 {
-    public class WerehousePresenter : MonoBehaviour
+    public class WarehousePresenter : MonoBehaviour
     {
-        [SerializeField] private TruckPresenter _truckPresenter;
         [SerializeField] private Transform _startDeliverPoint;
         [SerializeField] private Transform _loadingArea;
-        [SerializeField] private SpawnerBox _spawnerBox;
-        [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private ParticleSystem _smokeExplosion;
 
+        private SpawnerBox _spawnerBox;
+        private SceneLoader _sceneLoader;
+        private TruckPresenter _truckPresenter;
         private int _currentMissBox;
 
         public event Action BoxFallen;
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out BoxPresenter boxPresenter))
-            {
-                BoxFallen?.Invoke();
-                boxPresenter.PlayBadParticle();
-                boxPresenter.PlayAudioComplete();
-            }
+            if (!other.TryGetComponent(out BoxPresenter boxPresenter)) 
+                return;
+            
+            BoxFallen?.Invoke();
+            boxPresenter.PlayBadParticle();
+            boxPresenter.PlayAudioComplete();
         }
 
         public void Reset()
@@ -35,6 +35,13 @@ namespace Source.Game.Scripts.Presenter
             _truckPresenter.transform.position = _startDeliverPoint.position;
             _truckPresenter.Reset();
             _truckPresenter.Move(_loadingArea.position);
+        }
+
+        public void Init(SpawnerBox spawnerBox, SceneLoader sceneLoader, TruckPresenter truckPresenter)
+        {
+            _spawnerBox = spawnerBox;
+            _sceneLoader = sceneLoader;
+            _truckPresenter = truckPresenter;
         }
     }
 }

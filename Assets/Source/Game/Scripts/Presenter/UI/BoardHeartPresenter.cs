@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Linq;
+using Source.Game.Scripts.Configure;
 using Source.Game.Scripts.Spawn;
 using UnityEngine;
 
 namespace Source.Game.Scripts.Presenter.UI
 {
-    public class BordHeartPresenter : MonoBehaviour
+    public class BoardHeartPresenter : MonoBehaviour
     {
-        [SerializeField] private SpawnerBox _spawnerBox;
-        [SerializeField] private BordResurrectPresenter _bordResurrect;
-        [SerializeField] private BordSkipPresenter _bordSkip;
-
+        private SpawnerBox _spawnerBox;
+        private BoardResurrectPresenter _boardResurrect;
+        private BoardSkipPresenter _boardSkip;
         private HeartPresenter[] _hearts;
         private Coroutine _coroutine;
+        private Config _config;
         private int _numberHeart;
         private bool _isLive;
 
@@ -33,8 +34,14 @@ namespace Source.Game.Scripts.Presenter.UI
             DisableBord();
         }
 
-        public void Init()
+        public void Init(SpawnerBox spawnerBox, BoardResurrectPresenter boardResurrect,
+            BoardSkipPresenter boardSkip, Config config)
         {
+            _spawnerBox = spawnerBox;
+            _boardResurrect = boardResurrect;
+            _boardSkip = boardSkip;
+            _config = config;
+
             _hearts = GetComponentsInChildren<HeartPresenter>();
             _numberHeart = _hearts.Count(heart => heart.Fill == 1);
             DisableBord();
@@ -52,23 +59,25 @@ namespace Source.Game.Scripts.Presenter.UI
                 _numberHeart--;
             }
 
-            if (_numberHeart <= 0 && _isLive == true)
-            {
-                _isLive = false;
-                _spawnerBox.Inactive();
-                _spawnerBox.Reset();
+            if (_numberHeart > 0 || _isLive != true)
+                return;
+            
+            _config.DisableGame();
+            _isLive = false;
+            _spawnerBox.Inactive();
+            _spawnerBox.Reset();
 
-                if (_coroutine != null)
-                    StopCoroutine(_coroutine);
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-                _coroutine = StartCoroutine(EnableGameOverBord());
-            }
+            _coroutine = StartCoroutine(EnableGameOverBord());
         }
 
         public void Recover()
         {
             Reset();
             _spawnerBox.Active();
+            _config.EnableGame();
         }
 
         private IEnumerator EnableGameOverBord()
@@ -76,17 +85,19 @@ namespace Source.Game.Scripts.Presenter.UI
             const float animationTime = 0.5f;
             const float delay = 2;
 
-            _bordResurrect.transform.LeanScale(Vector3.one, animationTime).setEaseOutExpo();
+            _boardResurrect.ActiveRestartButton();
+            _boardResurrect.transform.LeanScale(Vector3.one, animationTime).setEaseOutExpo();
 
             yield return new WaitForSeconds(delay);
 
-            _bordSkip.transform.LeanScale(Vector3.one, animationTime).setEaseOutExpo();
+            _boardSkip.ActiveRestartButton();
+            _boardSkip.transform.LeanScale(Vector3.one, animationTime).setEaseOutExpo();
         }
 
         private void DisableBord()
         {
-            _bordResurrect.transform.LeanScale(Vector3.zero, 0.1f).setEaseOutExpo();
-            _bordSkip.transform.LeanScale(Vector3.zero, 0.1f).setEaseOutExpo();
+            _boardResurrect.transform.LeanScale(Vector3.zero, 0.1f).setEaseOutExpo();
+            _boardSkip.transform.LeanScale(Vector3.zero, 0.1f).setEaseOutExpo();
         }
     }
 }
