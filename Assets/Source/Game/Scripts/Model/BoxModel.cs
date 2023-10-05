@@ -78,7 +78,7 @@ namespace Source.Game.Scripts.Model
 
         private IEnumerator Deactivate(GameObject gameObject)
         {
-            const float speedCleanAnimation = 0.2f;
+            const float speedCleanAnimation = 0.5f;
 
             _explosion.Play();
 

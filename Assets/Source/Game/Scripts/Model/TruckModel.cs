@@ -34,7 +34,7 @@ namespace Source.Game.Scripts.Model
 
         public void Deliver(Transform transform, Vector3 targetPosition)
         {
-            const float animationTime = 3;
+            const float animationTime = 2;
 
             IsDelivery = true;
             PlayExhaust();
