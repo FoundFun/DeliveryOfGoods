@@ -78,7 +78,7 @@ namespace Source.Game.Scripts.Model
 
         private IEnumerator Deactivate(GameObject gameObject)
         {
-            const float speedCleanAnimation = 1;
+            const float speedCleanAnimation = 0.2f;
 
             _explosion.Play();
 
@@ -86,7 +86,7 @@ namespace Source.Game.Scripts.Model
 
             gameObject.transform.LeanScale(Vector3.zero, speedCleanAnimation);
 
-            yield return new WaitWhile(() => _explosion.isPlaying);
+            yield return new WaitForSeconds(speedCleanAnimation);
 
             gameObject.gameObject.transform.localScale = templateScale;
             _rigidbody.velocity = Vector3.zero;

@@ -8,6 +8,8 @@ namespace Source.Game.Scripts.Yandex
     {
         [SerializeField] private SoundPresenter _soundPresenter;
         
+        private bool _isChangedMusic;
+        
         private void OnEnable() => 
             WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
 
@@ -17,9 +19,19 @@ namespace Source.Game.Scripts.Yandex
         private void OnInBackgroundChange(bool inBackground)
         {
             if (inBackground)
-                _soundPresenter.StopMusic();
-            else
-                _soundPresenter.PlayMusic();
+            {
+                if (_soundPresenter.IsPlay)
+                {
+                    _isChangedMusic = true;
+                    _soundPresenter.StopMusic();
+                }
+            }
+
+            if (inBackground && !_isChangedMusic)
+                return;
+            
+            _isChangedMusic = false;
+            _soundPresenter.PlayMusic();
         }
     }
 }
