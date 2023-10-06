@@ -9,7 +9,7 @@ namespace Source.Game.Scripts.Model
         private readonly string _name;
         private readonly int _score;
 
-        public LeaderBoardModel(LeaderBoardView view,int number, string name, int score)
+        public LeaderBoardModel(LeaderBoardView view,int number, int score, string name)
         {
             _view = view;
             _number = number;
