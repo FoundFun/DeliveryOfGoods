@@ -47,7 +47,7 @@ namespace Source.Game.Scripts.Yandex
         {
             Leaderboard.GetPlayerEntry("TheBestLevel", (result) =>
             {
-                if(result.score < _config.ScoreLeaderBord)
+                if (result.score < _config.ScoreLeaderBord)
                     Leaderboard.SetScore("TheBestLevel", _config.ScoreLeaderBord);
             });
         }
@@ -83,21 +83,17 @@ namespace Source.Game.Scripts.Yandex
         {
             LeaderBoardModel leaderBoardModel =
                 new LeaderBoardModel(_boards[index], index + 1, publicScore, publicName);
-            
+
             leaderBoardModel.SetValue();
         }
 
         private void Open()
         {
 #if YANDEX_GAMES
-            if (!PlayerAccount.IsAuthorized) 
-                AuthorizeOpen();
-            
-            if (!PlayerAccount.HasPersonalProfileDataPermission)
+            if (!PlayerAccount.IsAuthorized)
             {
-                CloseTopListPlayer();
-                
-                return; 
+                AuthorizeOpen();
+                return;
             }
 #endif
             OnGetLeaderboardEntriesButtonClick();
@@ -116,7 +112,7 @@ namespace Source.Game.Scripts.Yandex
             _spawnerBox.Active();
         }
 
-        private void AuthorizeOpen() => 
+        private void AuthorizeOpen() =>
             _authorization.Open();
 
         private void OpenTopListPlayer()

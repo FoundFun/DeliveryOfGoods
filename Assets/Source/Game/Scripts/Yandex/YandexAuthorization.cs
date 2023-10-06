@@ -47,12 +47,12 @@ namespace Source.Game.Scripts.Yandex
 
         private IEnumerator OnAuthorize()
         {
-            Close();
             OnAuthorizeButtonClick();
 
             yield return new WaitUntil(() => PlayerAccount.IsAuthorized);
 
             OnRequestPersonalProfileDataPermissionButtonClick();
+            Close();
         }
 
         private void Close()

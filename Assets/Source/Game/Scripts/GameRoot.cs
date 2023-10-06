@@ -23,6 +23,7 @@ namespace Source.Game.Scripts
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private YandexShowAds _yandexShowAds;
         [SerializeField] private YandexLeaderBoard _yandexLeaderBoard;
+        [SerializeField] private YandexAuthorization _yandexAuthorization;
 
         private TruckModel _truckModel;
 
@@ -46,6 +47,7 @@ namespace Source.Game.Scripts
             _scorePresenter.Init();
             _yandexLeaderBoard.Init(_config, _spawnerBox);
             _yandexShowAds.Init(_boardResurrectPresenter);
+            _yandexAuthorization.Init(_spawnerBox);
 
             _menuGamePresenter.Open();
             _gamePresenter.Close();
