@@ -14,7 +14,6 @@ namespace Source.Game.Scripts.Yandex
     {
         [SerializeField] private List<LeaderBoardView> _boards;
         [SerializeField] private YandexLeaderBoardView _viewLeaderBoard;
-        [SerializeField] private GameObject _viewErrorBord;
         [SerializeField] private YandexAuthorization _authorization;
 
         private const string English = "Anonymous";
@@ -29,13 +28,13 @@ namespace Source.Game.Scripts.Yandex
         private void OnEnable()
         {
             _viewLeaderBoard.IsOpened += Open;
-            _viewLeaderBoard.IsClosed += Close;
+            _viewLeaderBoard.IsClosed += CloseTopListPlayer;
         }
 
         private void OnDisable()
         {
             _viewLeaderBoard.IsOpened -= Open;
-            _viewLeaderBoard.IsClosed -= Close;
+            _viewLeaderBoard.IsClosed -= CloseTopListPlayer;
         }
 
         public void Init(Config config, SpawnerBox spawnerBox)
@@ -48,7 +47,7 @@ namespace Source.Game.Scripts.Yandex
         {
             Leaderboard.GetPlayerEntry("TheBestLevel", (result) =>
             {
-                if(result.score < _config.ScoreLeaderBord)
+                if (result.score < _config.ScoreLeaderBord)
                     Leaderboard.SetScore("TheBestLevel", _config.ScoreLeaderBord);
             });
         }
@@ -83,8 +82,8 @@ namespace Source.Game.Scripts.Yandex
         private void SetValueLeaderBord(int index, int publicScore, string publicName)
         {
             LeaderBoardModel leaderBoardModel =
-                new LeaderBoardModel(_boards[index], index + 1, publicName, publicScore);
-            
+                new LeaderBoardModel(_boards[index], index + 1, publicScore, publicName);
+
             leaderBoardModel.SetValue();
         }
 
@@ -94,24 +93,14 @@ namespace Source.Game.Scripts.Yandex
             if (!PlayerAccount.IsAuthorized)
             {
                 AuthorizeOpen();
-            }
-            else if (!PlayerAccount.HasPersonalProfileDataPermission)
-            {
-                if (_coroutineErrorBord != null)
-                    StopCoroutine(_coroutineErrorBord);
-
-                _coroutineErrorBord = StartCoroutine(ShowErrorBord());
+                return;
             }
 #endif
-
-            if (!PlayerAccount.HasPersonalProfileDataPermission) 
-                return; 
-            
             OnGetLeaderboardEntriesButtonClick();
             OpenTopListPlayer();
         }
 
-        private void Close()
+        private void CloseTopListPlayer()
         {
             const float timeAnimation = 0.5f;
 
@@ -123,7 +112,7 @@ namespace Source.Game.Scripts.Yandex
             _spawnerBox.Active();
         }
 
-        private void AuthorizeOpen() => 
+        private void AuthorizeOpen() =>
             _authorization.Open();
 
         private void OpenTopListPlayer()
@@ -137,20 +126,6 @@ namespace Source.Game.Scripts.Yandex
 
             _spawnerBox.Inactive();
             _spawnerBox.Reset();
-        }
-
-        private IEnumerator ShowErrorBord()
-        {
-            const float timeOpenAnimation = 1f;
-            const float timeCloseAnimation = 0.5f;
-
-            Close();
-
-            _viewErrorBord.LeanScale(Vector3.one, timeOpenAnimation).setEaseOutElastic();
-
-            yield return new WaitForSeconds(timeOpenAnimation);
-
-            _viewErrorBord.LeanScale(Vector3.zero, timeCloseAnimation).setEaseInBack();
         }
 
         private void Clear()

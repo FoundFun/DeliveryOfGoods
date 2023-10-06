@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Agava.YandexGames;
+using Source.Game.Scripts.Spawn;
 using Source.Game.Scripts.View;
 
 namespace Source.Game.Scripts.Yandex
@@ -10,15 +11,23 @@ namespace Source.Game.Scripts.Yandex
         [SerializeField] private YandexAuthorizationView _view;
         
         private Coroutine _coroutineAuthorize;
+        private SpawnerBox _spawnerBox;
 
         private void OnEnable() => 
-            _view.ClickButton += Authorize;
+            _view.AcceptButtonClick += Authorize;
 
         private void OnDisable() => 
-            _view.ClickButton -= Authorize;
+            _view.AcceptButtonClick -= Authorize;
 
-        public void Open() => 
+        public void Init(SpawnerBox spawnerBox) => 
+            _spawnerBox = spawnerBox;
+
+        public void Open()
+        {
             _view.Open();
+            _spawnerBox.Inactive();
+            _spawnerBox.Reset();
+        }
 
         private void OnAuthorizeButtonClick() =>
             PlayerAccount.Authorize();
@@ -38,15 +47,18 @@ namespace Source.Game.Scripts.Yandex
 
         private IEnumerator OnAuthorize()
         {
-            Close();
             OnAuthorizeButtonClick();
 
             yield return new WaitUntil(() => PlayerAccount.IsAuthorized);
 
             OnRequestPersonalProfileDataPermissionButtonClick();
+            Close();
         }
 
-        private void Close() => 
+        private void Close()
+        {
             _view.Close();
+            _spawnerBox.Active();
+        }
     }
 }
