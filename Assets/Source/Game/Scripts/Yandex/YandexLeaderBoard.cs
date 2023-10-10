@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Agava.YandexGames;
+using Lean.Localization;
 using Source.Game.Scripts.Configure;
 using Source.Game.Scripts.Model;
 using Source.Game.Scripts.Spawn;
@@ -15,6 +15,7 @@ namespace Source.Game.Scripts.Yandex
         [SerializeField] private List<LeaderBoardView> _boards;
         [SerializeField] private YandexLeaderBoardView _viewLeaderBoard;
         [SerializeField] private YandexAuthorization _authorization;
+        [SerializeField] private LeanLocalization _localization;
 
         private const string English = "Anonymous";
         private const string Russian = "Аноним";
@@ -65,12 +66,12 @@ namespace Source.Game.Scripts.Yandex
 
                     if (string.IsNullOrEmpty(publicName))
                     {
-                        publicName = publicName switch
+                        publicName = _localization.CurrentLanguage switch
                         {
                             YandexInitialize.English => English,
                             YandexInitialize.Russian => Russian,
                             YandexInitialize.Turkish => Turkish,
-                            _ => publicName
+                            _ => English
                         };
                     }
 
