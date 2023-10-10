@@ -56,7 +56,7 @@ namespace Source.Game.Scripts
         private void Start()
         {
             _config.UpdateValue();
-            _sceneLoader.Load();
+            _sceneLoader.InitGameReady();
             _warehousePresenter.Reset();
             _gamePresenter.EnableStartTutorial();
         }
