@@ -10,7 +10,7 @@ namespace Source.Game.Scripts.CameraLogic
         [SerializeField] private Transform _targetHorizontal;
         [SerializeField] private Transform _targetVertical;
 
-        private const float TargetWidthScale = 1100;
+        private const float TargetWidthScale = 1500;
 
         private Vector3 _startPosition;
         private bool _isChangeCameraView;
